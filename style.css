@@ -1,1 +1,6 @@
-body{background-color:rgb(40,41,35)}
+body{
+	background-color:rgb(40,41,35);
+	border:1px solid;
+	width:1080px;
+	height:1920px;
+}

@@ -1,7 +1,34 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <title>固定宽高比16:9</title>
+  <style type="text/css">
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+    .wrap {
+      width: 100%;
+    }
+    /* 16:9宽高比，则设padding-bottom:56.25% */
+    /* height: 0px,防止矩形被里面的内容撑出多余的高度*/
+    .box {
+      width: 100vw;
+      height: 0px;
+      position: relative;
+      padding-bottom: 56.25%;
+      background: pink;
+    }
+    /* 如果需要在div里面设置内容*/        /* 需要设置position：absolute，才能设置内容高度100%和矩形一样 */        /*.box p{            width: 100%;            height: 100%;            position: absolute;        }*/
+  </style>
 </head>
-testtesttest
 <body>
-    <h1>Hello!</h1>
+  <div class="wrap">
+    <div class="box">
+      <p>
+        这是一个16：9的矩形
+      </p>
+    </div>
+  </div>
 </body>
+</html>

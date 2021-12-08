@@ -68,4 +68,4 @@ function initYou() {
   };return you;
 }
 
-function main(){console.log(initYou());return 1;}
+function main(){console.log(initYou());console.log(123);return 1;}

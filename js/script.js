@@ -146,6 +146,8 @@ function gameLoad(isNewGame) {
 }
 /* 游戏开始 */
 function gameStart() {
+  /* 显示版本号 */
+  document.getElementById("ver").innerHTML = "Dev.20211210";
   /* 判断存档是否存在 */
   var saveData = Cookies.get("saveData");
   if (!saveData) {

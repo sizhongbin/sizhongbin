@@ -1,12 +1,12 @@
-/* 角色数据 */
-var you;
 /* 存档初始化，为避免cookie超过4K尽量减少字符数 */
 function initSave() {
   var save = [
     /* 0:关卡进度，存已通关关卡键。下标0为总进度，1-为各职业进度，对应职业键 */
-    [0],
+    [0,
+      0],
     /* 1:怪物情报，存已有情报怪物键*/
-    [],
+    [1,
+      2],
     /* 2:职业等级，存等级。下标0为基本等级，1-为各职业等级，对应职业键 */
     [3,
       3],
@@ -53,13 +53,12 @@ function initSave() {
     [[1,
       [0,
         1]]],
-    /* 11:携带物品，[大类,道具,数量]，存键 */
-    [[2,
-      0,
+    /* 11:携带物品，[物品,数量]，存键 */
+    [[0,
       1]],
     /* 12:支援，存键 */
     [],
-    /* 13:仓库物品，[大类,道具,数量]，存键 */
+    /* 13:仓库物品，[道具,数量]，存键 */
     [],
     /* 14:公会名，0无，1天禁仙境 */
     0
@@ -69,114 +68,91 @@ function initSave() {
   });
   return;
 }
+/* 存档对象化 */
+function convertSaveToYou() {
+  var save = JSON.parse(Cookies.get("s"));
+  you = {
+    currentStage: save[0],
+    sensedEnemy: save[1],
+    jobLv: save[2],
+    currentJob: save[3],
+    attribute: save[4],
+    race: save[5],
+    size: save[6],
+    zeny: save[7],
+    stats: {
+      str: save[8][0],
+      agi: save[8][1],
+      vit: save[8][2],
+      int: save[8][3],
+      dex: save[8][4],
+      luk: save[8][5]
+    },
+    equip: {
+      "头上": {
+        id: save[9][0][0],
+        card: save[9][0][1]},
+      "头中": {
+        id: save[9][1][0],
+        card: save[9][1][1]},
+      "头下": {
+        id: save[9][2][0],
+        card: save[9][2][1]},
+      "身体": {
+        id: save[9][3][0],
+        card: save[9][3][1]},
+      "副手": {
+        id: save[9][4][0],
+        card: save[9][4][1]},
+      "主手": {
+        id: save[9][5][0],
+        card: save[9][5][1]},
+      "披挂": {
+        id: save[9][6][0],
+        card: save[9][6][1]},
+      "鞋子": {
+        id: save[9][7][0],
+        card: save[9][7][1]},
+      "饰品一": {
+        id: save[9][8][0],
+        card: save[9][8][1]},
+      "饰品二": {
+        id: save[9][9][0],
+        card: save[9][9][1]}},
+    learnedSkill: (function() {
+      var obj = {};
+      for (let i = 0; i < save[10].length; i++)
+        obj[save[10][i][0]] = {
+        id: save[10][i][1][0],
+        lv: save[10][i][1][1]};
+      return obj;
+    })(),
+    carriedItem: (function() {
+      var obj = {};
+      for (let i = 0; i < save[11].length; i++)
+        obj[save[11][i][0]] = save[11][i][1];
+      return obj;
+    })(),
+    assist: [],
+    storeItem: (function() {
+      var obj = {};
+      for (let i = 0; i < save[13].length; i++)
+        obj[save[13][i][0]] = save[13][i][1];
+      return obj;
+    })(),
+    guild: (save[14] === 1?"天禁仙境": "无")
+  };
+  return;
+}
 /* 通过值找键*/
 function findKey(obj, value, compare = (a, b) => a === b) {
   return Object.keys(obj).find(k => compare(obj[k], value))
 }
-/* 职业名键值互转，用in检索，by为key则输出value，by为value则输出key*/
-function getJobKeyOrValue(input, by = "key") {
-  var job = {
-    0: "基本",
-    1: "初心者",
-    2: "剑士"
-  };
-  if (by === "key")return job[input];
-  else if (by === "value")return findKey(job, input);
-  else return 0;
-}
-/* 将存档转换为角色数据*/
-function convertSaveToYou() {
-  var save = JSON.parse(Cookies.get("s"));
-  you = {
-    currentStage: "0",
-    jobClearedStage: [],
-    sensedEnemy: ["波利",
-      "绿棉虫",
-      "疯兔"],
-    jobLv: {
-      "基本": 3,
-      "初心者": 3
-    },
-    currentJob: "初心者",
-    attribute: "无",
-    race: "人形",
-    size: "中",
-    zeny: 0,
-    stats: {
-      str: 2,
-      agi: 1,
-      vit: 2,
-      int: 1,
-      dex: 1,
-      luk: 1
-    },
-    equip: {
-      "头上": {
-        name: "空",
-        card: []},
-      "头中": {
-        name: "空",
-        card: []},
-      "头下": {
-        name: "空",
-        card: []},
-      "身体": {
-        name: "冒险衣",
-        card: []},
-      "主手": {
-        name: "短剑",
-        card: []},
-      "副手": {
-        name: "空",
-        card: []},
-      "披挂": {
-        name: "空",
-        card: []},
-      "鞋子": {
-        name: "空",
-        card: []},
-      "饰品一": {
-        name: "空",
-        card: []},
-      "饰品二": {
-        name: "空",
-        card: []}},
-    learnedSkill: [{
-      job: "初心者",
-      skill: [{
-        name: "基本技能",
-        lv: 1
-      },
-        {
-          name: "紧急治疗",
-          lv: 1
-        }]}],
-    carriedItem: [{
-      name: "初学者专用药水",
-      quantity: 1
-    }],
-    assist: [],
-    storeItem: [],
-    guild: "无"
-  };
-}
-/* 关卡数据*/
-function stageData(stageNumber) {
-  switch (stageNumber) {
-    case "0": return {
-      name: "初心者训练场",
-      enemy: ["波利",
-        "疯兔",
-        "绿棉虫"]
-    };
-  }
-}
-/* 写入关卡敌人 */
+/* 关卡信息展示关卡敌人 */
 function displayStageEnemy(selectedStage) {
   var container = "";
-  var you = JSON.parse(Cookies.get("s"));
   for (let i = 0; i < stageData(selectedStage).enemy.length; i++) {
-    container += "<tr><td>"+(i+1)+"</td><td>"+stageData(selectedStage).enemy[i]+"</td><td>"; if (you.sensedEnemy.includes(stageData(selectedStage).enemy[i]))container += "<button>详细</button></td></tr>"; else container += "不明</td></tr>"
+    container += "<tr><td>"+(i+1)+"</td><td>"+enemyData(stageData(selectedStage).enemy[i]).name+"</td><td>"; if (you.sensedEnemy.includes(stageData(selectedStage).enemy[i]))container += "<button>详细</button></td></tr>"; else container += "不明</td></tr>"
   }
   document.getElementById("stageEnemyList").innerHTML = container;
 }
@@ -220,12 +196,15 @@ function stageInfo(preId, selectedStage) {
 }
 /* 读档，传1新开档 */
 function gameLoad(isNewGame) {
+  /* 新游戏时建存档 */
+  if (isNewGame)initSave();
+  /* 存档对象化 */
+  convertSaveToYou();
   /* 取关卡进度 */
   var currentStage;
-  if (isNewGame)currentStage = initSave().currentStage;
-  else currentStage = JSON.parse(Cookies.get("s")).currentStage;
-  if (currentStage !== "0") {
+  if (you.currentStage[0] !== 0) {
     /* 进选关界面*/
+    currentStage = you.currentStage[you.currentJob];
   } else {
     /* 开序章 */
     storyContinue("gameStart", "chapter0");

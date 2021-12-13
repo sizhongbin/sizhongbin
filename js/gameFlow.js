@@ -30,24 +30,24 @@ function initSave() {
     /* 9:装备，[部位[装备,[卡片]]]，最后为投射物，存键 */
     [[0,
       []],
-      [0,
-        []],
-      [0,
-        []],
-      [2,
-        []],
-      [0,
-        []],
-      [1,
-        []],
-      [0,
-        []],
-      [0,
-        []],
-      [0,
-        []],
-      [0,
-        []],
+    [0,
+      []],
+    [0,
+      []],
+    [2,
+      []],
+    [0,
+      []],
+    [1,
+      []],
+    [0,
+      []],
+    [0,
+      []],
+    [0,
+      []],
+    [0,
+      []],
       0],
     /* 10:习得技能，[职业,[技能]]，存键 */
     [[1,
@@ -91,56 +91,68 @@ function convertSaveToYou() {
     equip: {
       "头上": {
         id: save[9][0][0],
-        card: save[9][0][1]},
+        card: save[9][0][1]
+      },
       "头中": {
         id: save[9][1][0],
-        card: save[9][1][1]},
+        card: save[9][1][1]
+      },
       "头下": {
         id: save[9][2][0],
-        card: save[9][2][1]},
+        card: save[9][2][1]
+      },
       "身体": {
         id: save[9][3][0],
-        card: save[9][3][1]},
+        card: save[9][3][1]
+      },
       "副手": {
         id: save[9][4][0],
-        card: save[9][4][1]},
+        card: save[9][4][1]
+      },
       "主手": {
         id: save[9][5][0],
-        card: save[9][5][1]},
+        card: save[9][5][1]
+      },
       "披挂": {
         id: save[9][6][0],
-        card: save[9][6][1]},
+        card: save[9][6][1]
+      },
       "鞋子": {
         id: save[9][7][0],
-        card: save[9][7][1]},
+        card: save[9][7][1]
+      },
       "饰品一": {
         id: save[9][8][0],
-        card: save[9][8][1]},
+        card: save[9][8][1]
+      },
       "饰品二": {
         id: save[9][9][0],
-        card: save[9][9][1]}},
-    learnedSkill: (function() {
+        card: save[9][9][1]
+      }
+    },
+    learnedSkill: (function () {
       var obj = {};
       for (let i = 0; i < save[10].length; i++)
         obj[save[10][i][0]] = {
-        id: save[10][i][1][0],
-        lv: save[10][i][1][1]};
+          id: save[10][i][1][0],
+          lv: save[10][i][1][1]
+        };
       return obj;
     })(),
-    carriedItem: (function() {
+    carriedItem: (function () {
       var obj = {};
       for (let i = 0; i < save[11].length; i++)
         obj[save[11][i][0]] = save[11][i][1];
       return obj;
     })(),
     assist: [],
-    storeItem: (function() {
+    storeItem: (function () {
       var obj = {};
       for (let i = 0; i < save[13].length; i++)
         obj[save[13][i][0]] = save[13][i][1];
       return obj;
     })(),
-    guild: (save[14] === 1?"天禁仙境": "无")
+    guild: (save[14] === 1 ? "天禁仙境" : "无")
   };
   return;
 }
@@ -148,13 +160,41 @@ function convertSaveToYou() {
 function findKey(obj, value, compare = (a, b) => a === b) {
   return Object.keys(obj).find(k => compare(obj[k], value))
 }
-/* 关卡信息展示关卡敌人 */
-function displayStageEnemy(selectedStage) {
-  var container = "";
-  for (let i = 0; i < stageData(selectedStage).enemy.length; i++) {
-    container += "<tr><td>"+(i+1)+"</td><td>"+enemyData(stageData(selectedStage).enemy[i]).name+"</td><td>"; if (you.sensedEnemy.includes(stageData(selectedStage).enemy[i]))container += "<button>详细</button></td></tr>"; else container += "不明</td></tr>"
+/* 游戏开始 */
+function gameStart() {
+  /* 显示版本号 */
+  document.getElementById("ver").innerHTML = "Dev.20211210";
+  /* 判断存档是否存在 */
+  var saveData = Cookies.get("s");
+  if (!saveData) {
+    let button = document.createElement("button");
+    button.innerHTML = "开始游戏";
+    button.setAttribute("onclick", "gameLoad(1)");
+    document.getElementById("gameStart").appendChild(button);
+  } else {
+    let button = document.createElement("button");
+    button.innerHTML = "继续游戏";
+    button.setAttribute("onclick", "gameLoad(0)");
+    document.getElementById("gameStart").appendChild(button);
   }
-  document.getElementById("stageEnemyList").innerHTML = container;
+  return;
+}
+/* 读档，传1新开档 */
+function gameLoad(isNewGame) {
+  /* 新游戏时建存档 */
+  if (isNewGame) initSave();
+  /* 存档对象化 */
+  convertSaveToYou();
+  /* 取关卡进度 */
+  var currentStage;
+  if (you.currentStage[0] !== 0) {
+    /* 进选关界面*/
+    currentStage = you.currentStage[you.currentJob];
+  } else {
+    /* 开序章 */
+    storyContinue("gameStart", "chapter0");
+  }
+  return;
 }
 /* 故事继续按钮事件 */
 function storyContinue(preId, nextId) {
@@ -176,12 +216,12 @@ function stageInfo(preId, selectedStage) {
   document.getElementById(preId).style.display = "none";
   document.getElementById(preId).style.opacity = "0";
   /* 关卡信息取消隐藏 */
-     document.getElementById("stageInfoBox").style.display = "block";
+  document.getElementById("stageInfoBox").style.display = "block";
   /* 写入关卡数字、关卡名*/
-  document.getElementById("stageNumber").innerHTML = "Stage&nbsp;"+selectedStage;
+  document.getElementById("stageNumber").innerHTML = "Stage&nbsp;" + selectedStage;
   document.getElementById("stageName").innerHTML = stageData(selectedStage).name;
   /* 写入关卡敌人 */
-  document.getElementById("stageEnemyTitle").innerHTML = "Enemy（Wave："+stageData(selectedStage).enemy.length+"）";
+  document.getElementById("stageEnemyTitle").innerHTML = "Enemy（Wave：" + stageData(selectedStage).enemy.length + "）";
   displayStageEnemy(selectedStage);
   /* 关卡信息淡入 */
   function b() {
@@ -189,46 +229,24 @@ function stageInfo(preId, selectedStage) {
   }
   setTimeout(b, 100);
 }
-/* 展示基本信息 */
-function displayBasic() {
-  let container = "<tr><th style=\'text-align:left\'>你</th><th style=\'text-align:right\'>Base Lv."+you.jobLv[0]+"&nbsp;/&nbsp;"+you.currentJob+"&nbsp;/&nbsp;Job Lv."; Object.keys(you.jobLv).forEach(function(key) {
-    if (key == you.currentJob)container += you.jobLv[key];
+/* 关卡信息展示关卡敌人 */
+function displayStageEnemy(selectedStage) {
+  var container = "";
+  for (let i = 0; i < stageData(selectedStage).enemy.length; i++) {
+    container += "<tr><td>" + (i + 1) + "</td><td>" + enemyData(stageData(selectedStage).enemy[i]).name + "</td><td>"; if (you.sensedEnemy.includes(stageData(selectedStage).enemy[i])) container += "<button>详细</button></td></tr>"; else container += "不明</td></tr>"
+  }
+  document.getElementById("stageEnemyList").innerHTML = container;
+}
+/* 展示角色信息 */
+function charaInfo(battle = 0) {
+  if (!battle) {
+    document.getElementById("stageInfoBox").style.display = "none";
+    document.getElementById("stageInfoBox").style.opacity = "0";
+    document.getElementById("charaInfoBox").style.display = "block";
+  }
+  let container = "<tr><th style=\'text-align:left\'>你</th><th style=\'text-align:right\'>Base Lv." + you.jobLv[0] + "&nbsp;/&nbsp;" + you.currentJob + "&nbsp;/&nbsp;Job Lv."; Object.keys(you.jobLv).forEach(function (key) {
+    if (key == you.currentJob) container += you.jobLv[key];
   });
-  container += "</th></tr><tr><td colspan=\'2\' style=\'text-align:right\'>HP&nbsp;"+getBoardStats().maxhp+"&nbsp;/&nbsp;"+getBoardStats().maxhp+"&nbsp;|&nbsp;SP&nbsp;"+getBoardStats().maxsp+"&nbsp;/&nbsp;"+getBoardStats().maxsp+"&nbsp;|&nbsp;Weight&nbsp;"+getCarriedWeight()+"&nbsp;/&nbsp;"+getBoardStats().maxweight+"</td></tr><tr><td colspan=\'2\' style=\'text-align:right\'>Zeny&nbsp;"+you.zeny+"</td></tr>"; document.getElementById("basic").innerHTML = container;
+  container += "</th></tr><tr><td colspan=\'2\' style=\'text-align:right\'>HP&nbsp;" + getBoardStats().maxhp + "&nbsp;/&nbsp;" + getBoardStats().maxhp + "&nbsp;|&nbsp;SP&nbsp;" + getBoardStats().maxsp + "&nbsp;/&nbsp;" + getBoardStats().maxsp + "&nbsp;|&nbsp;Weight&nbsp;" + getCarriedWeight() + "&nbsp;/&nbsp;" + getBoardStats().maxweight + "</td></tr><tr><td colspan=\'2\' style=\'text-align:right\'>Zeny&nbsp;" + you.zeny + "</td></tr>"; document.getElementById("basic").innerHTML = container;
 }
-/* 读档，传1新开档 */
-function gameLoad(isNewGame) {
-  /* 新游戏时建存档 */
-  if (isNewGame)initSave();
-  /* 存档对象化 */
-  convertSaveToYou();
-  /* 取关卡进度 */
-  var currentStage;
-  if (you.currentStage[0] !== 0) {
-    /* 进选关界面*/
-    currentStage = you.currentStage[you.currentJob];
-  } else {
-    /* 开序章 */
-    storyContinue("gameStart", "chapter0");
-  }
-  return;
-}
-/* 游戏开始 */
-function gameStart() {
-  /* 显示版本号 */
-  document.getElementById("ver").innerHTML = "Dev.20211210";
-  /* 判断存档是否存在 */
-  var saveData = Cookies.get("s");
-  if (!saveData) {
-    let button = document.createElement("button");
-    button.innerHTML = "开始游戏";
-    button.setAttribute("onclick", "gameLoad(1)");
-    document.getElementById("gameStart").appendChild(button);
-  } else {
-    let button = document.createElement("button");
-    button.innerHTML = "继续游戏";
-    button.setAttribute("onclick", "gameLoad(0)");
-    document.getElementById("gameStart").appendChild(button);
-  }
-  return;
-}
+

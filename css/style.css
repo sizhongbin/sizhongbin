@@ -164,8 +164,6 @@ del {
   border: 0;
   text-align: center;
   box-sizing: border-box;
-  transition: opacity 0.5s;
-  opacity: 0;
 }
 .stageInfoButtons > table {
   border: 0;

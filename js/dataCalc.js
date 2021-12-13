@@ -104,3 +104,87 @@ function getSkillBonusStats() {
   }
   return totalBonusStats;
 }
+/* 加成六维计算 */
+function getBonusStats() {
+  var bonusStats =
+  {
+    str: getEquipBonusStats().str+getSkillBonusStats().str,
+    agi: getEquipBonusStats().agi+getSkillBonusStats().agi,
+    vit: getEquipBonusStats().vit+getSkillBonusStats().vit,
+    int: getEquipBonusStats().int+getSkillBonusStats().int,
+    dex: getEquipBonusStats().dex+getSkillBonusStats().dex,
+    luk: getEquipBonusStats().luk+getSkillBonusStats().luk
+  };
+  return bonusStats;
+}
+/* 根据武器类型计算atk的属性满3加成 */
+function getYouExtraAtk(modifierStr = 0, modifierDex = 0) {
+  if (equipData(you.equip["主手"].id).type != ("弓" || "乐器" || "鞭"))
+    return getBonusStats().str+modifierStr+parseInt((you.stats.str+getBonusStats().str+modifierStr)/3)*2+parseInt((you.stats.dex+getBonusStats().dex+modifierDex)/3);
+  else
+    return getBonusStats().dex+parseInt((you.stats.dex+getBonusStats().dex+modifierDex)/3)*2+parseInt((you.stats.str+getBonusStats().str+modifierStr)/3);
+}
+/* 总面板属性计算 */
+function getBoardStats() {
+  var boardStats =
+  {
+    str: you.stats.str+getBonusStats().str,
+    agi: you.stats.agi+getBonusStats().agi,
+    vit: you.stats.vit+getBonusStats().vit,
+    int: you.stats.int+getBonusStats().int,
+    dex: you.stats.dex+getBonusStats().dex,
+    luk: you.stats.luk+getBonusStats().luk,
+    maxhp: getSubStats().maxhp+getEquipBonusStats().maxhp+getSkillBonusStats().maxhp+getBonusStats().vit*3,
+    maxsp: getSubStats().maxsp+getEquipBonusStats().maxsp+getSkillBonusStats().maxsp+getBonusStats().int*3,
+    maxweight: getSubStats().maxweight+getEquipBonusStats().maxweight+getSkillBonusStats().maxweight+getBonusStats().str*3,
+    atk: getSubStats().atk+getEquipBonusStats().atk+getSkillBonusStats().atk+getYouExtraAtk(),
+    watk: getEquipBonusStats().watk+getSkillBonusStats().watk,
+    matk: getSubStats().matk+getEquipBonusStats().matk+getSkillBonusStats().matk+getBonusStats().int+parseInt((you.stats.int+getBonusStats().int)/3)*2,
+    wmatk: getEquipBonusStats().wmatk+getSkillBonusStats().wmatk,
+    def: getSubStats().def+getEquipBonusStats().def+getSkillBonusStats().def+getBonusStats().vit+parseInt((you.stats.luk+getBonusStats().luk)/3),
+    wdef: getEquipBonusStats().wdef+getSkillBonusStats().wdef,
+    mdef: getSubStats().mdef+getEquipBonusStats().mdef+getSkillBonusStats().mdef+getBonusStats().int+parseInt((you.stats.luk+getBonusStats().luk)/3),
+    wmdef: getEquipBonusStats().wmdef+getSkillBonusStats().wmdef,
+    hit: getSubStats().hit+getEquipBonusStats().hit+getSkillBonusStats().hit+getBonusStats().dex*5+parseInt((you.stats.luk+getBonusStats().luk)/3),
+    flee: getSubStats().flee+getEquipBonusStats().flee+getSkillBonusStats().flee+getBonusStats().agi*5+parseInt((you.stats.luk+getBonusStats().luk)/3),
+    cri: getSubStats().cri+getEquipBonusStats().cri+getSkillBonusStats().cri+getBonusStats().luk,
+    maxap: Math.min(getSubStats().maxap+getEquipBonusStats().maxap+getSkillBonusStats().maxap+parseInt((you.stats.agi+getBonusStats().agi)/6), 7),
+    mov: getSubStats().mov+getEquipBonusStats().mov+getSkillBonusStats().mov,
+    ct: getSubStats().ct+getEquipBonusStats().ct+getSkillBonusStats().ct+parseInt((you.stats.dex+getBonusStats().dex)/6),
+    range: getSubStats().range+getEquipBonusStats().range+getSkillBonusStats().range,
+    attribute: (getEquipBonusStats().attribute == 0?you.attribute: getEquipBonusStats().attribute),
+    race: you.race,
+    size: you.size
+  };
+  return boardStats;
+}
+/* 负重计算 */
+function getCarriedWeight() {
+  let total = 0;
+  for (let i = 0; i < you.carriedItem.length; i++) {
+    total += itemData(Object.keys(you.carriedItem)[i]).wt*you.carriedItem[i];
+  }
+  for (let i = 0; i < you.equip.length; i++) {
+    total += equipData(you.equip[i].id).wt;
+    for (let j = 0; j < you.equip[i].card.length; j++)
+      total += equipData(you.equip[i]).card[j].wt;
+  }
+  return total;
+}
+
+/* 剩余属性点计算 */
+function getStatsPoint() {
+  return you.jobLv[0]+5-you.stats.str-you.stats.agi-you.stats.vit-you.stats.int-you.stats.dex-you.stats.luk;
+}
+/* watk特殊调整计算 */
+function getSpecialWatkModifier() {
+  return 0;
+}
+/* wdef特殊调整计算 */
+function getSpecialWdefModifier() {
+  return 0;
+}
+/* 伤害调整计算 */
+function getSpecialDamageModifier() {
+  return 0;
+}

@@ -171,7 +171,6 @@ function getCarriedWeight() {
   }
   return total;
 }
-
 /* 剩余属性点计算 */
 function getStatsPoint() {
   return you.jobLv[0]+5-you.stats.str-you.stats.agi-you.stats.vit-you.stats.int-you.stats.dex-you.stats.luk;

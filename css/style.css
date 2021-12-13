@@ -2,10 +2,10 @@ html,body {
   background-color: #121213;
   width: 100%;
   height: 100%;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   color: #80DEEA;
-  font-size: 10vw;
+  font-size: 5vw;
 }
 del {
   color: #009688;
@@ -32,17 +32,16 @@ del {
   position: absolute;
   border: 0.1em solid cyan;
   border-radius: 0.2em;
-  width: 96%;
+  width: 100%;
   height: 100%;
   box-sizing: border-box;
-  left: 2%;
 }
 .gameTitle {
   position: relative;
-  height: 2em;
+  height: 10vw;
   width: 100%;
-  border-bottom: 0.1em solid cyan;
-  border-radius: 0.2em;
+  border-bottom: 0.5vw solid cyan;
+  border-radius: 1vw;
   display: flex;
   align-items: center;
   box-sizing: border-box;

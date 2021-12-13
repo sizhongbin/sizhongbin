@@ -158,36 +158,16 @@ function displayStageEnemy(selectedStage) {
 }
 /* 故事继续按钮事件 */
 function storyContinue(preId, nextId) {
-  /* 前一个元素淡出 */
+  /* 前一个元素隐藏，透明度复原 */
+  document.getElementById(preId).style.display = "none";
   document.getElementById(preId).style.opacity = 0;
-  /* 过渡结束后改display */
-  function a() {
-    document.getElementById(preId).style.display = "none";
-    document.getElementById(nextId).style.display = "block";
-  };
-  setTimeout(a, 500);
+  /* 后一个元素取消隐藏 */
+  document.getElementById(nextId).style.display = "block";
   /* 后一个元素淡入 */
   function b() {
     document.getElementById(nextId).style.opacity = 1;
   }
-  setTimeout(b, 600);
-  return;
-}
-/* actionLists清空*/
-function resetActions(){
-  for (let i=1;i<9;i++)
-  document.getElementById("action"+i).innerHTML = "&nbsp;";
-  return;
-}
-/* actionLists写入按钮*/
-function setActions(id,action,text){
-  resetActions();
-  let button = document.createElement("button");
-    button.innerHTML = text;
-    button.setAttribute("onclick", "'"+action+"'");
-    document.getElementById(id).appendChild(button);
-  
-  /*document.getElementById("action"+id).innerHTML = "<button onclick='"+action+"'>"+text+"</button>";*/
+  setTimeout(b, 100);
   return;
 }
 /* 进入关卡信息 */
@@ -203,8 +183,6 @@ function stageInfo(preId, selectedStage) {
   /* 写入关卡敌人 */
   document.getElementById("stageEnemyTitle").innerHTML = "Enemy（Wave："+stageData(selectedStage).enemy.length+"）";
   displayStageEnemy(selectedStage);
-  /* 写入按钮 */
-  
   /* 关卡信息淡入 */
   function b() {
     document.getElementById("stageInfoBox").style.opacity = 1;
@@ -233,8 +211,6 @@ function gameLoad(isNewGame) {
     /* 开序章 */
     storyContinue("gameStart", "chapter0");
   }
-  document.getElementById("gameActions").style.display = "block";
-  setTimeout("document.getElementById('gameActions').style.opacity = 1",600);
   return;
 }
 /* 游戏开始 */

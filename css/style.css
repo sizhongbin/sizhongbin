@@ -49,7 +49,7 @@ button:active {
   box-sizing: border-box;
 }
 .gameContent {
-  height: calc(100% - 18vw);
+  height: calc(100% - 10vw);
   width: 100%;
   box-sizing: border-box;
 }
@@ -72,7 +72,7 @@ button:active {
   opacity: 0;
 }
 .storyBox > h1 {
-  font-size: 2em;
+  font-size: 10vw;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -116,16 +116,16 @@ button:active {
 }
 .storyContent {
   position: absolute;
-  top: 4em;
+  top: 20vw;
   left: 2%;
-  padding: 0 0.5em;
+  padding: 0 2vw;
   width: 96%;
-  height: calc(100% - 8em);
+  height: calc(100% - 28vw);
   overflow: auto;
   box-sizing: border-box;
 }
 .storyContent > p {
-  text-indent: 2em;
+  text-indent: 10vw;
 }
 .stageInfoTitle {
   position: relative;

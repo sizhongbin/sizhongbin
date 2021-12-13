@@ -22,7 +22,7 @@ del {
   margin: 0 auto;
 }
 .gameStart > button:active {
-  top: 0.2em;
+  background-color: #B2EBF2;
 }
 .ver {
   position: absolute;

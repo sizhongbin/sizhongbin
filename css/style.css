@@ -157,33 +157,33 @@ del {
 .stageEnemyListBox > table button:active {
   top: 0.2em;
 }
-.gameActions {
+.charaInfoBox {
   position: relative;
   width: 100%;
   height: 5em;
-  border: 1px solid white;
+  border: 0;
   text-align: center;
   box-sizing: border-box;
   transition: opacity 0.5s;
   opacity: 0;
 }
-.gameActions > table {
-  border:1px solid white;
+.charaInfoBox > table {
+  border: 0;
   width: 100%;
   height: 100%;
   table-layout: fixed;
 }
-.gameActions > table button {
+.charaInfoBox > table button {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 6em;
+  height: 2em;
   background-color: lightcyan;
   color: DarkSlateGray;
   border-radius: 0.2em;
   border: 0;
 }
-.gameActions > table button:active {
-  top: 0.1em;
+.charaInfoBox > table button:active {
+  top: 0.2em;
 }
 ::-webkit-scrollbar {
   width: 0.5em;

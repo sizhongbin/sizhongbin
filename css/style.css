@@ -10,8 +10,7 @@ html,body {
 del {
   color: #009688;
 }
-.gameStart > button {
-  position: relative;
+button {
   width: 28vw;
   height: 10vw;
   background-color: #00BCD4;
@@ -19,10 +18,13 @@ del {
   border-radius: 0.2em;
   border: 0;
   font-size: 5vw;
-  margin: 0 auto;
 }
-.gameStart > button:active {
+button:active {
   background-color: #B2EBF2;
+}
+.gameStart > button {
+  position: relative;
+  margin: 0 auto;
 }
 .ver {
   position: absolute;
@@ -79,18 +81,8 @@ del {
 }
 .storyBox > button {
   position: absolute;
-  width: 28vw;
-  height: 10vw;
-  background-color: lightcyan;
-  color: DarkSlateGray;
-  border-radius: 0.2em;
-  border: 0;
-  font-size: 5vw;
   bottom: 4vw;
   right: 4vw;
-}
-.storyBox > button:active {
-  bottom: 0.8em;
 }
 .storyBox > h2 {
   position: absolute;

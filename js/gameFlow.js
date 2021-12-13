@@ -173,26 +173,50 @@ function storyContinue(preId, nextId) {
   setTimeout(b, 600);
   return;
 }
+/* actionLists清空*/
+function resetActions(){
+  for (let i=1;i<9;i++)
+  document.getElementById("action"+i).innerHTML = "&nbsp;";
+  return;
+}
+/* actionLists写入按钮*/
+function setActions(id,action,text){
+  resetActions();
+  let button = document.createElement("button");
+    button.innerHTML = text;
+    button.setAttribute("onclick", "'"+action+"'");
+    document.getElementById(id).appendChild(button);
+  
+  /*document.getElementById("action"+id).innerHTML = "<button onclick='"+action+"'>"+text+"</button>";*/
+  return;
+}
 /* 进入关卡信息 */
 function stageInfo(preId, selectedStage) {
-  /* 故事淡出 */
+  /* 故事隐藏 */
+  document.getElementById(preId).style.display = "none";
   document.getElementById(preId).style.opacity = "0";
-  /* 过渡结束后改display */
-  function a() {
-    document.getElementById(preId).style.display = "none"; document.getElementById("stageInfoBox").style.display = "block";
-  }
-  setTimeout(a, 500);
+  /* 关卡信息取消隐藏 */
+     document.getElementById("stageInfoBox").style.display = "block";
   /* 写入关卡数字、关卡名*/
   document.getElementById("stageNumber").innerHTML = "Stage&nbsp;"+selectedStage;
   document.getElementById("stageName").innerHTML = stageData(selectedStage).name;
   /* 写入关卡敌人 */
   document.getElementById("stageEnemyTitle").innerHTML = "Enemy（Wave："+stageData(selectedStage).enemy.length+"）";
   displayStageEnemy(selectedStage);
+  /* 写入按钮 */
+  
   /* 关卡信息淡入 */
   function b() {
     document.getElementById("stageInfoBox").style.opacity = 1;
   }
-  setTimeout(b, 600);
+  setTimeout(b, 100);
+}
+/* 展示基本信息 */
+function displayBasic() {
+  let container = "<tr><th style=\'text-align:left\'>你</th><th style=\'text-align:right\'>Base Lv."+you.jobLv[0]+"&nbsp;/&nbsp;"+you.currentJob+"&nbsp;/&nbsp;Job Lv."; Object.keys(you.jobLv).forEach(function(key) {
+    if (key == you.currentJob)container += you.jobLv[key];
+  });
+  container += "</th></tr><tr><td colspan=\'2\' style=\'text-align:right\'>HP&nbsp;"+getBoardStats().maxhp+"&nbsp;/&nbsp;"+getBoardStats().maxhp+"&nbsp;|&nbsp;SP&nbsp;"+getBoardStats().maxsp+"&nbsp;/&nbsp;"+getBoardStats().maxsp+"&nbsp;|&nbsp;Weight&nbsp;"+getCarriedWeight()+"&nbsp;/&nbsp;"+getBoardStats().maxweight+"</td></tr><tr><td colspan=\'2\' style=\'text-align:right\'>Zeny&nbsp;"+you.zeny+"</td></tr>"; document.getElementById("basic").innerHTML = container;
 }
 /* 读档，传1新开档 */
 function gameLoad(isNewGame) {
@@ -209,6 +233,8 @@ function gameLoad(isNewGame) {
     /* 开序章 */
     storyContinue("gameStart", "chapter0");
   }
+  document.getElementById("gameActions").style.display = "block";
+  setTimeout("document.getElementById('gameActions').style.opacity = 1",600);
   return;
 }
 /* 游戏开始 */

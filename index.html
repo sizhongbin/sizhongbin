@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>天禁仙境</title>
+  <link rel="stylesheet" type="text/css" href="./css/style.css" />
   <script src="./js/js.cookie.js"></script>
   <script src="./js/globalVar.js"></script>
   <script src="./js/dataBase.js"></script>
   <script src="./js/dataCalc.js"></script>
   <script src="./js/gameFlow.js"></script>
-  <link rel="stylesheet" type="text/css" href="./css/style.css" />
 </head>
 <body onload="gameStart()">
   <div class="gameBox">
@@ -25,82 +25,82 @@
           序
         </h1>
         <<button onclick="storyContinue('chapter0','story0_1')">继续</button>
-      </div>
-      <div id="story0_1" class="storyBox">
-        <h2>Story</h2>
-        <div id="storyContent0_1" class="storyContent">
-          <p>
-            诸神的战争，虚伪的和平，怪物的侵袭，还有让无数冒险者踏上旅途的依美乐之心......
-          </p>
-          <p>
-            这是一个混乱的时代。但这些都不是重点。
-          </p>
-          <p>
-            在这普通的一天，搬砖的你偶然听到了一个冒险者的谈话。
-          </p>
-          <p>
-            他在普隆德拉南门的绿棉虫身上得到了绿宝石，并成功向宝石商人卖出了3,720z。
-          </p>
-          <p>
-            约摸是你搬砖两个月的收入。
-          </p>
-          <p>
-            一瞬间，你的眼里有了光。那是对<del>提前退休</del>冒险生活的渴望。
-          </p>
-          <p>
-            你当即扔下手中的砖，紧了紧身上的祖传棉衬衫，启程前往初心者修炼场。
-          </p>
-          <p>
-            现在，你正站在考场中。在教官面前击倒眼前的怪物，你就能通过试验，成为冒险者。
-          </p>
-          <p>
-            以上才是重点，是你的故事的开端。
-          </p>
-          <br>
-          <p style="color:yellow">
-            你穿戴了考试专用装备：
-          </p>
-          <p>
-            短剑[0]
-          </p>
-          <p>
-            冒险衣[0]
-          </p>
-          <p style="color:yellow">
-            你得到了考试专用道具：
-          </p>
-          <p>
-            初学者专用药水专用 x1
-          </p>
         </div>
-        <button onclick="stageInfo('story0_1',0)">关卡信息</button>
-      </div>
-      <div id="stageInfoBox" class="stageInfoBox">
-        <div class="stageInfoTitle">
-          <h2 id="stageNumber"></h2>
-          <h1 id="stageName"></h1>
+        <div id="story0_1" class="storyBox">
+          <h2>Story</h2>
+          <div id="storyContent0_1" class="storyContent">
+            <p>
+              诸神的战争，虚伪的和平，怪物的侵袭，还有让无数冒险者踏上旅途的依美乐之心......
+            </p>
+            <p>
+              这是一个混乱的时代。但这些都不是重点。
+            </p>
+            <p>
+              在这普通的一天，搬砖的你偶然听到了一个冒险者的谈话。
+            </p>
+            <p>
+              他在普隆德拉南门的绿棉虫身上得到了绿宝石，并成功向宝石商人卖出了3,720z。
+            </p>
+            <p>
+              约摸是你搬砖两个月的收入。
+            </p>
+            <p>
+              一瞬间，你的眼里有了光。那是对<del>提前退休</del>冒险生活的渴望。
+            </p>
+            <p>
+              你当即扔下手中的砖，紧了紧身上的祖传棉衬衫，启程前往初心者修炼场。
+            </p>
+            <p>
+              现在，你正站在考场中。在教官面前击倒眼前的怪物，你就能通过试验，成为冒险者。
+            </p>
+            <p>
+              以上才是重点，是你的故事的开端。
+            </p>
+            <br>
+            <p style="color:yellow">
+              你穿戴了考试专用装备：
+            </p>
+            <p>
+              短剑[0]
+            </p>
+            <p>
+              冒险衣[0]
+            </p>
+            <p style="color:yellow">
+              你得到了考试专用道具：
+            </p>
+            <p>
+              初学者专用药水专用 x1
+            </p>
+          </div>
+          <button onclick="stageInfo('story0_1',0)">关卡信息</button>
         </div>
-        <div class="stageInfoEnemy">
-          <h2 id="stageEnemyTitle"></h2>
-          <table>
-            <tr><th>场次</th><th>怪物</th><th>情报</th></tr>
-          </table>
-          <div id="stageEnemyListBox" class="stageEnemyListBox">
-            <table id="stageEnemyList"></table>
+        <div id="stageInfoBox" class="stageInfoBox">
+          <div class="stageInfoTitle">
+            <h2 id="stageNumber"></h2>
+            <h1 id="stageName"></h1>
+          </div>
+          <div class="stageInfoEnemy">
+            <h2 id="stageEnemyTitle"></h2>
+            <table>
+              <tr><th>场次</th><th>怪物</th><th>情报</th></tr>
+            </table>
+            <div id="stageEnemyListBox" class="stageEnemyListBox">
+              <table id="stageEnemyList"></table>
+            </div>
+          </div>
+          <div class="stageInfoButtons">
+            <table>
+              <tr><td><button onclick="charaInfo()">角色</button></td><td><button>技能</button></td><td><button>出发</button></td></tr><tr><td><button>道具</button></td><td><button>支援</button></td></tr>
+            </table>
           </div>
         </div>
-        <div class="stageInfoButtons">
-          <table>
-            <tr><td><button onclick="charaInfo()">角色</button></td><td><button>技能</button></td><td><button>出发</button></td></tr><tr><td><button>道具</button></td><td><button>支援</button></td></tr>
-          </table>
+        <div id="charaInfoBox" class="charaInfoBox">
+          <fieldset style="height:20%;margin-bottom:5%;">
+            <legend style="padding:0 3%">Basic</legend><table id="basicInfo" width="99%" height="90%"></table>
+          </fieldset>
+          <table id="statsequip" width="99%" height="70%" align="center" border="1" style="text-align:center;table-layout:fixed;white-space:nowrap"></table>
         </div>
       </div>
-      <div id="charaInfoBox" class="charaInfoBox">
-        <fieldset style="height:20%;margin-bottom:5%;">
-          <legend style="padding:0 3%">Basic</legend><table id="basicInfo" width="99%" height="90%"></table>
-        </fieldset>
-        <table id="statsequip" width="99%" height="70%" align="center" border="1" style="text-align:center;table-layout:fixed;white-space:nowrap"></table>
-      </div>
-  </div>
-</body>
-</html>
+    </body>
+  </html>

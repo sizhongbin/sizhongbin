@@ -5,7 +5,7 @@ html,body {
   margin: 0;
   padding: 0;
   color: #80DEEA;
-  font-size: min(2.5vh,5vw);
+  font-size: min(2.5vh, 5vw);
 }
 del {
   color: #009688;

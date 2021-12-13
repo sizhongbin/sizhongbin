@@ -161,7 +161,7 @@ function getBoardStats() {
 /* 负重计算 */
 function getCarriedWeight() {
   let total = 0;
-  Object.keys(you.carriedItem).forEach(function () { total += itemData[key].wt * you.carriedItem[key]; })
+  Object.keys(you.carriedItem).forEach(function () { total += itemData[key].wt * you.carriedItem[key]; });
   for (let i = 0; i < you.equip.length; i++) {
     total += equipData(you.equip[i].id).wt;
     for (let j = 0; j < you.equip[i].card.length; j++)

@@ -222,7 +222,7 @@ function itemData(key) {
   var itemData = {
     1: {
       name: "初学者专用药水",
-      wt: 1,
+      wt: 0.1,
       ap: 0,
       ct: 0,
       cd: 1,

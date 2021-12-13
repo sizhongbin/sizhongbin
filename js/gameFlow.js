@@ -204,10 +204,10 @@ function storyContinue(preId, nextId) {
   /* 后一个元素取消隐藏 */
   document.getElementById(nextId).style.display = "block";
   /* 后一个元素淡入 */
-  function b() {
+  function a() {
     document.getElementById(nextId).style.opacity = 1;
   }
-  setTimeout(b, 100);
+  setTimeout(a, 100);
   return;
 }
 /* 进入关卡信息 */
@@ -224,10 +224,11 @@ function stageInfo(preId, selectedStage) {
   document.getElementById("stageEnemyTitle").innerHTML = "Enemy（Wave：" + stageData(selectedStage).enemy.length + "）";
   displayStageEnemy(selectedStage);
   /* 关卡信息淡入 */
-  function b() {
+  function a() {
     document.getElementById("stageInfoBox").style.opacity = 1;
   }
-  setTimeout(b, 100);
+  setTimeout(a, 100);
+  return;
 }
 /* 关卡信息展示关卡敌人 */
 function displayStageEnemy(selectedStage) {
@@ -244,9 +245,16 @@ function charaInfo(battle = 0) {
     document.getElementById("stageInfoBox").style.opacity = "0";
     document.getElementById("charaInfoBox").style.display = "block";
   }
-  let container = "<tr><th style=\'text-align:left\'>你</th><th style=\'text-align:right\'>Base Lv." + you.jobLv[0] + "&nbsp;/&nbsp;" + you.currentJob + "&nbsp;/&nbsp;Job Lv."; Object.keys(you.jobLv).forEach(function (key) {
-    if (key == you.currentJob) container += you.jobLv[key];
+  let container = "<tr><th style=\'text-align:left\'>你</th><th style=\'text-align:right\'>Base Lv." + you.jobLv[0] + "&nbsp;/&nbsp;" + jobData(you.currentJob) + "&nbsp;/&nbsp;Job Lv."; 
+  Object.keys(you.jobLv).forEach(function (key) {
+    if (key === you.currentJob) container += you.jobLv[key];
   });
-  container += "</th></tr><tr><td colspan=\'2\' style=\'text-align:right\'>HP&nbsp;" + getBoardStats().maxhp + "&nbsp;/&nbsp;" + getBoardStats().maxhp + "&nbsp;|&nbsp;SP&nbsp;" + getBoardStats().maxsp + "&nbsp;/&nbsp;" + getBoardStats().maxsp + "&nbsp;|&nbsp;Weight&nbsp;" + getCarriedWeight() + "&nbsp;/&nbsp;" + getBoardStats().maxweight + "</td></tr><tr><td colspan=\'2\' style=\'text-align:right\'>Zeny&nbsp;" + you.zeny + "</td></tr>"; document.getElementById("basic").innerHTML = container;
+  container += "</th></tr><tr><td colspan=\'2\' style=\'text-align:right\'>HP&nbsp;" + getBoardStats().maxhp + "&nbsp;/&nbsp;" + getBoardStats().maxhp + "&nbsp;|&nbsp;SP&nbsp;" + getBoardStats().maxsp + "&nbsp;/&nbsp;" + getBoardStats().maxsp + "&nbsp;|&nbsp;Weight&nbsp;" + getCarriedWeight() + "&nbsp;/&nbsp;" + getBoardStats().maxweight + "</td></tr><tr><td colspan=\'2\' style=\'text-align:right\'>Zeny&nbsp;" + you.zeny + "</td></tr>"; 
+  document.getElementById("basicInfo").innerHTML = container;
+  function a() {
+    document.getElementById("stageInfoBox").style.opacity = 1;
+  }
+  setTimeout(a, 100);
+  return;
 }
 

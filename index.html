@@ -16,6 +16,11 @@
     <div class="gameTitle">
       &nbsp;天禁仙境
     </div>
+    <div id="gameActions" class="gameActions">
+      <table class="actionTable">
+        <tr><td id="action1"></td><td id="action2"></td><td id="action3"></td><td id="action4"></td></tr><tr><td id="action5"></td><td id="action6"></td><td id="action7"></td><td id="action8"></td></tr>
+      </table>
+    </div>
     <div id="gameContent" class="gameContent">
       <div id="gameStart" class="gameStart">
         <a id="ver" class="ver">Loading……</a>
@@ -24,7 +29,8 @@
         <h1>
           序
         </h1>
-        <button onclick="storyContinue('chapter0','story0_1')">继续</button>
+        <!--<button onclick="storyContinue('chapter0','story0_1')">继续</button>-->
+        <script>setActions("action8","storyContinue('chapter0','story0_1')","继续");</script>
       </div>
       <div id="story0_1" class="storyBox">
         <h2>Story</h2>
@@ -91,11 +97,16 @@
         </div>
         <div class="stageInfoButtons">
           <table>
-            <tr><td><button>角色</button></td><td><button>技能</button></td><td><button>出发</button></td></tr><tr><td><button>道具</button></td><td><button>支援</button></td></tr>
+            <tr><td><button onclick="">角色</button></td><td><button>技能</button></td><td><button>出发</button></td></tr><tr><td><button>道具</button></td><td><button>支援</button></td></tr>
           </table>
         </div>
       </div>
-      <div id="charaInfoBox" class="charaInfoBox"><fieldset style="height:20%;margin-bottom:5%;"><legend style="padding:0 3%">Basic</legend><table id="basic" width="99%" height="90%"></table></fieldset><table id="statsequip" width="99%" height="70%" align="center" border="1" style="text-align:center;table-layout:fixed;white-space:nowrap"></table></div>
+      <div id="charaInfoBox" class="charaInfoBox">
+        <fieldset style="height:20%;margin-bottom:5%;">
+          <legend style="padding:0 3%">Basic</legend><table id="basic" width="99%" height="90%"></table>
+        </fieldset>
+        <table id="statsequip" width="99%" height="70%" align="center" border="1" style="text-align:center;table-layout:fixed;white-space:nowrap"></table>
+      </div>
     </div>
   </div>
 </body>

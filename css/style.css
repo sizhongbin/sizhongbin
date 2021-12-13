@@ -12,13 +12,13 @@ del {
 }
 .gameStart > button {
   position: relative;
-  width: 6em;
-  height: 2em;
+  width: 20vw;
+  height: 10vw;
   background-color: #00BCD4;
   color: #121213;
   border-radius: 0.2em;
   border: 0;
-  font-size: 1em;
+  font-size: 5vw;
   margin: 0 auto;
 }
 .gameStart > button:active {

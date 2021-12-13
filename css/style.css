@@ -104,7 +104,7 @@ del {
   left: 2%;
   padding: 0 0.5em;
   width: 96%;
-  height: calc(100% - 8em);
+  height: calc(100% - 2em);
   overflow: auto;
   box-sizing: border-box;
 }

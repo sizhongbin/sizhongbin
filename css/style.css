@@ -12,7 +12,7 @@ del {
 }
 .gameStart > button {
   position: relative;
-  width: 20vw;
+  width: 28vw;
   height: 10vw;
   background-color: #00BCD4;
   color: #121213;
@@ -79,15 +79,15 @@ del {
 }
 .storyBox > button {
   position: absolute;
-  width: 6em;
-  height: 2em;
+  width: 28vw;
+  height: 10vw;
   background-color: lightcyan;
   color: DarkSlateGray;
   border-radius: 0.2em;
   border: 0;
-  font-size: 1em;
-  bottom: 1em;
-  right: 1em;
+  font-size: 5vw;
+  bottom: 4vw;
+  right: 4vw;
 }
 .storyBox > button:active {
   bottom: 0.8em;

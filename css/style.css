@@ -48,7 +48,7 @@ del {
   box-sizing: border-box;
 }
 .gameContent {
-  height: calc(100% - 7em);
+  height: calc(100% - 2em);
   width: 100%;
   box-sizing: border-box;
 }
@@ -104,7 +104,7 @@ del {
   left: 2%;
   padding: 0 0.5em;
   width: 96%;
-  height: calc(100% - 2em);
+  height: calc(100% - 8em);
   overflow: auto;
   box-sizing: border-box;
 }
@@ -157,7 +157,7 @@ del {
 .stageEnemyListBox > table button:active {
   top: 0.2em;
 }
-.charaInfoBox {
+.stageInfoButtons {
   position: relative;
   width: 100%;
   height: 5em;
@@ -167,13 +167,13 @@ del {
   transition: opacity 0.5s;
   opacity: 0;
 }
-.charaInfoBox > table {
+.stageInfoButtons > table {
   border: 0;
   width: 100%;
   height: 100%;
   table-layout: fixed;
 }
-.charaInfoBox > table button {
+.stageInfoButtons > table button {
   position: relative;
   width: 6em;
   height: 2em;
@@ -182,7 +182,7 @@ del {
   border-radius: 0.2em;
   border: 0;
 }
-.charaInfoBox > table button:active {
+.stageInfoButtons > table button:active {
   top: 0.2em;
 }
 ::-webkit-scrollbar {

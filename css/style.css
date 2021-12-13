@@ -1,21 +1,21 @@
 html,body {
-  background-color: rgb(40,41,35);
+  background-color: #121213;
   width: 100%;
   height: 100%;
   margin: 0px;
   padding: 0px;
-  color: cyan;
+  color: #80DEEA;
   font-size: 18px;
 }
 del {
-  color: grey;
+  color: #009688;
 }
 .gameStart > button {
   position: relative;
   width: 6em;
   height: 2em;
-  background-color: lightcyan;
-  color: DarkSlateGray;
+  background-color: #00BCD4;
+  color: #121213;
   border-radius: 0.2em;
   border: 0;
   font-size: 1em;
@@ -48,10 +48,11 @@ del {
   box-sizing: border-box;
 }
 .gameContent {
-  height: calc(100% - 2em);
+  height: calc(100% - 7em);
   width: 100%;
   box-sizing: border-box;
 }
+
 .gameStart {
   height: 100%;
   width: 100%;
@@ -156,31 +157,34 @@ del {
 .stageEnemyListBox > table button:active {
   top: 0.2em;
 }
-.stageInfoButtons {
+.gameActions {
   position: relative;
   width: 100%;
   height: 5em;
-  border: 0;
+  border: 1px solid white;
   text-align: center;
   box-sizing: border-box;
+  transition: opacity 0.5s;
+  opacity: 0;
 }
-.stageInfoButtons > table {
+.gameActions > table {
+  border:1px solid white;
   width: 100%;
   height: 100%;
   table-layout: fixed;
+  padding:0.3em;
 }
-.stageInfoButtons > table button {
+.gameActions > table button {
   position: relative;
-  font-size: 1em;
-  height: 2em;
-  width: 6em;
+  width: 100%;
+  height: 100%;
   background-color: lightcyan;
   color: DarkSlateGray;
   border-radius: 0.2em;
   border: 0;
 }
-.stageInfoButtons > table button:active {
-  top: 0.2em;
+.gameActions > table button:active {
+  top: 0.1em;
 }
 ::-webkit-scrollbar {
   width: 0.5em;

@@ -211,7 +211,7 @@ function storyContinue(preId, nextId) {
   return;
 }
 /* 进入关卡信息 */
-function stageInfo(preId, selectedStage) {
+function stageInfo(preId) {
   /* 故事隐藏 */
   document.getElementById(preId).style.display = "none";
   document.getElementById(preId).style.opacity = "0";
@@ -242,8 +242,8 @@ function displayStageEnemy(selectedStage) {
 function charaInfo(scene = 0) {
   /* 根据调用场景隐藏窗口 */
   if (scene === "stageInfo") {
-    document.getElementById("stageInfoBox").style.display = "none";
-    document.getElementById("stageInfoBox").style.opacity = "0";
+    /*document.getElementById("stageInfoBox").style.display = "none";
+    document.getElementById("stageInfoBox").style.opacity = "0";*/
     document.getElementById("charaInfoBox").style.display = "block";
   }
   /* 写入基本信息 */

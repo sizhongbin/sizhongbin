@@ -271,7 +271,7 @@ function charaInfo(scene = 0) {
   document.getElementById("cri").innerHTML=getBoardStats().cri;
   document.getElementById("ap").innerHTML=getBoardStats().maxap;
   document.getElementById("statusPoint").innerHTML=getStatsPoint();
-  document.getElementById("guild").innerHTML=(you.guild?"天禁仙境":"无");
+  document.getElementById("guild").innerHTML=you.guild;
   /* 淡入 */
   function a() {
     document.getElementById("charaInfoBox").style.opacity = 1;

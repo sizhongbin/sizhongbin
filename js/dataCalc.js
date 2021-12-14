@@ -163,10 +163,10 @@ function getCarriedWeight() {
   var total = 0;
   for (let i = 0; i < Object.keys(you.carriedItem).length; i++)
     total += itemData(Object.keys(you.carriedItem)[i]).wt * you.carriedItem[Object.keys(you.carriedItem)[i]];
-  for (let i = 0; i < you.equip.length; i++) {
-    total += equipData(you.equip[i].id).wt;
-    for (let j = 0; j < you.equip[i].card.length; j++)
-      total += equipData(you.equip[i]).card[j].wt;
+  for (let i = 0; i < Object.keys(you.equip).length; i++) {
+    total += equipData(Object.keys(you.equip)[i].id).wt;
+    for (let j = 0; j < you.equip[Object.keys(you.equip)[i]].card.length; j++)
+      total += equipData(Object.keys(you.equip)[i].card[j]).wt;
   }
   return total;
 }

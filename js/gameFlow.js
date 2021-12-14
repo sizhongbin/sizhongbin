@@ -255,12 +255,12 @@ function charaInfo(scene = 0) {
   document.getElementById("weight").innerHTML=getCarriedWeight() + "&nbsp;/&nbsp;" + getBoardStats().maxweight;
   document.getElementById("zeny").innerHTML=you.zeny;
   /* 写入六维 */
-  document.getElementById("str").innerHTML=you.str+"&nbsp;+&nbsp;"+getBonusStats().str;
-  document.getElementById("agi").innerHTML=you.agi+"&nbsp;+&nbsp;"+getBonusStats().agi;
-  document.getElementById("vit").innerHTML=you.vit+"&nbsp;+&nbsp;"+getBonusStats().vit;
-  document.getElementById("int").innerHTML=you.int+"&nbsp;+&nbsp;"+getBonusStats().int;
-  document.getElementById("dex").innerHTML=you.dex+"&nbsp;+&nbsp;"+getBonusStats().dex;
-  document.getElementById("luk").innerHTML=you.luk+"&nbsp;+&nbsp;"+getBonusStats().luk;
+  document.getElementById("str").innerHTML=you.stats.str+"&nbsp;+&nbsp;"+getBonusStats().str;
+  document.getElementById("agi").innerHTML=you.stats.agi+"&nbsp;+&nbsp;"+getBonusStats().agi;
+  document.getElementById("vit").innerHTML=you.stats.vit+"&nbsp;+&nbsp;"+getBonusStats().vit;
+  document.getElementById("int").innerHTML=you.stats.int+"&nbsp;+&nbsp;"+getBonusStats().int;
+  document.getElementById("dex").innerHTML=you.stats.dex+"&nbsp;+&nbsp;"+getBonusStats().dex;
+  document.getElementById("luk").innerHTML=you.stats.luk+"&nbsp;+&nbsp;"+getBonusStats().luk;
   /* 淡入 */
   function a() {
     document.getElementById("charaInfoBox").style.opacity = 1;

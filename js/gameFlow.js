@@ -163,7 +163,7 @@ function findKey(obj, value, compare = (a, b) => a === b) {
 /* 游戏开始 */
 function gameStart() {
   /* 显示版本号 */
-  document.getElementById("ver").innerHTML = "Dev.20211210";
+  document.getElementById("ver").innerHTML = "Dev.20211214";
   /* 判断存档是否存在 */
   var saveData = Cookies.get("s");
   if (!saveData) {

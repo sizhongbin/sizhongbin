@@ -109,7 +109,7 @@ button:active {
   bottom: 2vh;
   right: 4vw;
 }
-.storyBox,.charaInfoBox > h2 {
+.storyBox > h2,.charaInfoBox > h2 {
   position: relative;
   font-size: 1.3rem;
   line-height: 3rem;

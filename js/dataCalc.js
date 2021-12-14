@@ -3,7 +3,7 @@ function getSubStats() {
   var subStats = {
     maxhp: you.jobLv[0] + you.stats.vit * 3,
     maxsp: you.jobLv[0] + you.stats.int * 3,
-    maxweight: you.jobLv[0] + you.stats.str * 3,
+    maxweight: you.jobLv[0] * 2 + you.stats.str * 6,
     atk: 0,
     matk: you.stats.int,
     def: you.stats.vit,
@@ -152,7 +152,7 @@ function getBoardStats() {
     mov: getSubStats().mov + getEquipBonusStats().mov + getSkillBonusStats().mov,
     ct: getSubStats().ct + getEquipBonusStats().ct + getSkillBonusStats().ct + parseInt((you.stats.dex + getBonusStats().dex) / 6),
     range: getSubStats().range + getEquipBonusStats().range + getSkillBonusStats().range,
-    attribute: (getEquipBonusStats().attribute == 0 ? you.attribute : getEquipBonusStats().attribute),
+    attribute: (getEquipBonusStats().attribute == 0 ? you.attribute: getEquipBonusStats().attribute),
     race: you.race,
     size: you.size
   };

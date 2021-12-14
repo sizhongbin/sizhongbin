@@ -243,8 +243,8 @@ function charaInfo(scene = 0) {
   /* 根据调用场景隐藏窗口 */
   if (scene === "stageInfo") {
     document.getElementById("stageInfoBox").style.display = "none";
-    document.getElementById("stageInfoBox").style.opacity = "0";
-    document.getElementById("charaInfoBox").style.display = "block";
+    /*document.getElementById("stageInfoBox").style.opacity = "0";
+    */document.getElementById("charaInfoBox").style.display = "block";
   }
   /* 写入基本信息 */
   document.getElementById("baseLv").innerHTML = "Base Lv."+you.jobLv[0];
@@ -284,4 +284,24 @@ function charaInfo(scene = 0) {
   setTimeout(a, 100);
   return;
 }
-function addStats(stat) {}
+/* 六维加点*/
+function addStats(stat) {
+  you.stats[stat] += 1;
+  /* 如不再有剩余点数则隐藏按钮 */
+  if (!getStatsPoint) {
+    for (let i = 0; i < document.getElementsByClassName("addStats").length; i++)
+      document.getElementsByClassName("addStats")[i].style.display = "none";
+  }
+}
+/* 重置六维加点 */
+function resetStats() {
+  you.stats.str = 1;
+  you.stats.agi = 1;
+  you.stats.vit = 1;
+  you.stats.int = 1;
+  you.stats.dex = 1;
+  you.stats.luk = 1;
+  for (let i = 0; i < document.getElementsByClassName("addStats").length; i++)
+    document.getElementsByClassName("addStats")[i].style.display = "block";
+    charaInfo();
+}

@@ -178,10 +178,10 @@ button:active {
   width: 0.5rem;
 }
 ::-webkit-scrollbar-track {
-  background-color: lightcyan;
+  background-color: #B2EBF2;
   border-radius: 1rem;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: cyan;
+  background-color: #00BCD4;
   border-radius: 1rem;
 }

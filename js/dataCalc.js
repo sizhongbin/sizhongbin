@@ -136,7 +136,7 @@ function getBoardStats() {
     luk: you.stats.luk + getBonusStats().luk,
     maxhp: getSubStats().maxhp + getEquipBonusStats().maxhp + getSkillBonusStats().maxhp + getBonusStats().vit * 3,
     maxsp: getSubStats().maxsp + getEquipBonusStats().maxsp + getSkillBonusStats().maxsp + getBonusStats().int * 3,
-    maxweight: getSubStats().maxweight + getEquipBonusStats().maxweight + getSkillBonusStats().maxweight + getBonusStats().str * 3,
+    maxweight: getSubStats().maxweight + getEquipBonusStats().maxweight + getSkillBonusStats().maxweight + getBonusStats().str * 6,
     atk: getSubStats().atk + getEquipBonusStats().atk + getSkillBonusStats().atk + getYouExtraAtk(),
     watk: getEquipBonusStats().watk + getSkillBonusStats().watk,
     matk: getSubStats().matk + getEquipBonusStats().matk + getSkillBonusStats().matk + getBonusStats().int + parseInt((you.stats.int + getBonusStats().int) / 3) * 2,

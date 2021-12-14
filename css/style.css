@@ -109,18 +109,19 @@ button:active {
   bottom: 2vh;
   right: 4vw;
 }
-.storyBox > h2 {
-  position: absolute;
+.storyBox,.charaInfoBox > h2 {
+  position: relative;
   font-size: 1.3rem;
+  line-height: 3rem;
   text-indent: 1rem;
+  margin: 0;
 }
 .storyContent {
-  position: absolute;
-  top: 10vh;
+  position: relative;
   left: 2%;
   padding: 0 1vh;
   width: 96%;
-  height: calc(100% - 19vh);
+  height: calc(100% - 9vh - 3rem);
   overflow: auto;
   box-sizing: border-box;
 }
@@ -155,6 +156,15 @@ button:active {
   width: 100%;
   table-layout: fixed;
   line-height: 1.5rem;
+}
+.baseInfoTable,.subInfoTable {
+  width: 100%;
+  line-height: 1.5rem;
+}
+.baseInfoTable button,.baseInfoTable button {
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
 }
 .stageEnemyListBox {
   height: calc(100% - 11vh);

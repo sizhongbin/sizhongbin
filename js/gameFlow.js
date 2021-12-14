@@ -279,4 +279,6 @@ function charaInfo(scene = 0) {
   setTimeout(a, 100);
   return;
 }
-
+function addStats(stat) {
+  
+}

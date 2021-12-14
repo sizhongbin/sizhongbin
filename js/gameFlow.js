@@ -272,10 +272,13 @@ function charaInfo(scene = 0) {
   document.getElementById("ap").innerHTML = getBoardStats().maxap;
   document.getElementById("statusPoint").innerHTML = getStatsPoint();
   document.getElementById("guild").innerHTML = you.guild;
-  /* 如有剩余点数则展示加点按钮 */
+  /* 如有剩余点数则展示加点按钮，无则隐藏 */
   if (getStatsPoint()) {
     for (let i = 0; i < document.getElementsByClassName("addStats").length; i++)
       document.getElementsByClassName("addStats")[i].style.display = "block";
+  } else {
+    for (let i = 0; i < document.getElementsByClassName("addStats").length; i++)
+      document.getElementsByClassName("addStats")[i].style.display = "none";
   }
   /* 淡入 */
   function a() {
@@ -287,11 +290,7 @@ function charaInfo(scene = 0) {
 /* 六维加点*/
 function addStats(stat) {
   you.stats[stat] += 1;
-  /* 如不再有剩余点数则隐藏按钮 */
-  if (!getStatsPoint) {
-    for (let i = 0; i < document.getElementsByClassName("addStats").length; i++)
-      document.getElementsByClassName("addStats")[i].style.display = "none";
-  }
+  charaInfo();
 }
 /* 重置六维加点 */
 function resetStats() {
@@ -301,7 +300,5 @@ function resetStats() {
   you.stats.int = 1;
   you.stats.dex = 1;
   you.stats.luk = 1;
-  for (let i = 0; i < document.getElementsByClassName("addStats").length; i++)
-    document.getElementsByClassName("addStats")[i].style.display = "block";
-    charaInfo();
+  charaInfo();
 }

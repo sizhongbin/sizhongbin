@@ -246,15 +246,21 @@ function charaInfo(scene = 0) {
     document.getElementById("stageInfoBox").style.opacity = "0";
     document.getElementById("charaInfoBox").style.display = "block";
   }
-  /* 写入基本信息和六维 */
-  /*let container = "<tr>";
-  container += "<th>你</th>";
-  container += "<td>Base Lv." + you.jobLv[0] + "</td>";
-  container += "<th>STR</th>";
-  container += "<td>"+ +"</td>";
-  container += "&nbsp;/&nbsp;" + jobData(you.currentJob) + "&nbsp;/&nbsp;Job Lv." + you.jobLv[you.currentJob]; 
-  container += "</th></tr><tr><td colspan=\'2\' style=\'text-align:right\'>HP&nbsp;" + getBoardStats().maxhp + "&nbsp;/&nbsp;" + getBoardStats().maxhp + "&nbsp;|&nbsp;SP&nbsp;" + getBoardStats().maxsp + "&nbsp;/&nbsp;" + getBoardStats().maxsp + "&nbsp;|&nbsp;Weight&nbsp;" + getCarriedWeight() + "&nbsp;/&nbsp;" + getBoardStats().maxweight + "</td></tr><tr><td colspan=\'2\' style=\'text-align:right\'>Zeny&nbsp;" + you.zeny + "</td></tr>"; 
-  document.getElementById("basicInfoTable").innerHTML = container;
+  /* 写入基本信息 */
+  document.getElementById("baseLv").innerHTML="Base Lv."+you.jobLv[0];
+  document.getElementById("currentJob").innerHTML=jobData(you.currentJob);
+  document.getElementById("jobLv").innerHTML="Job Lv."+you.jobLv[you.currentJob];
+  document.getElementById("hp").innerHTML=getBoardStats().maxhp + "&nbsp;/&nbsp;" + getBoardStats().maxhp;
+  document.getElementById("sp").innerHTML=getBoardStats().maxsp + "&nbsp;/&nbsp;" + getBoardStats().maxsp;
+  document.getElementById("weight").innerHTML=getCarriedWeight() + "&nbsp;/&nbsp;" + getBoardStats().maxweight;
+  document.getElementById("zeny").innerHTML=you.zeny;
+  /* 写入六维 */
+  document.getElementById("str").innerHTML=you.str+"&nbsp;+&nbsp;"+getBonusStats().str;
+  document.getElementById("agi").innerHTML=you.agi+"&nbsp;+&nbsp;"+getBonusStats().agi;
+  document.getElementById("vit").innerHTML=you.vit+"&nbsp;+&nbsp;"+getBonusStats().vit;
+  document.getElementById("int").innerHTML=you.int+"&nbsp;+&nbsp;"+getBonusStats().int;
+  document.getElementById("dex").innerHTML=you.dex+"&nbsp;+&nbsp;"+getBonusStats().dex;
+  document.getElementById("luk").innerHTML=you.luk+"&nbsp;+&nbsp;"+getBonusStats().luk;
   /* 淡入 */
   function a() {
     document.getElementById("charaInfoBox").style.opacity = 1;

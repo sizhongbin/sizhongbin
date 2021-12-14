@@ -62,7 +62,7 @@ button:active {
   transition: opacity 0.5s;
   opacity: 1;
 }
-.storyBox,.stageInfoBox,.charaInfoBox {
+.storyBox,.stageInfoBox {
   height: 100%;
   width: 100%;
   position: relative;
@@ -70,6 +70,13 @@ button:active {
   box-sizing: border-box;
   transition: opacity 0.5s;
   opacity: 0;
+}
+.charaInfoBox {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: none;
+  box-sizing: border-box;
 }
 .storyBox > h1 {
   font-size: 1.5rem;

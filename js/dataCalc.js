@@ -49,8 +49,8 @@ function getEquipBonusStats() {
   };
   if (equipData(you.equip["主手"].id).type === ("弓" || "乐器" || "鞭")) totalBonusStats.atk += you.stats.dex;
   else totalBonusStats.atk += you.stats.str;
-  for (let i = 0; Object.keys(you.equip).length; i++) {
-    if (equipData(Object.keys(you.equip)[i].id).series === "防具") totalBonusStats.wdef += equipData(Object.keys(you.equip)[i].id).wdef;
+  for (key in you.equip) {
+    if (equipData(you.equip)[key].id).series === "防具") totalBonusStats.wdef += equipData(Object.keys(you.equip)[i].id).wdef;
     else {
       totalBonusStats.watk += equipData(Object.keys(you.equip)[i].id).watk;
       totalBonusStats.range += equipData(Object.keys(you.equip)[i].id).range

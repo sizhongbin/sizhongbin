@@ -239,17 +239,25 @@ function displayStageEnemy(selectedStage) {
   document.getElementById("stageEnemyList").innerHTML = container;
 }
 /* 展示角色信息 */
-function charaInfo(battle = 0) {
-  if (!battle) {
+function charaInfo(scene = 0) {
+  /* 根据调用场景隐藏窗口 */
+  if (scene === "stageInfo") {
     document.getElementById("stageInfoBox").style.display = "none";
     document.getElementById("stageInfoBox").style.opacity = "0";
     document.getElementById("charaInfoBox").style.display = "block";
   }
-  let container = "<tr><th style=\'text-align:left\'>你</th><th style=\'text-align:right\'>Base Lv." + you.jobLv[0] + "&nbsp;/&nbsp;" + jobData(you.currentJob) + "&nbsp;/&nbsp;Job Lv." + you.jobLv[you.currentJob]; 
+  /* 写入基本信息和六维 */
+  /*let container = "<tr>";
+  container += "<th>你</th>";
+  container += "<td>Base Lv." + you.jobLv[0] + "</td>";
+  container += "<th>STR</th>";
+  container += "<td>"+ +"</td>";
+  container += "&nbsp;/&nbsp;" + jobData(you.currentJob) + "&nbsp;/&nbsp;Job Lv." + you.jobLv[you.currentJob]; 
   container += "</th></tr><tr><td colspan=\'2\' style=\'text-align:right\'>HP&nbsp;" + getBoardStats().maxhp + "&nbsp;/&nbsp;" + getBoardStats().maxhp + "&nbsp;|&nbsp;SP&nbsp;" + getBoardStats().maxsp + "&nbsp;/&nbsp;" + getBoardStats().maxsp + "&nbsp;|&nbsp;Weight&nbsp;" + getCarriedWeight() + "&nbsp;/&nbsp;" + getBoardStats().maxweight + "</td></tr><tr><td colspan=\'2\' style=\'text-align:right\'>Zeny&nbsp;" + you.zeny + "</td></tr>"; 
-  document.getElementById("basicInfo").innerHTML = container;
+  document.getElementById("basicInfoTable").innerHTML = container;
+  /* 淡入 */
   function a() {
-    document.getElementById("stageInfoBox").style.opacity = 1;
+    document.getElementById("charaInfoBox").style.opacity = 1;
   }
   setTimeout(a, 100);
   return;

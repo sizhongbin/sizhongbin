@@ -156,6 +156,11 @@ button:active {
   table-layout: fixed;
   line-height: 1.5rem;
 }
+.charaInfoBox > table {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+}
 .stageEnemyListBox {
   height: calc(100% - 11vh);
   width: 100%;
@@ -169,10 +174,21 @@ button:active {
 .stageInfoButtons {
   position: relative;
   width: 100%;
-  height: 35vh;
+  height: 16vh;
   border: 0;
   text-align: center;
   box-sizing: border-box;
+}
+.baseInfo,.subInfo {
+  position: relative;
+  width: 100%;
+  height: calc(49% - 4.5vh);
+  border: 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+.subInfo {
+  top:2%;
 }
 ::-webkit-scrollbar {
   width: 0.5rem;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
   <script src="./js/dataCalc.js"></script>
   <script src="./js/gameFlow.js"></script>
 </head>
+
 <body onload="gameStart()">
   <div class="gameBox">
     <div class="gameTitle">
@@ -83,7 +85,11 @@
         <div class="stageInfoEnemy">
           <h2 id="stageEnemyTitle"></h2>
           <table>
-            <tr><th>场次</th><th>怪物</th><th>情报</th></tr>
+            <tr>
+              <th>场次</th>
+              <th>怪物</th>
+              <th>情报</th>
+            </tr>
           </table>
           <div id="stageEnemyListBox" class="stageEnemyListBox">
             <table id="stageEnemyList"></table>
@@ -98,57 +104,94 @@
         </div>
       </div>
       <div id="charaInfoBox" class="charaInfoBox">
-        <h2>Basic</h2>
-        <div id="baseInfo" class="baseInfo">
-          <table class="baseInfoTable">
-            <tr>
-              <th>你</th>
-              <td id="baseLv" colspan="2"></td>
-              <th>STR</th>
-              <td id="str" colspan="2"></td>
-              <td id="addStr"></td>
-            </tr>
-            <tr>
-              <th id="currentJob"></th>
-              <td id="jobLv" colspan="2"></td>
-              <th>AGI</th>
-              <td id="agi" colspan="2"></td>
-              <td id="addAgi"></td>
-            </tr>
-            <tr>
-              <th>HP</th>
-              <td id="hp" colspan="2"></td>
-              <th>VIT</th>
-              <td id="vit" colspan="2"></td>
-              <td id="addVit"></td>
-            </tr>
-            <tr>
-              <th>SP</th>
-              <td id="sp" colspan="2"></td>
-              <th>INT</th>
-              <td id="int" colspan="2"></td>
-              <td id="addInt"></td>
-            </tr>
-            <tr>
-              <th>Weight</th>
-              <td id="weight" colspan="2"></td>
-              <th>DEX</th>
-              <td id="dex" colspan="2"></td>
-              <td id="addDex"></td>
-            </tr>
-            <tr>
-              <th>Zeny</th>
-              <td id="zeny" colspan="2"></td>
-              <th>LUK</th>
-              <td id="luk" colspan="2"></td>
-              <td id="addLuk"></td>
-            </tr>
-          </table>
+        <div class="charaInfo">
+          <h2>Basic</h2>
+          <div id="baseInfo" class="baseInfo">
+            <table class="baseInfoTable">
+              <tr>
+                <th>你</th>
+                <td id="baseLv"></td>
+                <th>STR</th>
+                <td id="str"></td>
+                <td id="addStr"></td>
+              </tr>
+              <tr>
+                <th id="currentJob"></th>
+                <td id="jobLv"></td>
+                <th>AGI</th>
+                <td id="agi"></td>
+                <td id="addAgi"></td>
+              </tr>
+              <tr>
+                <th>HP</th>
+                <td id="hp"></td>
+                <th>VIT</th>
+                <td id="vit"></td>
+                <td id="addVit"></td>
+              </tr>
+              <tr>
+                <th>SP</th>
+                <td id="sp"></td>
+                <th>INT</th>
+                <td id="int"></td>
+                <td id="addInt"></td>
+              </tr>
+              <tr>
+                <th>Weight</th>
+                <td id="weight"></td>
+                <th>DEX</th>
+                <td id="dex"></td>
+                <td id="addDex"></td>
+              </tr>
+              <tr>
+                <th>Zeny</th>
+                <td id="zeny"></td>
+                <th>LUK</th>
+                <td id="luk"></td>
+                <td id="addLuk"></td>
+              </tr>
+            </table>
+          </div>
+          <h2>Status</h2>
+          <div id="subInfo" class="subInfo">
+            <table class="subInfoTable">
+              <tr>
+                <th>Atk</th>
+                <td id="atk"></td>
+                <th>Matk</th>
+                <td id="matk"></td>
+              </tr>
+              <tr>
+                <th>Def</th>
+                <td id="def"></td>
+                <th>Mdef</th>
+                <td id="mdef"></td>
+              </tr>
+              <tr>
+                <th>Hit</th>
+                <td id="hit"></td>
+                <th>Flee</th>
+                <td id="flee"></td>
+              </tr>
+              <tr>
+                <th>Cri</th>
+                <td id="cri"></td>
+                <th>AP</th>
+                <td id="ap"></td>
+              </tr>
+              <tr>
+                <th colspan="2">Status Point</th>
+                <td id="statusPoint" colspan="2"></td>
+              </tr>
+              <tr>
+                <th colspan="2">Guild</th>
+                <td id="guild" colspan="2"></td>
+              </tr>
+            </table>
+          </div>
         </div>
-        <h2>Status</h2>
-        <div id="subInfo" class="subInfo">
-          <table class="subInfoTable"></table>
-        </div>
+        <button class="button5">重置</button>
+        <button class="button6">返回</button>
         <!--<fieldset style="height:20%;margin-bottom:5%;">
           <legend style="padding:0 3%">Basic</legend><table id="basicInfo" width="99%" height="90%"></table>
         </fieldset>
@@ -156,5 +199,6 @@
       -->
       </div>
     </div>
-  </body>
+</body>
+
 </html>

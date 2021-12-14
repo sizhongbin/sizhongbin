@@ -184,16 +184,17 @@ button:active {
   text-align: center;
   box-sizing: border-box;
 }
+.charaInfo {
+  height: calc(100% - 9vh);
+  width: 100%;
+  overflow: auto;
+}
 .baseInfo,.subInfo {
   position: relative;
   width: 100%;
-  height: calc(49% - 4.5vh);
   border: 0;
   text-align: center;
   box-sizing: border-box;
-}
-.subInfo {
-  top:2%;
 }
 ::-webkit-scrollbar {
   width: 0.5rem;

@@ -261,6 +261,17 @@ function charaInfo(scene = 0) {
   document.getElementById("int").innerHTML=you.stats.int+"&nbsp;+&nbsp;"+getBonusStats().int;
   document.getElementById("dex").innerHTML=you.stats.dex+"&nbsp;+&nbsp;"+getBonusStats().dex;
   document.getElementById("luk").innerHTML=you.stats.luk+"&nbsp;+&nbsp;"+getBonusStats().luk;
+  /* 写入副属性 */
+  document.getElementById("atk").innerHTML=getBoardStats().atk+"&nbsp;+&nbsp;"+getBoardStats().watk;
+  document.getElementById("matk").innerHTML=getBoardStats().matk+"&nbsp;+&nbsp;"+getBoardStats().wmatk;
+  document.getElementById("def").innerHTML=getBoardStats().def+"&nbsp;+&nbsp;"+getBoardStats().wdef;
+  document.getElementById("mdef").innerHTML=getBoardStats().mdef+"&nbsp;+&nbsp;"+getBoardStats().wmdef;
+  document.getElementById("hit").innerHTML=getBoardStats().hit;
+  document.getElementById("flee").innerHTML=getBoardStats().flee;
+  document.getElementById("cri").innerHTML=getBoardStats().cri;
+  document.getElementById("ap").innerHTML=getBoardStats().maxap;
+  document.getElementById("statusPoint").innerHTML=getStatsPoint();
+  document.getElementById("guild").innerHTML=(you.guild?"天禁仙境":"无");
   /* 淡入 */
   function a() {
     document.getElementById("charaInfoBox").style.opacity = 1;

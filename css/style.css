@@ -109,7 +109,7 @@ button:active {
   bottom: 2vh;
   right: 4vw;
 }
-.storyBox > h2,.charaInfo > h2 {
+.storyBox > h2,.charaInfo > h2,.skillInfo > h2 {
   position: relative;
   font-size: 1.3rem;
   line-height: 3rem;
@@ -196,13 +196,13 @@ button:active {
 .skillInfoHead {
   position: absolute;
   width: 1.5rem;
-  height: calc(100% - 9vh);
+  height: calc(100% - 9vh - 3rem);
   box-sizing: border-box;
 }
 .skillInfoContent {
   position: absolute;
   left: 1.5rem;
-  height: calc(100% - 9vh);
+  height: calc(100% - 9vh - 3rem);
   width: calc(100% - 1.5rem);
   overflow: auto;
   border: 0.1rem solid #00BCD4;
@@ -213,6 +213,8 @@ button:active {
   height: 20%;
   border: 0.1rem solid #00BCD4;
   box-sizing: border-box;
+  display: none;
+  text-align: center;
 }
 .baseInfo,.subInfo {
   position: relative;

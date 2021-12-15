@@ -309,7 +309,15 @@ function skillInfo(scene = 0) {
   /* 根据调用场景隐藏窗口 */
   if (scene === "stageInfo") {
     document.getElementById("stageInfoBox").style.display = "none";
-    /*document.getElementById("stageInfoBox").style.opacity = "0";
-    */document.getElementById("charaInfoBox").style.display = "block";
+    document.getElementById("skillInfoBox").style.opacity = "0";
+    document.getElementById("skillInfoBox").style.display = "block";
   }
+  /* 写入技能列表 */
+  document.getElementById("job1").style.display = "block";
+  /* 淡入 */
+  function a() {
+    document.getElementById("skillInfoBox").style.opacity = 1;
+  }
+  setTimeout(a, 100);
+  return;
 }

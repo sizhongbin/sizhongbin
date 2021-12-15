@@ -214,6 +214,7 @@ button:active {
   border: 0.1rem solid #00BCD4;
   box-sizing: border-box;
   display: none;
+  align-items: center;
   text-align: center;
 }
 .skillInfoHeadTabSelected {

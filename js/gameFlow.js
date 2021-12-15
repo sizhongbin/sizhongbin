@@ -240,7 +240,6 @@ function displayStageEnemy(selectedStage) {
 }
 /* 展示角色信息 */
 function charaInfo(scene = 0) {
-  console.log(Date.now());
   /* 根据调用场景隐藏窗口 */
   if (scene === "stageInfo") {
     document.getElementById("stageInfoBox").style.display = "none";
@@ -248,29 +247,31 @@ function charaInfo(scene = 0) {
     */document.getElementById("charaInfoBox").style.display = "block";
   }
   /* 写入基本信息 */
+  var getBoardStats = getBoardStats();
+  var getBonusStats = getBonusStats();
   document.getElementById("baseLv").innerHTML = "Base Lv."+you.jobLv[0];
   document.getElementById("currentJob").innerHTML = jobData(you.currentJob);
   document.getElementById("jobLv").innerHTML = "Job Lv."+you.jobLv[you.currentJob];
-  document.getElementById("hp").innerHTML = getBoardStats().maxhp + "&nbsp;/&nbsp;" + getBoardStats().maxhp;
-  document.getElementById("sp").innerHTML = getBoardStats().maxsp + "&nbsp;/&nbsp;" + getBoardStats().maxsp;
-  document.getElementById("weight").innerHTML = getCarriedWeight() + "&nbsp;/&nbsp;" + getBoardStats().maxweight;
+  document.getElementById("hp").innerHTML = getBoardStats.maxhp + "&nbsp;/&nbsp;" + getBoardStats.maxhp;
+  document.getElementById("sp").innerHTML = getBoardStats.maxsp + "&nbsp;/&nbsp;" + getBoardStats.maxsp;
+  document.getElementById("weight").innerHTML = getCarriedWeight() + "&nbsp;/&nbsp;" + getBoardStats.maxweight;
   document.getElementById("zeny").innerHTML = you.zeny;
   /* 写入六维 */
-  document.getElementById("str").innerHTML = you.stats.str+"&nbsp;+&nbsp;"+getBonusStats().str;
-  document.getElementById("agi").innerHTML = you.stats.agi+"&nbsp;+&nbsp;"+getBonusStats().agi;
-  document.getElementById("vit").innerHTML = you.stats.vit+"&nbsp;+&nbsp;"+getBonusStats().vit;
-  document.getElementById("int").innerHTML = you.stats.int+"&nbsp;+&nbsp;"+getBonusStats().int;
-  document.getElementById("dex").innerHTML = you.stats.dex+"&nbsp;+&nbsp;"+getBonusStats().dex;
-  document.getElementById("luk").innerHTML = you.stats.luk+"&nbsp;+&nbsp;"+getBonusStats().luk;
+  document.getElementById("str").innerHTML = you.stats.str+"&nbsp;+&nbsp;"+getBonusStats.str;
+  document.getElementById("agi").innerHTML = you.stats.agi+"&nbsp;+&nbsp;"+getBonusStats.agi;
+  document.getElementById("vit").innerHTML = you.stats.vit+"&nbsp;+&nbsp;"+getBonusStats.vit;
+  document.getElementById("int").innerHTML = you.stats.int+"&nbsp;+&nbsp;"+getBonusStats.int;
+  document.getElementById("dex").innerHTML = you.stats.dex+"&nbsp;+&nbsp;"+getBonusStats.dex;
+  document.getElementById("luk").innerHTML = you.stats.luk+"&nbsp;+&nbsp;"+getBonusStats.luk;
   /* 写入副属性 */
-  document.getElementById("atk").innerHTML = getBoardStats().atk+"&nbsp;+&nbsp;"+getBoardStats().watk;
-  document.getElementById("matk").innerHTML = getBoardStats().matk+"&nbsp;+&nbsp;"+getBoardStats().wmatk;
-  document.getElementById("def").innerHTML = getBoardStats().def+"&nbsp;+&nbsp;"+getBoardStats().wdef;
-  document.getElementById("mdef").innerHTML = getBoardStats().mdef+"&nbsp;+&nbsp;"+getBoardStats().wmdef;
-  document.getElementById("hit").innerHTML = getBoardStats().hit;
-  document.getElementById("flee").innerHTML = getBoardStats().flee;
-  document.getElementById("cri").innerHTML = getBoardStats().cri;
-  document.getElementById("ap").innerHTML = getBoardStats().maxap;
+  document.getElementById("atk").innerHTML = getBoardStats.atk+"&nbsp;+&nbsp;"+getBoardStats.watk;
+  document.getElementById("matk").innerHTML = getBoardStats.matk+"&nbsp;+&nbsp;"+getBoardStats.wmatk;
+  document.getElementById("def").innerHTML = getBoardStats.def+"&nbsp;+&nbsp;"+getBoardStats.wdef;
+  document.getElementById("mdef").innerHTML = getBoardStats.mdef+"&nbsp;+&nbsp;"+getBoardStats.wmdef;
+  document.getElementById("hit").innerHTML = getBoardStats.hit;
+  document.getElementById("flee").innerHTML = getBoardStats.flee;
+  document.getElementById("cri").innerHTML = getBoardStats.cri;
+  document.getElementById("ap").innerHTML = getBoardStats.maxap;
   document.getElementById("statusPoint").innerHTML = getStatsPoint();
   document.getElementById("guild").innerHTML = you.guild;
   /* 如有剩余点数则展示加点按钮，无则隐藏 */
@@ -286,7 +287,6 @@ function charaInfo(scene = 0) {
     document.getElementById("charaInfoBox").style.opacity = 1;
   }
   setTimeout(a, 100);
-  console.log(Date.now());
   return;
 }
 /* 六维加点*/

@@ -50,18 +50,21 @@ function getEquipBonusStats() {
   if (equipData(you.equip["主手"].id).type === ("弓" || "乐器" || "鞭")) totalBonusStats.atk += you.stats.dex;
   else totalBonusStats.atk += you.stats.str;
   for (key in you.equip) {
-    if (equipData(you.equip)[key].id).series === "防具") totalBonusStats.wdef += equipData(Object.keys(you.equip)[i].id).wdef;
+    if (equipData(you.equip[key]).id).series === "防具") totalBonusStats.wdef += equipData(you.equip[key]).id).wdef;
     else {
-      totalBonusStats.watk += equipData(Object.keys(you.equip)[i].id).watk;
-      totalBonusStats.range += equipData(Object.keys(you.equip)[i].id).range
+      totalBonusStats.watk += equipData(you.equip[key]).id).watk;
+      totalBonusStats.range += equipData(you.equip[key]).id).range
     };
-    for (let j = 0; j < equipData(Object.keys(you.equip)[i].id).script.length; i++) {
-      if (equipData(Object.keys(you.equip)[i].id).script[j].type == "statsBonus") totalBonusStats[equipData(Object.keys(you.equip)[i].id).script[j].effect().stats] += equipData(Object.keys(you.equip)[i].id).script[j].effect().value;
-      if (equipData(Object.keys(you.equip)[i].id).script[j].type == "attributeChange") totalBonusStats.attribute = equipData(Object.keys(you.equip)[i].id).script[j].effect();
+    for (let i = 0; j < equipData(you.equip[key]).id).script.length; i++) {
+      if (equipData(you.equip[key]).id).script[i].type == "statsBonus")
+      totalBonusStats[equipData(you.equip[key]).id).script[i].effect().stats] += equipData(equipData(you.equip[key]).id).script[i].effect().value;
+      if (equipData(you.equip[key]).id).script[i].type == "attributeChange")
+      totalBonusStats.attribute = equipData(you.equip[key]).id).script[i].effect();
     }
-    for (let j = 0; j < Object.keys(you.equip)[i].card.length; j++) {
-      for (let k = 0; k < equipData(Object.keys(you.equip)[i].card[j]).script.length; k++) {
-        if (equipData(Object.keys(you.equip)[i].card[j]).script[k].type == "statsBonus") totalBonusStats[equipData(Object.keys(you.equip)[i].card[j]).script[k].effect().stats] += equipData(Object.keys(you.equip)[i].card[j]).script[k].effect().value; if (equipData(Object.keys(you.equip)[i].card[j]).script[k].type == "attributeChange") totalBonusStats.attribute = equipData(Object.keys(you.equip)[i].card[j]).script[k].effect().attribute;
+    for (let i = 0; i < you.equip[key].card.length; i++) {
+      for (let j = 0; j < equipData(you.equip[key].card[i]).script.length; j++) {
+        if (equipData(you.equip[key].card[i]).script[j].type == "statsBonus") totalBonusStats[equipData(you.equip[key].card[i]).script[j].effect().stats] += equipData(you.equip[key].card[i]).script[j].effect().value; 
+        if (equipData(you.equip[key].card[i]).script[j].type == "attributeChange") totalBonusStats.attribute = equipData(you.equip[key].card[i]).script[j].effect().attribute;
       }
     }
   };
@@ -152,7 +155,7 @@ function getBoardStats() {
     mov: getSubStats().mov + getEquipBonusStats().mov + getSkillBonusStats().mov,
     ct: getSubStats().ct + getEquipBonusStats().ct + getSkillBonusStats().ct + parseInt((you.stats.dex + getBonusStats().dex) / 6),
     range: getSubStats().range + getEquipBonusStats().range + getSkillBonusStats().range,
-    attribute: (getEquipBonusStats().attribute == 0 ? you.attribute: getEquipBonusStats().attribute),
+    attribute: (getEquipBonusStats().attribute == 0 ? you.attribute : getEquipBonusStats().attribute),
     race: you.race,
     size: you.size
   };

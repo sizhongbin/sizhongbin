@@ -157,7 +157,7 @@ button:active {
   table-layout: fixed;
   line-height: 1.5rem;
 }
-.baseInfoTable,.subInfoTable {
+.baseInfoTable,.subInfoTable,.skillInfoTable {
   width: 100%;
   line-height: 1.5rem;
 }

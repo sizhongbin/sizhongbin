@@ -1,9 +1,17 @@
 /* 职业数据 */
 function jobData(key) {
   var jobData = {
-    0: "基本",
-    1: "初心者",
-    11: "剑士"
+    0: {
+      name: "基本"
+    },
+    1: {
+      name: "初心者",
+      skillList: [0,
+        1]},
+    11: {
+      name: "剑士",
+      skillList: [
+      }]
   };
   return jobData[key];
 }

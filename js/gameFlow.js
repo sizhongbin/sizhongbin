@@ -333,5 +333,11 @@ function skillInfoContent(tab = -1) {
       document.getElementById("job"+i).className = "skillInfoHeadTab";
     document.getElementById("job"+tab).className = ("job0").className = "skillInfoHeadTabSelected";
   }
+  /* 写入展示信息 */
+  for(let i=0;i<jobData(you.currentJob).skillList.length)
+  
+  if(you.currentJob>1) {
+    
+  }
   return;
 }

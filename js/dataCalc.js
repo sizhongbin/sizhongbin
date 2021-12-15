@@ -126,7 +126,7 @@ function getBonusStats() {
 function getYouExtraAtk(modifierStr = 0, modifierDex = 0) {
   var bonusStats = getBonusStats();
   if (equipData(you.equip["主手"].id).type != ("弓" || "乐器" || "鞭"))
-    return bonusStats.str + modifierStr + parseInt((you.stats.str + bonusStats.str + modifierStr) / 3) * 2 + parseInt((you.stats.dex + bonusStats().dex + modifierDex) / 3);
+    return bonusStats.str + modifierStr + parseInt((you.stats.str + bonusStats.str + modifierStr) / 3) * 2 + parseInt((you.stats.dex + bonusStats.dex + modifierDex) / 3);
   else
     return bonusStats.dex + parseInt((you.stats.dex + bonusStats.dex + modifierDex) / 3) * 2 + parseInt((you.stats.str + bonusStats.str + modifierStr) / 3);
 }

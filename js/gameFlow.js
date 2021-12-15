@@ -250,7 +250,7 @@ function charaInfo(scene) {
   var boardStats = getBoardStats();
   var bonusStats = getBonusStats();
   document.getElementById("baseLv").innerHTML = "Base Lv."+you.jobLv[0];
-  document.getElementById("currentJob").innerHTML = jobData(you.currentJob);
+  document.getElementById("currentJob").innerHTML = jobData(you.currentJob).name;
   document.getElementById("jobLv").innerHTML = "Job Lv."+you.jobLv[you.currentJob];
   document.getElementById("hp").innerHTML = boardStats.maxhp + "&nbsp;/&nbsp;" + boardStats.maxhp;
   document.getElementById("sp").innerHTML = boardStats.maxsp + "&nbsp;/&nbsp;" + boardStats.maxsp;
@@ -317,7 +317,7 @@ function skillInfo(scene) {
   if (you.currentJob > 10) document.getElementById("job1").style.display = "flex";
   /* 根据调用场景写入技能列表 */
   if (scene === "stageInfo") skillInfoContent(0);
-  else if (scene === "battle") skillInfoContent(-1);
+  else if (scene === "battle") skillInfoContent();
   /* 淡入 */
   function a() {
     document.getElementById("skillInfoBox").style.opacity = 1;
@@ -326,9 +326,12 @@ function skillInfo(scene) {
   return;
 }
 function skillInfoContent(tab = -1) {
-  /* 不传参时维持上次展示情况 */
-
-  /* 传参时根据tab改变展示 */
-  
+  var content = "";
+  /* 不传参时维持上次选择的tab，传参时根据tab改变展示*/
+  if (tab >= 0) {
+    for (let i = 0; i < 4; i++)
+      document.getElementById("job"+i).className = "skillInfoHeadTab";
+    document.getElementById("job"+tab).className = ("job0").className = "skillInfoHeadTabSelected";
+  }
   return;
 }

@@ -55,7 +55,7 @@ function getEquipBonusStats() {
       totalBonusStats.watk += equipData(you.equip[key].id).watk;
       totalBonusStats.range += equipData(you.equip[key].id).range
     };
-    for (let i = 0; j < equipData(you.equip[key].id).script.length; i++) {
+    for (let i = 0; i < equipData(you.equip[key].id).script.length; i++) {
       if (equipData(you.equip[key].id).script[i].type == "statsBonus")
       totalBonusStats[equipData(you.equip[key].id).script[i].effect().stats] += equipData(you.equip[key].id).script[i].effect().value;
       if (equipData(you.equip[key].id).script[i].type == "attributeChange")

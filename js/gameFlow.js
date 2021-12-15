@@ -334,7 +334,7 @@ function skillInfoContent(tab = -1) {
     document.getElementById("job"+tab).className = ("job0").className = "skillInfoHeadTabSelected";
   }
   /* 写入展示信息 */
-  for(let i=0;i<jobData(you.currentJob).skillList.length)
+  for(let i=0;i<jobData(you.currentJob).skillList.length,i++)
   
   if(you.currentJob>1) {
     

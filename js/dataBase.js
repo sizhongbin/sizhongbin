@@ -3,7 +3,7 @@ function jobData(key) {
   var jobData = {
     0: "基本",
     1: "初心者",
-    2: "剑士"
+    11: "剑士"
   };
   return jobData[key];
 }

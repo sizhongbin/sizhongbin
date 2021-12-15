@@ -239,7 +239,7 @@ function displayStageEnemy(selectedStage) {
   document.getElementById("stageEnemyList").innerHTML = container;
 }
 /* 展示角色信息 */
-function charaInfo(scene = 0) {
+function charaInfo(scene) {
   /* 根据调用场景隐藏窗口 */
   if (scene === "stageInfo") {
     document.getElementById("stageInfoBox").style.display = "none";
@@ -305,19 +305,30 @@ function resetStats() {
   charaInfo();
 }
 /* 展示技能信息 */
-function skillInfo(scene = 0) {
+function skillInfo(scene) {
   /* 根据调用场景隐藏窗口 */
   if (scene === "stageInfo") {
     document.getElementById("stageInfoBox").style.display = "none";
     document.getElementById("skillInfoBox").style.opacity = "0";
     document.getElementById("skillInfoBox").style.display = "block";
   }
-  /* 写入技能列表 */
-  document.getElementById("job1").style.display = "block";
+  /* 根据现有职业展示head */
+  if (you.currentJob > 0) document.getElementById("job0").style.display = "flex";
+  if (you.currentJob > 10) document.getElementById("job1").style.display = "flex";
+  /* 根据调用场景写入技能列表 */
+  if (scene === "stageInfo") skillInfoContent(0);
+  else if (scene === "battle") skillInfoContent(-1);
   /* 淡入 */
   function a() {
     document.getElementById("skillInfoBox").style.opacity = 1;
   }
   setTimeout(a, 100);
+  return;
+}
+function skillInfoContent(tab = -1) {
+  /* 不传参时维持上次展示情况 */
+
+  /* 传参时根据tab改变展示 */
+  
   return;
 }

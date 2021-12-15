@@ -50,16 +50,16 @@ function getEquipBonusStats() {
   if (equipData(you.equip["主手"].id).type === ("弓" || "乐器" || "鞭")) totalBonusStats.atk += you.stats.dex;
   else totalBonusStats.atk += you.stats.str;
   for (key in you.equip) {
-    if (equipData(you.equip[key]).id).series === "防具") totalBonusStats.wdef += equipData(you.equip[key]).id).wdef;
+    if (equipData(you.equip[key].id).series === "防具") totalBonusStats.wdef += equipData(you.equip[key].id).wdef;
     else {
-      totalBonusStats.watk += equipData(you.equip[key]).id).watk;
-      totalBonusStats.range += equipData(you.equip[key]).id).range
+      totalBonusStats.watk += equipData(you.equip[key].id).watk;
+      totalBonusStats.range += equipData(you.equip[key].id).range
     };
-    for (let i = 0; j < equipData(you.equip[key]).id).script.length; i++) {
-      if (equipData(you.equip[key]).id).script[i].type == "statsBonus")
-      totalBonusStats[equipData(you.equip[key]).id).script[i].effect().stats] += equipData(equipData(you.equip[key]).id).script[i].effect().value;
-      if (equipData(you.equip[key]).id).script[i].type == "attributeChange")
-      totalBonusStats.attribute = equipData(you.equip[key]).id).script[i].effect();
+    for (let i = 0; j < equipData(you.equip[key].id).script.length; i++) {
+      if (equipData(you.equip[key].id).script[i].type == "statsBonus")
+      totalBonusStats[equipData(you.equip[key].id).script[i].effect().stats] += equipData(you.equip[key].id).script[i].effect().value;
+      if (equipData(you.equip[key].id).script[i].type == "attributeChange")
+      totalBonusStats.attribute = equipData(you.equip[key].id).script[i].effect();
     }
     for (let i = 0; i < you.equip[key].card.length; i++) {
       for (let j = 0; j < equipData(you.equip[key].card[i]).script.length; j++) {

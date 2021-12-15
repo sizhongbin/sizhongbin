@@ -240,12 +240,11 @@ function displayStageEnemy(selectedStage) {
 }
 /* 展示角色信息 */
 function charaInfo(scene = 0) {
-  console.log(Date.now());
   /* 根据调用场景隐藏窗口 */
   if (scene === "stageInfo") {
     document.getElementById("stageInfoBox").style.display = "none";
-    /*document.getElementById("stageInfoBox").style.opacity = "0";
-    */document.getElementById("charaInfoBox").style.display = "block";
+    document.getElementById("stageInfoBox").style.opacity = "0";
+    document.getElementById("charaInfoBox").style.display = "block";
   }
   /* 写入基本信息 */
   var boardStats = getBoardStats();
@@ -288,7 +287,6 @@ function charaInfo(scene = 0) {
     document.getElementById("charaInfoBox").style.opacity = 1;
   }
   setTimeout(a, 100);
-  console.log(Date.now());
   return;
 }
 /* 六维加点*/
@@ -305,4 +303,13 @@ function resetStats() {
   you.stats.dex = 1;
   you.stats.luk = 1;
   charaInfo();
+}
+/* 展示技能信息 */
+function skillInfo(scene = 0) {
+  /* 根据调用场景隐藏窗口 */
+  if (scene === "stageInfo") {
+    document.getElementById("stageInfoBox").style.display = "none";
+    /*document.getElementById("stageInfoBox").style.opacity = "0";
+    */document.getElementById("charaInfoBox").style.display = "block";
+  }
 }

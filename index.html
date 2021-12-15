@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="permissions-policy" content="interest-cohort=()">
   <title>天禁仙境</title>
   <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
@@ -93,7 +92,7 @@
         </div>
         <div class="stageInfoButtons">
           <button class="button1" onclick="charaInfo('stageInfo')">角色/加点</button>
-          <button class="button2">技能/学习</button>
+          <button class="button2" onclick="skillInfo('stageInfo')">技能/学习</button>
           <button class="button3">出发</button>
           <button class="button4">道具/仓库</button>
           <button class="button5">装备/支援</button>
@@ -188,6 +187,15 @@
         </div>
         <button class="button5" onclick="resetStats()">重置</button>
         <button class="button6" onclick="stageInfo('charaInfoBox')">返回</button>
+      </div>
+      <div id="skillInfoBox" class="skillInfoBox">
+        <div class="skillInfo">
+          <div class="skillInfoHead">
+            
+          </div>
+        </div>
+        <button class="button5" onclick="resetSkill()">重置</button>
+        <button class="button6" onclick="stageInfo('skillInfoBox')">返回</button>
       </div>
     </div>
     <!--加载脚本文件-->

@@ -11,7 +11,7 @@ function jobData(key) {
     11: {
       name: "剑士",
       skillList: [
-      }]
+      ]}
   };
   return jobData[key];
 }

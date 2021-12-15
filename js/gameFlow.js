@@ -240,6 +240,7 @@ function displayStageEnemy(selectedStage) {
 }
 /* 展示角色信息 */
 function charaInfo(scene = 0) {
+  console.log(Date.now());
   /* 根据调用场景隐藏窗口 */
   if (scene === "stageInfo") {
     document.getElementById("stageInfoBox").style.display = "none";
@@ -285,6 +286,7 @@ function charaInfo(scene = 0) {
     document.getElementById("charaInfoBox").style.opacity = 1;
   }
   setTimeout(a, 100);
+  console.log(Date.now());
   return;
 }
 /* 六维加点*/

@@ -248,31 +248,31 @@ function charaInfo(scene = 0) {
     */document.getElementById("charaInfoBox").style.display = "block";
   }
   /* 写入基本信息 */
-  var getBoardStats = getBoardStats();
-  var getBonusStats = getBonusStats();
+  var boardStats = getBoardStats();
+  var bonusStats = getBonusStats();
   document.getElementById("baseLv").innerHTML = "Base Lv."+you.jobLv[0];
   document.getElementById("currentJob").innerHTML = jobData(you.currentJob);
   document.getElementById("jobLv").innerHTML = "Job Lv."+you.jobLv[you.currentJob];
-  document.getElementById("hp").innerHTML = getBoardStats.maxhp + "&nbsp;/&nbsp;" + getBoardStats.maxhp;
-  document.getElementById("sp").innerHTML = getBoardStats.maxsp + "&nbsp;/&nbsp;" + getBoardStats.maxsp;
-  document.getElementById("weight").innerHTML = getCarriedWeight() + "&nbsp;/&nbsp;" + getBoardStats.maxweight;
+  document.getElementById("hp").innerHTML = boardStats.maxhp + "&nbsp;/&nbsp;" + boardStats.maxhp;
+  document.getElementById("sp").innerHTML = boardStats.maxsp + "&nbsp;/&nbsp;" + boardStats.maxsp;
+  document.getElementById("weight").innerHTML = getCarriedWeight() + "&nbsp;/&nbsp;" + boardStats.maxweight;
   document.getElementById("zeny").innerHTML = you.zeny;
   /* 写入六维 */
-  document.getElementById("str").innerHTML = you.stats.str+"&nbsp;+&nbsp;"+getBonusStats.str;
-  document.getElementById("agi").innerHTML = you.stats.agi+"&nbsp;+&nbsp;"+getBonusStats.agi;
-  document.getElementById("vit").innerHTML = you.stats.vit+"&nbsp;+&nbsp;"+getBonusStats.vit;
-  document.getElementById("int").innerHTML = you.stats.int+"&nbsp;+&nbsp;"+getBonusStats.int;
-  document.getElementById("dex").innerHTML = you.stats.dex+"&nbsp;+&nbsp;"+getBonusStats.dex;
-  document.getElementById("luk").innerHTML = you.stats.luk+"&nbsp;+&nbsp;"+getBonusStats.luk;
+  document.getElementById("str").innerHTML = you.stats.str+"&nbsp;+&nbsp;"+bonusStats.str;
+  document.getElementById("agi").innerHTML = you.stats.agi+"&nbsp;+&nbsp;"+bonusStats.agi;
+  document.getElementById("vit").innerHTML = you.stats.vit+"&nbsp;+&nbsp;"+bonusStats.vit;
+  document.getElementById("int").innerHTML = you.stats.int+"&nbsp;+&nbsp;"+bonusStats.int;
+  document.getElementById("dex").innerHTML = you.stats.dex+"&nbsp;+&nbsp;"+bonusStats.dex;
+  document.getElementById("luk").innerHTML = you.stats.luk+"&nbsp;+&nbsp;"+bonusStats.luk;
   /* 写入副属性 */
-  document.getElementById("atk").innerHTML = getBoardStats.atk+"&nbsp;+&nbsp;"+getBoardStats.watk;
-  document.getElementById("matk").innerHTML = getBoardStats.matk+"&nbsp;+&nbsp;"+getBoardStats.wmatk;
-  document.getElementById("def").innerHTML = getBoardStats.def+"&nbsp;+&nbsp;"+getBoardStats.wdef;
-  document.getElementById("mdef").innerHTML = getBoardStats.mdef+"&nbsp;+&nbsp;"+getBoardStats.wmdef;
-  document.getElementById("hit").innerHTML = getBoardStats.hit;
-  document.getElementById("flee").innerHTML = getBoardStats.flee;
-  document.getElementById("cri").innerHTML = getBoardStats.cri;
-  document.getElementById("ap").innerHTML = getBoardStats.maxap;
+  document.getElementById("atk").innerHTML = boardStats.atk+"&nbsp;+&nbsp;"+boardStats.watk;
+  document.getElementById("matk").innerHTML = boardStats.matk+"&nbsp;+&nbsp;"+boardStats.wmatk;
+  document.getElementById("def").innerHTML = boardStats.def+"&nbsp;+&nbsp;"+boardStats.wdef;
+  document.getElementById("mdef").innerHTML = boardStats.mdef+"&nbsp;+&nbsp;"+boardStats.wmdef;
+  document.getElementById("hit").innerHTML = boardStats.hit;
+  document.getElementById("flee").innerHTML = boardStats.flee;
+  document.getElementById("cri").innerHTML = boardStats.cri;
+  document.getElementById("ap").innerHTML = boardStats.maxap;
   document.getElementById("statusPoint").innerHTML = getStatsPoint();
   document.getElementById("guild").innerHTML = you.guild;
   /* 如有剩余点数则展示加点按钮，无则隐藏 */

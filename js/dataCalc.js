@@ -109,60 +109,60 @@ function getSkillBonusStats() {
 }
 /* 加成六维计算 */
 function getBonusStats() {
-  var getEquipBonusStats = getEquipBonusStats();
-  var getSkillBonusStats = getSkillBonusStats();
+  var equipBonusStats = getEquipBonusStats();
+  var skillBonusStats = getSkillBonusStats();
   var bonusStats =
   {
-    str: getEquipBonusStats.str + getSkillBonusStats.str,
-    agi: getEquipBonusStats.agi + getSkillBonusStats.agi,
-    vit: getEquipBonusStats.vit + getSkillBonusStats.vit,
-    int: getEquipBonusStats.int + getSkillBonusStats.int,
-    dex: getEquipBonusStats.dex + getSkillBonusStats.dex,
-    luk: getEquipBonusStats.luk + getSkillBonusStats.luk
+    str: equipBonusStats.str + skillBonusStats.str,
+    agi: equipBonusStats.agi + skillBonusStats.agi,
+    vit: equipBonusStats.vit + skillBonusStats.vit,
+    int: equipBonusStats.int + skillBonusStats.int,
+    dex: equipBonusStats.dex + skillBonusStats.dex,
+    luk: equipBonusStats.luk + skillBonusStats.luk
   };
   return bonusStats;
 }
 /* 根据武器类型计算atk的属性满3加成 */
 function getYouExtraAtk(modifierStr = 0, modifierDex = 0) {
-  var getBonusStats = getBonusStats();
+  var bonusStats = getBonusStats();
   if (equipData(you.equip["主手"].id).type != ("弓" || "乐器" || "鞭"))
-    return getBonusStats.str + modifierStr + parseInt((you.stats.str + getBonusStats.str + modifierStr) / 3) * 2 + parseInt((you.stats.dex + getBonusStats().dex + modifierDex) / 3);
+    return bonusStats.str + modifierStr + parseInt((you.stats.str + bonusStats.str + modifierStr) / 3) * 2 + parseInt((you.stats.dex + bonusStats().dex + modifierDex) / 3);
   else
-    return getBonusStats.dex + parseInt((you.stats.dex + getBonusStats.dex + modifierDex) / 3) * 2 + parseInt((you.stats.str + getBonusStats.str + modifierStr) / 3);
+    return bonusStats.dex + parseInt((you.stats.dex + bonusStats.dex + modifierDex) / 3) * 2 + parseInt((you.stats.str + bonusStats.str + modifierStr) / 3);
 }
 /* 总面板属性计算 */
 function getBoardStats() {
-  var getBonusStats = getBonusStats();
-  var getSubStats = getSubStats();
-  var getEquipBonusStats = getEquipBonusStats();
-  var getSkillBonusStats = getSkillBonusStats();
+  var bonusStats = getBonusStats();
+  var subStats = getSubStats();
+  var equipBonusStats = getEquipBonusStats();
+  var skillBonusStats = getSkillBonusStats();
   var boardStats =
   {
-    str: you.stats.str + getBonusStats.str,
-    agi: you.stats.agi + getBonusStats.agi,
-    vit: you.stats.vit + getBonusStats.vit,
-    int: you.stats.int + getBonusStats.int,
-    dex: you.stats.dex + getBonusStats.dex,
-    luk: you.stats.luk + getBonusStats.luk,
-    maxhp: getSubStats.maxhp + getEquipBonusStats.maxhp + getSkillBonusStats.maxhp + getBonusStats.vit * 3,
-    maxsp: getSubStats.maxsp + getEquipBonusStats.maxsp + getSkillBonusStats.maxsp + getBonusStats.int * 3,
-    maxweight: getSubStats.maxweight + getEquipBonusStats.maxweight + getSkillBonusStats.maxweight + getBonusStats.str * 6,
-    atk: getSubStats.atk + getEquipBonusStats.atk + getSkillBonusStats.atk + getYouExtraAtk(),
-    watk: getEquipBonusStats.watk + getSkillBonusStats.watk,
-    matk: getSubStats.matk + getEquipBonusStats.matk + getSkillBonusStats.matk + getBonusStats.int + parseInt((you.stats.int + getBonusStats.int) / 3) * 2,
-    wmatk: getEquipBonusStats.wmatk + getSkillBonusStats.wmatk,
-    def: getSubStats.def + getEquipBonusStats.def + getSkillBonusStats.def + getBonusStats.vit + parseInt((you.stats.luk + getBonusStats.luk) / 3),
-    wdef: getEquipBonusStats.wdef + getSkillBonusStats.wdef,
-    mdef: getSubStats.mdef + getEquipBonusStats.mdef + getSkillBonusStats.mdef + getBonusStats.int + parseInt((you.stats.luk + getBonusStats.luk) / 3),
-    wmdef: getEquipBonusStats.wmdef + getSkillBonusStats.wmdef,
-    hit: getSubStats.hit + getEquipBonusStats.hit + getSkillBonusStats.hit + getBonusStats.dex * 5 + parseInt((you.stats.luk + getBonusStats.luk) / 3),
-    flee: getSubStats.flee + getEquipBonusStats.flee + getSkillBonusStats.flee + getBonusStats.agi * 5 + parseInt((you.stats.luk + getBonusStats.luk) / 3),
-    cri: getSubStats.cri + getEquipBonusStats.cri + getSkillBonusStats.cri + getBonusStats.luk,
-    maxap: Math.min(getSubStats.maxap + getEquipBonusStats.maxap + getSkillBonusStats.maxap + parseInt((you.stats.agi + getBonusStats.agi) / 6), 7),
-    mov: getSubStats.mov + getEquipBonusStats.mov + getSkillBonusStats.mov,
-    ct: getSubStats.ct + getEquipBonusStats.ct + getSkillBonusStats.ct + parseInt((you.stats.dex + getBonusStats.dex) / 6),
-    range: getSubStats.range + getEquipBonusStats.range + getSkillBonusStats.range,
-    attribute: (getEquipBonusStats.attribute == 0 ? you.attribute : getEquipBonusStats.attribute),
+    str: you.stats.str + bonusStats.str,
+    agi: you.stats.agi + bonusStats.agi,
+    vit: you.stats.vit + bonusStats.vit,
+    int: you.stats.int + bonusStats.int,
+    dex: you.stats.dex + bonusStats.dex,
+    luk: you.stats.luk + bonusStats.luk,
+    maxhp: subStats.maxhp + equipBonusStats.maxhp + skillBonusStats.maxhp + bonusStats.vit * 3,
+    maxsp: subStats.maxsp + equipBonusStats.maxsp + skillBonusStats.maxsp + bonusStats.int * 3,
+    maxweight: subStats.maxweight + equipBonusStats.maxweight + skillBonusStats.maxweight + bonusStats.str * 6,
+    atk: subStats.atk + equipBonusStats.atk + skillBonusStats.atk + getYouExtraAtk(),
+    watk: equipBonusStats.watk + skillBonusStats.watk,
+    matk: subStats.matk + equipBonusStats.matk + skillBonusStats.matk + bonusStats.int + parseInt((you.stats.int + bonusStats.int) / 3) * 2,
+    wmatk: equipBonusStats.wmatk + skillBonusStats.wmatk,
+    def: subStats.def + equipBonusStats.def + skillBonusStats.def + bonusStats.vit + parseInt((you.stats.luk + bonusStats.luk) / 3),
+    wdef: equipBonusStats.wdef + skillBonusStats.wdef,
+    mdef: subStats.mdef + equipBonusStats.mdef + skillBonusStats.mdef + bonusStats.int + parseInt((you.stats.luk + bonusStats.luk) / 3),
+    wmdef: equipBonusStats.wmdef + skillBonusStats.wmdef,
+    hit: subStats.hit + equipBonusStats.hit + skillBonusStats.hit + bonusStats.dex * 5 + parseInt((you.stats.luk + bonusStats.luk) / 3),
+    flee: subStats.flee + equipBonusStats.flee + skillBonusStats.flee + bonusStats.agi * 5 + parseInt((you.stats.luk + bonusStats.luk) / 3),
+    cri: subStats.cri + equipBonusStats.cri + skillBonusStats.cri + bonusStats.luk,
+    maxap: Math.min(subStats.maxap + equipBonusStats.maxap + skillBonusStats.maxap + parseInt((you.stats.agi + bonusStats.agi) / 6), 7),
+    mov: subStats.mov + equipBonusStats.mov + skillBonusStats.mov,
+    ct: subStats.ct + equipBonusStats.ct + skillBonusStats.ct + parseInt((you.stats.dex + bonusStats.dex) / 6),
+    range: subStats.range + equipBonusStats.range + skillBonusStats.range,
+    attribute: (equipBonusStats.attribute == 0 ? you.attribute : equipBonusStats.attribute),
     race: you.race,
     size: you.size
   };

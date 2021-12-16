@@ -275,10 +275,10 @@ function charaInfo(scene) {
   /* 如有剩余点数则展示加点按钮，无则隐藏 */
   if (getStatsPoint()) {
     for (let i = 0; i < document.getElementsByClassName("addStats").length; i++)
-      document.getElementsByClassName("addStats")[i].style.display = "block";
+      document.getElementsByClassName("addStats")[i].style.visibility = "visible";
   } else {
     for (let i = 0; i < document.getElementsByClassName("addStats").length; i++)
-      document.getElementsByClassName("addStats")[i].style.display = "none";
+      document.getElementsByClassName("addStats")[i].style.visibility = "hidden";
   }
   /* 淡入 */
   function a() {
@@ -334,18 +334,37 @@ function skillInfoContent(tab = -1) {
   /* 写入展示信息 */
   /* tab为0时必定为初心者*/
   if (tab === 0) {
+    /* 【职业名】 */
     content += "<tr><th>";
     content += "【" + jobData(1).name + "】";
     content += "</th><th>";
+    /* 剩余技能点 */
+    let point;
     content += "剩余点数：";
-    content += (() => {
+    point = (() => {
       let usedPoint = 0;
       for (key in you.learnedSkill)
-        if (jobData(1).skillList.includes(key))
+        if (jobData(1).skillList.includes(Number(key)))
           usedPoint += you.learnedSkill[key];
       return you.jobLv[1] - 1 - usedPoint;
     })();
+    content += point;
     content += "</th></tr>";
+    for (let i = 0; i < jobData(1).skillList.length; i++) {
+      /* 技能名 */
+      content += "<td>" + youSkillData(jobData(1).skillList[i]).name + "</td>";
+      /* 等级 */
+      let learnedLv = you.learnedSkill[jobData(1).skillList[i]];
+      content += "<td>" + (learnedLv ? learnedLv : 0) + "&nbsp;/&nbsp;" + youSkillData(jobData(1).skillList[i]).maxlv + "</td><td>";
+      /* 学习按钮 */
+      content += "<td><button id='learn" + jobData(1).skillList[i] + "' onclick='learnSkill(" + jobData(1).skillList[i] + "'>+</button></td>";
+      if ((!point) || (learnedLv == youSkillData(jobData(1).skillList[i]).maxlv))
+        document.getElementById("learn" + jobData(1).skillList[i]).visibility = "hidden";
+      else
+        document.getElementById("learn" + jobData(1).skillList[i]).visibility = "visible";
+      /* 详细按钮 */
+      content += "<td><button id='detail" + jobData(1).skillList[i] + "' onclick='skillDetail(" + jobData(1).skillList[i] + "'>详情</button></td></tr>";
+    }
   }
   document.getElementById("skillInfoTable").innerHTML = content;
   return;

@@ -333,8 +333,7 @@ function skillInfoContent(tab = -1) {
       document.getElementById("job"+i).className = "skillInfoHeadTab";
     document.getElementById("job"+tab).className = "skillInfoHeadTabSelected";
     tab = "job" + tab;
-  }
-  else tab = document.getElementsByClassName("skillInfoHeadTabSelected")[0].getAttribute("id");
+  } else tab = document.getElementsByClassName("skillInfoHeadTabSelected")[0].getAttribute("id");
   /* 写入技能表 */
   let job;
   /* tab为0时必定为初心者 */
@@ -356,7 +355,7 @@ function skillInfoContent(tab = -1) {
     let usedPoint = 0;
     for (key in you.learnedSkill)
       if (jobData(job).skillList.includes(Number(key)))
-        usedPoint += you.learnedSkill[key];
+      usedPoint += you.learnedSkill[key];
     return you.jobLv[job] - 1 - usedPoint;
   })();
   title += point;
@@ -369,7 +368,7 @@ function skillInfoContent(tab = -1) {
     row += "<tr><td>" + youSkillData(jobData(job).skillList[i]).name + "</td>";
     /* 等级 */
     let learnedLv = you.learnedSkill[jobData(job).skillList[i]];
-    row += "<td>" + (learnedLv ? learnedLv : 0) + "&nbsp;/&nbsp;" + youSkillData(jobData(job).skillList[i]).maxlv + "</td>";
+    row += "<td>" + (learnedLv ? learnedLv: 0) + "&nbsp;/&nbsp;" + youSkillData(jobData(job).skillList[i]).maxlv + "</td>";
     /* 学习按钮 */
     row += "<td><button id='learn" + jobData(job).skillList[i] + "' class='skillInfoLearnButton' onclick='learnSkill(" + jobData(job).skillList[i] + ")'>+</button></td>";
     /* 详细按钮 */
@@ -384,7 +383,7 @@ function skillInfoContent(tab = -1) {
           if (!you.learnedSkill[key] || you.learnedSkill[key] < youSkillData(jobData(job).skillList[i]).requireSkill[key]) return true;
         return false;
       })()))
-      document.getElementById("learn" + jobData(job).skillList[i]).style.visibility = "hidden";
+    document.getElementById("learn" + jobData(job).skillList[i]).style.visibility = "hidden";
     else
       document.getElementById("learn" + jobData(job).skillList[i]).style.visibility = "visible";
   }
@@ -403,6 +402,21 @@ function learnSkill(id) {
 }
 /* 技能详细 */
 function skillDetail(id) {
+  let container = "【"+youSkillData(id).name+"】(Max Lv."+youSkillData(id).maxlv+")<br>前置技能：";
+  if (youSkillData(id).requireSkill.length == 0)
+    container += "无&nbsp;";
+  else
+    for (key in youSkillData(id).requireSkill)
+    container += youSkillData(key).name +"&nbsp;Lv."+youSkillData(id).requireSkill[key]+"&nbsp;";
+  container += "武器要求：";
+  if (youSkillData(id).requireWeapon.length == 0)
+    container += "无&nbsp;";
+  else
+    youSkillData(skillName).requireWeapon.forEach(function(value) {
+    container += value+"&nbsp;";
+  });
+  container += "<br><font color=\"blue\">SP："+youSkillData(id).sp((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><font color=\"yellow\">&nbsp;AP："+youSkillData(id).ap((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><font color=\"orange\">&nbsp;CT："+youSkillData(id).ct((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><font color=\"grey\">&nbsp;CD："+youSkillData(id).cd((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><br>"+youSkillData(id).intro;
+  document.getElementById("skillInfoDetail").innerHTML = container;
   document.getElementById("skillInfoDetailBox").style.display = "block";
   return;
 }

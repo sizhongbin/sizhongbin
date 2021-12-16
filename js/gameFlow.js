@@ -403,7 +403,7 @@ function learnSkill(id) {
 /* 技能详细 */
 function skillDetail(id) {
   let container = "【"+youSkillData(id).name+"】(Max Lv."+youSkillData(id).maxlv+")<br>前置技能：";
-  if (youSkillData(id).requireSkill.length == {})
+  if (youSkillData(id).requireSkill == {})
     container += "无";
   else
     for (key in youSkillData(id).requireSkill)

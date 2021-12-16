@@ -158,7 +158,7 @@ function convertSaveToYou() {
 function save() {
   var save = [];
   save[0] = you.currentStage;
-  save[1] = you sensedEnemy;
+  save[1] = you.sensedEnemy;
   save[2] = you.jobLv;
   save[3] = you.currentJob;
   save[4] = you.attribute;

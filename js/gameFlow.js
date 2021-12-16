@@ -51,8 +51,8 @@ function initSave() {
       0],
     /* 10:习得技能，[职业,[技能]]，存键 */
     [[1,
-      [0,
-        1]]],
+      [[0,
+        1],[1,1]]]],
     /* 11:携带物品，[物品,数量]，存键 */
     [[1,
       1]],
@@ -331,9 +331,18 @@ function skillInfoContent(tab = -1) {
   if (tab >= 0) {
     for (let i = 0; i < 4; i++)
       document.getElementById("job"+i).className = "skillInfoHeadTab";
-    document.getElementById("job"+tab).className = ("job0").className = "skillInfoHeadTabSelected";
+    document.getElementById("job"+tab).className = "skillInfoHeadTabSelected";
   }
   /* 写入展示信息 */
+  /* tab为0时必定为初心者*/
+  if (tab === 0) {
+    content += "<tr><th>";
+    content += "【"+jobData(1).name+"】";
+    content += "</th><th>";
+    content += "剩余点数：";
+    content += 
+     for(let i=0;i<jobData(1).skillList.length,i++)
+  }
   for(let i=0;i<jobData(you.currentJob).skillList.length,i++)
   
   if(you.currentJob>1) {

@@ -343,7 +343,7 @@ function skillInfoContent(tab = -1) {
       for (key in you.learnedSkill)
         if (jobData(1).skillList.includes(key))
           usedPoint += you.learnedSkill[key];
-      return you.jobLv(1) - 1 - usedPoint;
+      return you.jobLv[1] - 1 - usedPoint;
     })();
     content += "</th></tr>";
   }

@@ -335,16 +335,16 @@ function skillInfoContent(tab = -1) {
   /* tab为0时必定为初心者*/
   if (tab === 0) {
     content += "<tr><th>";
-    content += "【"+jobData(1).name+"】";
+    content += "【" + jobData(1).name + "】";
     content += "</th><th>";
     content += "剩余点数：";
-    content += () => {
+    content += (() => {
       let usedPoint = 0;
       for (key in you.learnedSkill)
         if (jobData(1).skillList.includes(key))
-        usedPoint += you.learnedSkill[key];
-      return you.jobLv(1)-1-usedPoint;
-    };
+          usedPoint += you.learnedSkill[key];
+      return you.jobLv(1) - 1 - usedPoint;
+    })();
     content += "</th></tr>";
   }
   document.getElementById("skillInfoTable").innerHTML = content;

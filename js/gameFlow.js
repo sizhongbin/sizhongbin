@@ -67,6 +67,7 @@ function initSave() {
   Cookies.set("s", JSON.stringify(save), {
     expires: 365
   });
+  console.log(save);
   return;
 }
 /* 存档对象化 */
@@ -165,46 +166,63 @@ function save() {
   save[5] = you.race;
   save[6] = you.size;
   save[7] = you.zeny;
+  save[8] = [];
   save[8][0] = you.stats.str;
   save[8][1] = you.stats.agi;
   save[8][2] = you.stats.vit;
   save[8][3] = you.stats.int;
   save[8][4] = you.stats.dex;
   save[8][5] = you.stats.luk;
+  save[9] = [];
+  save[9][0] = [];
   save[9][0][0] = you.equip["头上"].id;
   save[9][0][1] = you.equip["头上"].card;
+  save[9][1] = [];
   save[9][1][0] = you.equip["头中"].id;
   save[9][1][1] = you.equip["头中"].card;
+  save[9][2] = [];
   save[9][2][0] = you.equip["头下"].id;
   save[9][2][1] = you.equip["头下"].card;
+  save[9][3] = [];
   save[9][3][0] = you.equip["身体"].id;
   save[9][3][1] = you.equip["身体"].card;
+  save[9][4] = [];
   save[9][4][0] = you.equip["副手"].id;
   save[9][4][1] = you.equip["副手"].card;
+  save[9][5] = [];
   save[9][5][0] = you.equip["主手"].id;
   save[9][5][1] = you.equip["主手"].card;
+  save[9][6] = [];
   save[9][6][0] = you.equip["披挂"].id;
   save[9][6][1] = you.equip["披挂"].card;
+  save[9][7] = [];
   save[9][7][0] = you.equip["鞋子"].id;
   save[9][7][1] = you.equip["鞋子"].card;
+  save[9][8] = [];
   save[9][8][0] = you.equip["饰品一"].id;
   save[9][8][1] = you.equip["饰品一"].card;
+  save[9][9] = [];
   save[9][9][0] = you.equip["饰品二"].id;
   save[9][9][1] = you.equip["饰品二"].card;
+  save[10] = [];
   for (let i = 0, k = Object.keys(you.learnedSkill); i < k.length; i++) {
+    save[10][i] = [];
     save[10][i][0] = k[i];
     save[10][i][1] = you.learnedSkill[k[i]];
   }
   for (let i = 0, k = Object.keys(you.carriedItem); i < k.length; i++) {
+    save[11][i] = [];
     save[11][i][0] = k[i];
     save[11][i][1] = you.carriedItem[k[i]];
   }
   save[12] = you.assist;
   for (let i = 0, k = Object.keys(you.storeItem); i < k.length; i++) {
+    save[13][i] = [];
     save[13][i][0] = k[i];
     save[13][i][1] = you.storeItem[k[i]];
   }
   save[14] == (you.guild == "无" ? 0: 1);
+  console.log(save);
   return;
 }
 /* 通过值找键*/

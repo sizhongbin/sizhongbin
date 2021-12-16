@@ -298,7 +298,7 @@ function youSkillData(key) {
       },
       requireSkill: {},
       requireWeapon: [],
-      intro: "冒险者的基本技能",
+      intro: "【被动】冒险者的基本技能",
       series: "被动",
       type: "物理",
       attribute: "无",
@@ -324,7 +324,7 @@ function youSkillData(key) {
         1: 1
       },
       requireWeapon: [],
-      intro: "回复自身5点HP",
+      intro: "Lv 1：回复自身5点HP",
       series: "回复",
       type: "魔法",
       attribute: "无",

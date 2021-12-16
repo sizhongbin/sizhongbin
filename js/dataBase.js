@@ -221,6 +221,17 @@ function equipData(key) {
       type: "无",
       wt: 0,
       intro: "无",
+      script: []},
+    4000: {
+      name: "无",
+      series: "投射物",
+      type: "无",
+      watk: 0,
+      wt: 0,
+      attribute: "无",
+      requireJob: [],
+      slot: 0,
+      intro: "无",
       script: []}
   };
   return equipData[key];

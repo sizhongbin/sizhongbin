@@ -150,7 +150,7 @@ function convertSaveToYou() {
         obj[save[13][i][0]] = save[13][i][1];
       return obj;
     })(),
-    guild: (save[14] === 1 ? "天禁仙境": "无")
+    guild: (save[14] == 1 ? "天禁仙境": "无")
   };
   return;
 }
@@ -204,7 +204,7 @@ function save() {
     save[13][i][0] = k[i];
     save[13][i][1] = you.storeItem[k[i]];
   }
-  =save[14] == (you.current === 1 ? "天禁仙境": "无")
+  =save[14] == (you.guild != "无" ? "天禁仙境": "无");
 };
 return;
 }

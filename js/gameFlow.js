@@ -370,10 +370,10 @@ function skillInfoContent(tab = -1) {
       /* 判断学习按钮是否隐藏 */
       if ((!point) ||
         (learnedLv == youSkillData(jobData(1).skillList[i]).maxlv) ||
-        (!(() => {
+        ((() => {
           for (key in youSkillData(jobData(1).skillList[i]).requireSkill)
-            if (!you.skillList[key] || you.skillList[key] < youSkillData(jobData(1).skillList[i]).requireSkill[key]) return false;
-          return true;
+            if (!you.skillList[key] || you.skillList[key] < youSkillData(jobData(1).skillList[i]).requireSkill[key]) return true;
+          return false;
         })()))
         document.getElementById("learn" + jobData(1).skillList[i]).style.visibility = "hidden";
       else

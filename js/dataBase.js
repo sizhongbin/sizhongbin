@@ -230,6 +230,7 @@ function equipData(key) {
       wt: 0,
       attribute: "无",
       requireJob: [],
+      slot: 0,
       intro: "无",
       script: []}
   };

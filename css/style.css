@@ -238,7 +238,6 @@ button:active {
   left: 5%;
   top: 5%;
   background-color: #1E1E1E;
-  display: none;
 }
 .skillInfoHeadTab,.skillInfoHeadTabSelected {
   width: 100%;

@@ -226,7 +226,10 @@ function equipData(key) {
       name: "无",
       series: "投射物",
       type: "无",
+      watk: 0,
       wt: 0,
+      attribute: "无",
+      requireJob: [],
       intro: "无",
       script: []}
   };

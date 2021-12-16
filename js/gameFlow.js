@@ -393,3 +393,13 @@ function learnSkill(id) {
   else you.learnedSkill[id] = 1;
   skillInfoContent();
 }
+/* 技能详细 */
+function skillDetail(id) {
+  document.getElementById("skillInfoDetailBox").style.display = "block";
+  return;
+}
+/* 关闭弹框 */
+function closePop(id) {
+  document.getElementById(id).style.display = "none";
+  return;
+}

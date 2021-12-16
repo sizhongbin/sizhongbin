@@ -204,7 +204,7 @@ function save() {
     save[13][i][0] = k[i];
     save[13][i][1] = you.storeItem[k[i]];
   }
-  save[14] == (you.guild != "无" ? "天禁仙境": "无");
+  save[14] == (you.guild == "无" ? 0: 1);
   return;
 }
 /* 通过值找键*/

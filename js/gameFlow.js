@@ -330,10 +330,12 @@ function skillInfoContent(tab = -1) {
     for (let i = 0; i < 4; i++)
       document.getElementById("job"+i).className = "skillInfoHeadTab";
     document.getElementById("job"+tab).className = "skillInfoHeadTabSelected";
+    tab = "job" + tab;
   }
+  else tab = document.getElementsByClassName("skillInfoHeadTabSelected")[0].getAttribute("id");
   /* 写入展示信息 */
   /* tab为0时必定为初心者*/
-  if (tab === 0) {
+  if (tab === "job0") {
     /* 【职业名】 */
     title += "<tr><th colspan='2'>";
     title += "【" + jobData(1).name + "】";

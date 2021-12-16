@@ -350,22 +350,26 @@ function skillInfoContent(tab = -1) {
     })();
     title += point;
     title += "</th></tr>";
+    /* 页面增加列表头 */
     document.getElementById("skillInfoTable").innerHTML = title;
     for (let i = 0; i < jobData(1).skillList.length; i++) {
+      let row = "";
       /* 技能名 */
-      document.getElementById("skillInfoTable").innerHTML += "<tr><td>" + youSkillData(jobData(1).skillList[i]).name + "</td>";
+      row += "<tr><td>" + youSkillData(jobData(1).skillList[i]).name + "</td>";
       /* 等级 */
       let learnedLv = you.learnedSkill[jobData(1).skillList[i]];
-      document.getElementById("skillInfoTable").innerHTML += "<td>" + (learnedLv ? learnedLv : 0) + "&nbsp;/&nbsp;" + youSkillData(jobData(1).skillList[i]).maxlv + "</td><td>";
+      row += "<td>" + (learnedLv ? learnedLv : 0) + "&nbsp;/&nbsp;" + youSkillData(jobData(1).skillList[i]).maxlv + "</td><td>";
       /* 学习按钮 */
-      document.getElementById("skillInfoTable").innerHTML += "<td><button id='learn" + jobData(1).skillList[i] + "' onclick='learnSkill(" + jobData(1).skillList[i] + "'>+</button></td>";
+      row += "<td><button id='learn" + jobData(1).skillList[i] + "' onclick='learnSkill(" + jobData(1).skillList[i] + "'>+</button></td>";
+      /* 详细按钮 */
+      row += "<td><button id='detail" + jobData(1).skillList[i] + "' onclick='skillDetail(" + jobData(1).skillList[i] + "'>详情</button></td></tr>";
+      /* 页面增加列表 */
+      document.getElementById("skillInfoTable").innerHTML += row;
       /* 判断学习按钮是否隐藏 */
       if ((!point) || (learnedLv == youSkillData(jobData(1).skillList[i]).maxlv))
         document.getElementById("learn" + jobData(1).skillList[i]).visibility = "hidden";
       else
         document.getElementById("learn" + jobData(1).skillList[i]).visibility = "visible";
-      /* 详细按钮 */
-      document.getElementById("skillInfoTable").innerHTML += "<td><button id='detail" + jobData(1).skillList[i] + "' onclick='skillDetail(" + jobData(1).skillList[i] + "'>详情</button></td></tr>";
     }
   }
   return;

@@ -403,19 +403,19 @@ function learnSkill(id) {
 /* 技能详细 */
 function skillDetail(id) {
   let container = "【"+youSkillData(id).name+"】(Max Lv."+youSkillData(id).maxlv+")<br>前置技能：";
-  if (youSkillData(id).requireSkill.length == 0)
-    container += "无&nbsp;";
+  if (youSkillData(id).requireSkill.length == {})
+    container += "无";
   else
     for (key in youSkillData(id).requireSkill)
     container += youSkillData(key).name +"&nbsp;Lv."+youSkillData(id).requireSkill[key]+"&nbsp;";
-  container += "武器要求：";
+  container += "<br>武器要求：";
   if (youSkillData(id).requireWeapon.length == 0)
-    container += "无&nbsp;";
+    container += "无";
   else
     youSkillData(skillName).requireWeapon.forEach(function(value) {
     container += value+"&nbsp;";
   });
-  container += "<br><font color=\"blue\">SP："+youSkillData(id).sp((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><font color=\"yellow\">&nbsp;AP："+youSkillData(id).ap((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><font color=\"orange\">&nbsp;CT："+youSkillData(id).ct((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><font color=\"grey\">&nbsp;CD："+youSkillData(id).cd((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><br>"+youSkillData(id).intro;
+  container += "<br><font color=\"blue\">SP："+youSkillData(id).sp((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><font color=\"yellow\">&nbsp;AP："+youSkillData(id).ap((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><font color=\"orange\"><br>CT："+youSkillData(id).ct((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><font color=\"grey\">&nbsp;CD："+youSkillData(id).cd((you.learnedSkill[id])?(you.learnedSkill[id]): 1)+"</font><br>"+youSkillData(id).intro;
   document.getElementById("skillInfoDetail").innerHTML = container;
   document.getElementById("skillInfoDetailBox").style.display = "block";
   return;

@@ -346,5 +346,7 @@ function skillInfoContent(tab = -1) {
       return you.jobLv(1)-1-usedPoint;
     };
     content += "</th></tr>";
+  }
+  document.getElementById("skillInfoTable").innerHTML = content;
   return;
 }

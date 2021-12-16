@@ -130,7 +130,8 @@ function convertSaveToYou() {
       "饰品二": {
         id: save[9][9][0],
         card: save[9][9][1]
-      }
+      },
+      "投射物": save[9][10];
     },
     learnedSkill: (() => {
       var obj = {};
@@ -207,23 +208,23 @@ function save() {
   save[10] = [];
   for (let i = 0, k = Object.keys(you.learnedSkill); i < k.length; i++) {
     save[10][i] = [];
-    save[10][i][0] = k[i];
+    save[10][i][0] = Number(k[i]);
     save[10][i][1] = you.learnedSkill[k[i]];
   }
   save[11] = [];
   for (let i = 0, k = Object.keys(you.carriedItem); i < k.length; i++) {
     save[11][i] = [];
-    save[11][i][0] = k[i];
+    save[11][i][0] = Number(k[i]);
     save[11][i][1] = you.carriedItem[k[i]];
   }
   save[12] = you.assist;
   save[13] = [];
   for (let i = 0, k = Object.keys(you.storeItem); i < k.length; i++) {
     save[13][i] = [];
-    save[13][i][0] = k[i];
+    save[13][i][0] = Number(k[i]);
     save[13][i][1] = you.storeItem[k[i]];
   }
-  save[14] == (you.guild == "无" ? 0: 1);
+  save[14] = (you.guild == "无" ? 0: 1);
   console.log(save);
   return;
 }

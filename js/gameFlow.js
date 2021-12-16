@@ -67,7 +67,6 @@ function initSave() {
   Cookies.set("s", JSON.stringify(save), {
     expires: 365
   });
-  console.log(save);
   return;
 }
 /* 存档对象化 */
@@ -226,7 +225,8 @@ function save() {
     save[13][i][1] = you.storeItem[k[i]];
   }
   save[14] = (you.guild == "无" ? 0: 1);
-  console.log(save);
+  Cookies.set("s", JSON.stringify(save), {
+    expires: 365;
   return;
 }
 /* 通过值找键*/

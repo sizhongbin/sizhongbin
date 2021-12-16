@@ -166,7 +166,7 @@ button:active {
   left: 5%;
   width: 95%;
 }
-.baseInfoTable button,.skillInfoTable button {
+.baseInfoTable button,.skillInfoLearnButton {
   width: 1rem;
   height: 1rem;
   padding: 0;
@@ -185,7 +185,6 @@ button:active {
 .skillInfoDetailButton {
   height: 1.5rem;
   width: 3rem;
-  visibility: visible;
 }
 .stageInfoButtons {
   position: relative;

@@ -369,9 +369,9 @@ function skillInfoContent(tab = -1) {
       document.getElementById("skillInfoTable").innerHTML += row;
       /* 判断学习按钮是否隐藏 */
       if ((!point) || (learnedLv == youSkillData(jobData(1).skillList[i]).maxlv))
-        document.getElementById("learn" + jobData(1).skillList[i]).visibility = "hidden";
+        document.getElementById("learn" + jobData(1).skillList[i]).style.visibility = "hidden";
       else
-        document.getElementById("learn" + jobData(1).skillList[i]).visibility = "visible";
+        document.getElementById("learn" + jobData(1).skillList[i]).style.visibility = "visible";
     }
   }
   return;

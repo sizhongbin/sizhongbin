@@ -210,12 +210,14 @@ function save() {
     save[10][i][0] = k[i];
     save[10][i][1] = you.learnedSkill[k[i]];
   }
+  save[11] = [];
   for (let i = 0, k = Object.keys(you.carriedItem); i < k.length; i++) {
     save[11][i] = [];
     save[11][i][0] = k[i];
     save[11][i][1] = you.carriedItem[k[i]];
   }
   save[12] = you.assist;
+  save[13] = [];
   for (let i = 0, k = Object.keys(you.storeItem); i < k.length; i++) {
     save[13][i] = [];
     save[13][i][0] = k[i];

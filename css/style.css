@@ -170,6 +170,7 @@ button:active {
   width: 1rem;
   height: 1rem;
   padding: 0;
+  visibility: hidden;
 }
 .stageEnemyListBox {
   height: calc(100% - 11vh);
@@ -184,6 +185,7 @@ button:active {
 .skillInfoDetailButton {
   height: 1.5rem;
   width: 3rem;
+  visibility: visible;
 }
 .stageInfoButtons {
   position: relative;
@@ -239,9 +241,6 @@ button:active {
   border: 0;
   text-align: left;
   box-sizing: border-box;
-}
-.addStats {
-  display: none;
 }
 ::-webkit-scrollbar {
   width: 0.5rem;

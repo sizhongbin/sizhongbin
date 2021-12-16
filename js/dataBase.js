@@ -269,7 +269,7 @@ function youSkillData(key) {
       cd: function(lv = 1) {
         return 0;
       },
-      requireSkill: [],
+      requireSkill: {},
       requireWeapon: [],
       intro: "攻击",
       series: "攻击",
@@ -296,7 +296,7 @@ function youSkillData(key) {
       cd: function(lv = 1) {
         return 0;
       },
-      requireSkill: [],
+      requireSkill: {},
       requireWeapon: [],
       intro: "冒险者的基本技能",
       series: "被动",
@@ -320,10 +320,9 @@ function youSkillData(key) {
       cd: function(lv = 1) {
         return 0;
       },
-      requireSkill: [{
-        name: "基本技能",
-        lv: 1
-      }],
+      requireSkill: {
+        1: 1
+      },
       requireWeapon: [],
       intro: "回复自身5点HP",
       series: "回复",

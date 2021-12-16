@@ -226,7 +226,8 @@ function save() {
   }
   save[14] = (you.guild == "无" ? 0: 1);
   Cookies.set("s", JSON.stringify(save), {
-    expires: 365;
+    expires: 365
+  });
   return;
 }
 /* 通过值找键*/

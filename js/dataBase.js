@@ -6,8 +6,8 @@ function jobData(key) {
     },
     1: {
       name: "初心者",
-      skillList: [0,
-        1]},
+      skillList: [1,
+        2]},
     11: {
       name: "剑士",
       skillList: [

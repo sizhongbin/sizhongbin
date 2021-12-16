@@ -50,9 +50,9 @@ function initSave() {
         []],
       0],
     /* 10:习得技能，[技能,等级]，存键 */
-    [[0,
+    [[1,
       1],
-      [1,
+      [2,
         1]],
     /* 11:携带物品，[物品,数量]，存键 */
     [[1,
@@ -335,9 +335,9 @@ function skillInfoContent(tab = -1) {
   /* tab为0时必定为初心者*/
   if (tab === 0) {
     /* 【职业名】 */
-    title += "<tr><th>";
+    title += "<tr><th colspan='2'>";
     title += "【" + jobData(1).name + "】";
-    title += "</th><th>";
+    title += "</th><th colspan='2'>";
     /* 剩余技能点 */
     let point;
     title += "剩余点数：";
@@ -353,7 +353,7 @@ function skillInfoContent(tab = -1) {
     document.getElementById("skillInfoTable").innerHTML = title;
     for (let i = 0; i < jobData(1).skillList.length; i++) {
       /* 技能名 */
-      document.getElementById("skillInfoTable").innerHTML += "<td>" + youSkillData(jobData(1).skillList[i]).name + "</td>";
+      document.getElementById("skillInfoTable").innerHTML += "<tr><td>" + youSkillData(jobData(1).skillList[i]).name + "</td>";
       /* 等级 */
       let learnedLv = you.learnedSkill[jobData(1).skillList[i]];
       document.getElementById("skillInfoTable").innerHTML += "<td>" + (learnedLv ? learnedLv : 0) + "&nbsp;/&nbsp;" + youSkillData(jobData(1).skillList[i]).maxlv + "</td><td>";

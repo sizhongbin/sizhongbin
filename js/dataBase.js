@@ -1,4 +1,4 @@
-/* 职业数据 */
+/* 职业数据，key用于取余判断前置职业 */
 function jobData(key) {
   var jobData = {
     0: {

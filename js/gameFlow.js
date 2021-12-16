@@ -372,7 +372,7 @@ function skillInfoContent(tab = -1) {
         (learnedLv == youSkillData(jobData(1).skillList[i]).maxlv) ||
         ((() => {
           for (key in youSkillData(jobData(1).skillList[i]).requireSkill)
-            if (!you.skillList[key] || you.skillList[key] < youSkillData(jobData(1).skillList[i]).requireSkill[key]) return true;
+            if (!you.learnedSkill[key] || you.learnedSkill[key] < youSkillData(jobData(1).skillList[i]).requireSkill[key]) return true;
           return false;
         })()))
         document.getElementById("learn" + jobData(1).skillList[i]).style.visibility = "hidden";

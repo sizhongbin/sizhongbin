@@ -50,10 +50,10 @@ function initSave() {
         []],
       0],
     /* 10:习得技能，[技能,等级]，存键 */
-      [[0,
-        1],
-        [1,
-          1]],
+    [[0,
+      1],
+      [1,
+        1]],
     /* 11:携带物品，[物品,数量]，存键 */
     [[1,
       1]],
@@ -131,15 +131,12 @@ function convertSaveToYou() {
         card: save[9][9][1]
       }
     },
-    learnedSkill: (function () {
+    learnedSkill: () => {
       var obj = {};
       for (let i = 0; i < save[10].length; i++)
-        obj[i] = {
-        id: save[10][i][0],
-        lv: save[10][i][1]
-      };
+        obj[save[10][i][0]] = save[10][i][1];
       return obj;
-    })(),
+    },
     carriedItem: (function () {
       var obj = {};
       for (let i = 0; i < save[11].length; i++)
@@ -341,11 +338,13 @@ function skillInfoContent(tab = -1) {
     content += "【"+jobData(1).name+"】";
     content += "</th><th>";
     content += "剩余点数：";
-    content +=
-    for (let i = 0; i < jobData(1).skillList.length, i++)
-    }
-  for (let i = 0; i < jobData(you.currentJob).skillList.length, i++)
-
-    if (you.currentJob > 1) {}
+    content += () => {
+      let usedPoint = 0;
+      for (key in you.learnedSkill)
+        if (jobData(1).skillList.includes(key))
+        usedPoint += you.learnedSkill[key];
+      return you.jobLv(1)-1-usedPoint;
+    };
+    content += "</th></tr>";
   return;
 }

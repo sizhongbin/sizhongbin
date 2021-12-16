@@ -11,6 +11,50 @@ function jobData(key) {
     11: {
       name: "剑士",
       skillList: [
+      ]},
+    12: {
+      name: "魔法师",
+      skillList: [
+      ]},
+    13: {
+      name: "服事",
+      skillList: [
+      ]},
+    14: {
+      name: "弓箭手",
+      skillList: [
+      ]},
+    15: {
+      name: "盗贼",
+      skillList: [
+      ]},
+    16: {
+      name: "商人",
+      skillList: [
+      ]},
+    111: {
+      name: "骑士",
+      skillList: [
+      ]},
+    211: {
+      name: "骑士领主",
+      skillList: [
+      ]},
+    311: {
+      name: "十字军",
+      skillList: [
+      ]},
+    411: {
+      name: "圣殿十字军",
+      skillList: [
+      ]},
+    1211: {
+      name: "卢恩骑士",
+      skillList: [
+      ]},
+    1411: {
+      name: "皇家卫士",
+      skillList: [
       ]}
   };
   return jobData[key];

@@ -49,10 +49,11 @@ function initSave() {
       [2000,
         []],
       0],
-    /* 10:习得技能，[职业,[技能]]，存键 */
-    [[1,
+    /* 10:习得技能，[技能,等级]，存键 */
       [[0,
-        1],[1,1]]]],
+        1],
+        [1,
+          1]],
     /* 11:携带物品，[物品,数量]，存键 */
     [[1,
       1]],
@@ -133,9 +134,9 @@ function convertSaveToYou() {
     learnedSkill: (function () {
       var obj = {};
       for (let i = 0; i < save[10].length; i++)
-        obj[save[10][i][0]] = {
-        id: save[10][i][1][0],
-        lv: save[10][i][1][1]
+        obj[i] = {
+        id: save[10][i][0],
+        lv: save[10][i][1]
       };
       return obj;
     })(),
@@ -340,13 +341,11 @@ function skillInfoContent(tab = -1) {
     content += "【"+jobData(1).name+"】";
     content += "</th><th>";
     content += "剩余点数：";
-    content += 
-     for(let i=0;i<jobData(1).skillList.length,i++)
-  }
-  for(let i=0;i<jobData(you.currentJob).skillList.length,i++)
-  
-  if(you.currentJob>1) {
-    
-  }
+    content +=
+    for (let i = 0; i < jobData(1).skillList.length, i++)
+    }
+  for (let i = 0; i < jobData(you.currentJob).skillList.length, i++)
+
+    if (you.currentJob > 1) {}
   return;
 }

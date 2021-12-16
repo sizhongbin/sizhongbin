@@ -131,7 +131,7 @@ function convertSaveToYou() {
         id: save[9][9][0],
         card: save[9][9][1]
       },
-      "投射物": save[9][10];
+      "投射物": save[9][10]
     },
     learnedSkill: (() => {
       var obj = {};

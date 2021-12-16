@@ -51,7 +51,7 @@ function getEquipBonusStats() {
   else totalBonusStats.atk += you.stats.str;
   for (key in you.equip) {
     if (equipData(you.equip[key].id).series === "防具") totalBonusStats.wdef += equipData(you.equip[key].id).wdef;
-    else {
+    else if (equipData(you.equip[key].id).series === "武器"){
       totalBonusStats.watk += equipData(you.equip[key].id).watk;
       totalBonusStats.range += equipData(you.equip[key].id).range
     };

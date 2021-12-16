@@ -131,12 +131,12 @@ function convertSaveToYou() {
         card: save[9][9][1]
       }
     },
-    learnedSkill: () => {
+    learnedSkill: (() => {
       var obj = {};
       for (let i = 0; i < save[10].length; i++)
         obj[save[10][i][0]] = save[10][i][1];
       return obj;
-    },
+    })(),
     carriedItem: (function () {
       var obj = {};
       for (let i = 0; i < save[11].length; i++)

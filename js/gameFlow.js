@@ -154,6 +154,68 @@ function convertSaveToYou() {
   };
   return;
 }
+/* 存档 */
+function save(){
+  var save = [];
+    save[0] = you.currentStage;
+    save[1] = you sensedEnemy;
+    save[2] = you.jobLv;
+    save[3] = you.currentJob;
+    save[4] = you.attribute;
+    save[5] = you.race;
+    save[6] = you.size;
+    save[7] = you.zeny;
+    save[8][0] = you.stats.str;
+    save[8][1] = you.stats.agi;
+    save[8][2] = you.stats.vit;
+    save[8][3] = you.stats.int;
+    save[8][4] = you.stats.dex;
+    save[8][5] = you.stats.luk;
+    save[9][0][0] = you.equip["头上"].id;
+    save[9][0][1] = you.equip["头上"].card;
+    save[9][1][0] = you.equip["头中"].id;
+    save[9][1][1] = you.equip["头中"].card;
+    save[9][2][0] = you.equip["头下"].id;
+    save[9][2][1] = you.equip["头下"].card;
+    save[9][3][0] = you.equip["身体"].id;
+    save[9][3][1] = you.equip["身体"].card;
+    save[9][4][0] = you.equip["副手"].id;
+    save[9][4][1] = you.equip["副手"].card;
+    save[9][5][0] = you.equip["主手"].id;
+    save[9][5][1] = you.equip["主手"].card;
+    save[9][6][0] = you.equip["披挂"].id;
+    save[9][6][1] = you.equip["披挂"].card;
+    save[9][7][0] = you.equip["鞋子"].id;
+    save[9][7][1] = you.equip["鞋子"].card;
+    save[9][8][0] = you.equip["饰品一"].id;
+    save[9][8][1] = you.equip["饰品一"].card;
+    save[9][9][0] = you.equip["饰品二"].id;
+    save[9][9][1] = you.equip["饰品二"].card;
+      "饰品二": {
+    
+    learnedSkill: (() => {
+      var obj = {};
+      for (let i = 0; i < save[10].length; i++)
+        obj[save[10][i][0]] = save[10][i][1];
+      return obj;
+    })(),
+    carriedItem: (function () {
+      var obj = {};
+      for (let i = 0; i < save[11].length; i++)
+        obj[save[11][i][0]] = save[11][i][1];
+      return obj;
+    })(),
+    assist: [],
+    storeItem: (function () {
+      var obj = {};
+      for (let i = 0; i < save[13].length; i++)
+        obj[save[13][i][0]] = save[13][i][1];
+      return obj;
+    })(),
+    guild: (save[14] === 1 ? "天禁仙境": "无")
+  };
+  return;
+}
 /* 通过值找键*/
 function findKey(obj, value, compare = (a, b) => a === b) {
   return Object.keys(obj).find(k => compare(obj[k], value))
@@ -161,7 +223,7 @@ function findKey(obj, value, compare = (a, b) => a === b) {
 /* 游戏开始 */
 function gameStart() {
   /* 显示版本号 */
-  document.getElementById("ver").innerHTML = "Dev.20211214";
+  document.getElementById("ver").innerHTML = "Dev.20211216";
   /* 判断存档是否存在 */
   var saveData = Cookies.get("s");
   if (!saveData) {

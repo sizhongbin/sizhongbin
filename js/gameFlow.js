@@ -205,6 +205,7 @@ function save() {
   save[9][9] = [];
   save[9][9][0] = you.equip["饰品二"].id;
   save[9][9][1] = you.equip["饰品二"].card;
+  save[9][10] = you.equip["投射物"];
   save[10] = [];
   for (let i = 0, k = Object.keys(you.learnedSkill); i < k.length; i++) {
     save[10][i] = [];

@@ -358,11 +358,11 @@ function skillInfoContent(tab = -1) {
       row += "<tr><td>" + youSkillData(jobData(1).skillList[i]).name + "</td>";
       /* 等级 */
       let learnedLv = you.learnedSkill[jobData(1).skillList[i]];
-      row += "<td>" + (learnedLv ? learnedLv : 0) + "&nbsp;/&nbsp;" + youSkillData(jobData(1).skillList[i]).maxlv + "</td><td>";
+      row += "<td>" + (learnedLv ? learnedLv : 0) + "&nbsp;/&nbsp;" + youSkillData(jobData(1).skillList[i]).maxlv + "</td>";
       /* 学习按钮 */
-      row += "<td><button id='learn" + jobData(1).skillList[i] + "' onclick='learnSkill(" + jobData(1).skillList[i] + "'>+</button></td>";
+      row += "<td><button id='learn" + jobData(1).skillList[i] + "' onclick='learnSkill(" + jobData(1).skillList[i] + ")'>+</button></td>";
       /* 详细按钮 */
-      row += "<td><button id='detail" + jobData(1).skillList[i] + "' onclick='skillDetail(" + jobData(1).skillList[i] + "'>详情</button></td></tr>";
+      row += "<td><button id='detail" + jobData(1).skillList[i] + "' class='skillInfoDetailButton' onclick='skillDetail(" + jobData(1).skillList[i] + ")'>详情</button></td></tr>";
       /* 页面增加列表 */
       document.getElementById("skillInfoTable").innerHTML += row;
       /* 判断学习按钮是否隐藏 */
@@ -373,4 +373,15 @@ function skillInfoContent(tab = -1) {
     }
   }
   return;
+}
+/* 重置技能 */
+function resetSkill() {
+  you.learnedSkill = {};
+  skillInfoContent();
+}
+/* 学习技能 */
+function learnSkill(id) {
+  if (you.learnedSkill[id]) you.learnedSkill[id] += 1;
+  else you.learnedSkill[id] = 1;
+  skillInfoContent();
 }

@@ -181,6 +181,10 @@ button:active {
   height: 5vh;
   width: 20vw;
 }
+.skillInfoDetailButton {
+  height: 1.5rem;
+  width: 3rem;
+}
 .stageInfoButtons {
   position: relative;
   width: 100%;

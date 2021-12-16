@@ -1,9 +1,17 @@
 /* 职业数据 */
 function jobData(key) {
   var jobData = {
-    0: "基本",
-    1: "初心者",
-    2: "剑士"
+    0: {
+      name: "基本"
+    },
+    1: {
+      name: "初心者",
+      skillList: [1,
+        2]},
+    11: {
+      name: "剑士",
+      skillList: [
+      ]}
   };
   return jobData[key];
 }
@@ -261,7 +269,7 @@ function youSkillData(key) {
       cd: function(lv = 1) {
         return 0;
       },
-      requireSkill: [],
+      requireSkill: {},
       requireWeapon: [],
       intro: "攻击",
       series: "攻击",
@@ -288,9 +296,9 @@ function youSkillData(key) {
       cd: function(lv = 1) {
         return 0;
       },
-      requireSkill: [],
+      requireSkill: {},
       requireWeapon: [],
-      intro: "冒险者的基本技能",
+      intro: "【被动】冒险者的基本技能",
       series: "被动",
       type: "物理",
       attribute: "无",
@@ -312,12 +320,11 @@ function youSkillData(key) {
       cd: function(lv = 1) {
         return 0;
       },
-      requireSkill: [{
-        name: "基本技能",
-        lv: 1
-      }],
+      requireSkill: {
+        1: 1
+      },
       requireWeapon: [],
-      intro: "回复自身5点HP",
+      intro: "Lv 1：回复自身5点HP",
       series: "回复",
       type: "魔法",
       attribute: "无",

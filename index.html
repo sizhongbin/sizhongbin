@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>天禁仙境</title>
-  <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
 <body onload="gameStart()">
@@ -92,7 +92,7 @@
         </div>
         <div class="stageInfoButtons">
           <button class="button1" onclick="charaInfo('stageInfo')">角色/加点</button>
-          <button class="button2">技能/学习</button>
+          <button class="button2" onclick="skillInfo('stageInfo')">技能/学习</button>
           <button class="button3">出发</button>
           <button class="button4">道具/仓库</button>
           <button class="button5">装备/支援</button>
@@ -187,6 +187,34 @@
         </div>
         <button class="button5" onclick="resetStats()">重置</button>
         <button class="button6" onclick="stageInfo('charaInfoBox')">返回</button>
+      </div>
+      <div id="skillInfoBox" class="skillInfoBox">
+        <div class="skillInfo">
+          <h2>Skill</h2>
+          <div class="skillInfoHead">
+            <div id="job0" class="skillInfoHeadTab" onclick="skillInfoContent(0)">
+              初心者
+            </div>
+            <div id="job1" class="skillInfoHeadTab" onclick="skillInfoContent(1)">
+              一转
+            </div>
+            <div id="job2" class="skillInfoHeadTab" onclick="skillInfoContent(2)">
+              二转
+            </div>
+            <div id="job3" class="skillInfoHeadTab" onclick="skillInfoContent(3)">
+              三转
+            </div>
+          </div>
+          <div id="skillInfoContent" class="skillInfoContent">
+            <table id="skillInfoTable" class="skillInfoTable"></table>
+            <div id="skillInfoDetailBox" class="skillInfoDetailBox">
+              <div id="skillInfoDetail" class="skillInfoDetail"></div>
+              <button class="button6" onclick="closePop('skillInfoDetailBox')">关闭</button>
+            </div>
+          </div>
+        </div>
+        <button class="button5" onclick="resetSkill();closePop('skillInfoDetailBox')">重置</button>
+        <button class="button6" onclick="stageInfo('skillInfoBox');closePop('skillInfoDetailBox')">返回</button>
       </div>
     </div>
     <!--加载脚本文件-->

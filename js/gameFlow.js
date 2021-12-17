@@ -30,31 +30,31 @@ function initSave() {
     /* 9:装备，[部位[装备,[卡片]]]，最后为投射物，存键 */
     [[2000,
       []],
-    [2000,
-      []],
-    [2000,
-      []],
-    [2002,
-      []],
-    [2000,
-      []],
-    [1001,
-      []],
-    [2000,
-      []],
-    [2000,
-      []],
-    [2000,
-      []],
-    [2000,
-      []],
-    [4000,
-      []]],
+      [2000,
+        []],
+      [2000,
+        []],
+      [2002,
+        []],
+      [2000,
+        []],
+      [1001,
+        []],
+      [2000,
+        []],
+      [2000,
+        []],
+      [2000,
+        []],
+      [2000,
+        []],
+      [4000,
+        []]],
     /* 10:习得技能，[技能,等级]，存键 */
     [[1,
       1],
-    [2,
-      1]],
+      [2,
+        1]],
     /* 11:携带物品，[道具,数量]，存键 */
     [[1,
       1]],
@@ -155,7 +155,7 @@ function convertSaveToYou() {
         obj[save[13][i][0]] = save[13][i][1];
       return obj;
     })(),
-    guild: (save[14] == 1 ? "天禁仙境" : "无")
+    guild: (save[14] == 1 ? "天禁仙境": "无")
   };
   return;
 }
@@ -230,7 +230,7 @@ function save() {
     save[13][i][0] = Number(k[i]);
     save[13][i][1] = you.storeItem[k[i]];
   }
-  save[14] = (you.guild == "无" ? 0 : 1);
+  save[14] = (you.guild == "无" ? 0: 1);
   Cookies.set("s", JSON.stringify(save), {
     expires: 365
   });
@@ -445,7 +445,7 @@ function skillInfoContent(tab = -1) {
     let usedPoint = 0;
     for (key in you.learnedSkill)
       if (jobData(job).skillList.includes(Number(key)))
-        usedPoint += you.learnedSkill[key];
+      usedPoint += you.learnedSkill[key];
     return you.jobLv[job] - 1 - usedPoint;
   })();
   title += point;
@@ -458,7 +458,7 @@ function skillInfoContent(tab = -1) {
     row += "<tr><td>" + youSkillData(jobData(job).skillList[i]).name + "</td>";
     /* 等级 */
     let learnedLv = you.learnedSkill[jobData(job).skillList[i]];
-    row += "<td>" + (learnedLv ? learnedLv : 0) + "&nbsp;/&nbsp;" + youSkillData(jobData(job).skillList[i]).maxlv + "</td>";
+    row += "<td>" + (learnedLv ? learnedLv: 0) + "&nbsp;/&nbsp;" + youSkillData(jobData(job).skillList[i]).maxlv + "</td>";
     /* 学习按钮 */
     row += "<td><button id='learn" + jobData(job).skillList[i] + "' class='skillInfoLearnButton' onclick='learnSkill(" + jobData(job).skillList[i] + ")'>+</button></td>";
     /* 详细按钮 */
@@ -473,7 +473,7 @@ function skillInfoContent(tab = -1) {
           if (!you.learnedSkill[key] || you.learnedSkill[key] < youSkillData(jobData(job).skillList[i]).requireSkill[key]) return true;
         return false;
       })()))
-      document.getElementById("learn" + jobData(job).skillList[i]).style.visibility = "hidden";
+    document.getElementById("learn" + jobData(job).skillList[i]).style.visibility = "hidden";
     else
       document.getElementById("learn" + jobData(job).skillList[i]).style.visibility = "visible";
   }
@@ -497,15 +497,15 @@ function skillDetail(id) {
     container += "无";
   else
     for (key in youSkillData(id).requireSkill)
-      container += youSkillData(key).name + "&nbsp;Lv." + youSkillData(id).requireSkill[key] + "&nbsp;";
+    container += youSkillData(key).name + "&nbsp;Lv." + youSkillData(id).requireSkill[key] + "&nbsp;";
   container += "<br>武器要求：";
   if (youSkillData(id).requireWeapon.length == 0)
     container += "无";
   else
     youSkillData(skillName).requireWeapon.forEach(function (value) {
-      container += value + "&nbsp;";
-    });
-  container += "<br><font color=\"blue\">SP：" + youSkillData(id).sp((you.learnedSkill[id]) ? (you.learnedSkill[id]) : 1) + "</font><font color=\"yellow\">&nbsp;AP：" + youSkillData(id).ap((you.learnedSkill[id]) ? (you.learnedSkill[id]) : 1) + "</font><font color=\"orange\"><br>CT：" + youSkillData(id).ct((you.learnedSkill[id]) ? (you.learnedSkill[id]) : 1) + "</font><font color=\"grey\">&nbsp;CD：" + youSkillData(id).cd((you.learnedSkill[id]) ? (you.learnedSkill[id]) : 1) + "</font><br>" + youSkillData(id).intro;
+    container += value + "&nbsp;";
+  });
+  container += "<br><font color=\"blue\">SP：" + youSkillData(id).sp((you.learnedSkill[id]) ? (you.learnedSkill[id]): 1) + "</font><font color=\"yellow\">&nbsp;AP：" + youSkillData(id).ap((you.learnedSkill[id]) ? (you.learnedSkill[id]): 1) + "</font><font color=\"orange\"><br>CT：" + youSkillData(id).ct((you.learnedSkill[id]) ? (you.learnedSkill[id]): 1) + "</font><font color=\"grey\">&nbsp;CD：" + youSkillData(id).cd((you.learnedSkill[id]) ? (you.learnedSkill[id]): 1) + "</font><br>" + youSkillData(id).intro;
   document.getElementById("skillInfoDetail").innerHTML = container;
   document.getElementById("skillInfoDetailBox").style.display = "block";
   return;
@@ -533,46 +533,51 @@ function itemInfo(scene) {
   return;
 }
 /* 展示携带道具列表 */
-function itemInfoContent(tab,store=0) {
+function itemInfoContent(tab, store = 0) {
   /* 定义每个tab展示的道具series */
   let series = (() => {
     switch (tab) {
       case 0: return ["可使用"];
-      case 1: return ["武器", "防具"];
-      case 2: return ["投射物", "卡片", "材料"]
-    }
-  })();
-  /* 更改选中tab背景色 */
-  document.getElementById("itemInfoHeadTab0").className = "itemInfoHeadTab";
-  document.getElementById("itemInfoHeadTab1").className = "itemInfoHeadTab";
-  document.getElementById("itemInfoHeadTab2").className = "itemInfoHeadTab";
-  document.getElementById("itemInfoHeadTab" + tab).className = "itemInfoHeadTabSelected";
-  /* 根据选中tab展示道具 */
-  document.getElementById("itemInfoTable").innerHTML = "<tr><td colspan='5'>Weight：" + getCarriedWeight() + "&nbsp;/&nbsp" + getBoardStats().maxweight + "</td></tr>";
-  for (key in you.carriedItem) {
-    let row = "";
-    if (series.includes(itemData(key).series)) {
-      /* 道具名 */
-      row += "<tr><td>" + itemData(key).name + "</td>";
-      /* 数量 */
-      row += "<td>x" + you.carriedItem[key] + "</td>";
-      /* 使用按钮 */
-      row += "<td><button id='use" + key + "' class='itemInfoUseButton' onclick='useItem(" + key + ")'>" + (() => {
-        switch (itemData(key).series) {
-          case "可使用": return "用";
-          case "武器":
-          case "防具":
-          case "投射物":
-          case "卡片":
-            return "装";
-          default: return "";
+        case 1: return ["武器", "防具"];
+          case 2: return ["投射物", "卡片", "材料"];
         }
-      })() + "</button></td>";
-      /* 详细按钮 */
-      row += "<td><button id='itemDetail" + key + "' class='itemInfoDetailButton' onclick='itemDetail(" + key + ")'>详</button></td></tr>";
-      /* 页面增加列表 */
-      document.getElementById("itemInfoTable").innerHTML += row;
+    })();
+    /* 更改选中tab背景色 */
+    document.getElementById("itemInfoHeadTab0").className = "itemInfoHeadTab";
+    document.getElementById("itemInfoHeadTab1").className = "itemInfoHeadTab";
+    document.getElementById("itemInfoHeadTab2").className = "itemInfoHeadTab";
+    document.getElementById("itemInfoHeadTab" + tab).className = "itemInfoHeadTabSelected";
+    /* 根据选中tab展示道具 */
+    document.getElementById("itemInfoTable").innerHTML = "<tr><td colspan='5'>Weight：" + getCarriedWeight() + "&nbsp;/&nbsp" + getBoardStats().maxweight + "</td></tr>";
+    for (key in you.carriedItem) {
+      let row = "";
+      if (series.includes(itemData(key).series)) {
+        /* 道具名 */
+        row += "<tr><td>" + itemData(key).name + "</td>";
+        /* 数量 */
+        row += "<td>x" + you.carriedItem[key] + "</td>";
+        /* 使用按钮 */
+        row += "<td><button id='use" + key + "' class='itemInfoUseButton' onclick='useItem(" + key + ")'>" + (() => {
+          switch (itemData(key).series) {
+            case "可使用": return "用";
+              case "武器":
+              case "防具":
+              case "投射物":
+              case "卡片":
+                return "装";
+          }})() + "</button></td>";
+                /* 详细按钮 */
+                row += "<td><button id='itemDetail" + key + "' class='itemInfoDetailButton' onclick='itemDetail(" + key + ")'>详</button></td></tr>";
+                /* 页面增加列表 */
+                document.getElementById("itemInfoTable").innerHTML += row;
+            }
+          }
+          return;
+      }
+        /* 切换展示携带和仓库 */
+        function itemInfoSwitch(scene) {
+          document.getElementById("itemInfoHeadTab0").onclick = Function("itemInfoContent("+(0+scene*3)+");");
+          document.getElementById("itemInfoHeadTab0").onclick = Function("itemInfoContent(3);");
+          document.getElementById("itemInfoHeadTab0").onclick = Function("itemInfoContent(3);");
+      }
     }
-  }
-  return;
-}

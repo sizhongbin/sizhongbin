@@ -185,7 +185,7 @@ button:active {
 }
 .skillInfoDetailButton,.itemInfoUseButton,.itemInfoDetailButton {
   height: 1.5rem;
-  width: 3rem;
+  width: 1.5rem;
 }
 .stageInfoButtons {
   position: relative;

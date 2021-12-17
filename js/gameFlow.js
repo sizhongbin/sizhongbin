@@ -463,7 +463,7 @@ function skillInfoContent(tab = -1) {
     /* 学习按钮 */
     row += "<td><button id='learn" + jobData(job).skillList[i] + "' class='skillInfoLearnButton' onclick='learnSkill(" + jobData(job).skillList[i] + ")'>+</button></td>";
     /* 详细按钮 */
-    row += "<td><button id='detail" + jobData(job).skillList[i] + "' class='skillInfoDetailButton' onclick='skillDetail(" + jobData(job).skillList[i] + ")'>详情</button></td></tr>";
+    row += "<td><button id='skillDetail" + jobData(job).skillList[i] + "' class='skillInfoDetailButton' onclick='skillDetail(" + jobData(job).skillList[i] + ")'>详情</button></td></tr>";
     /* 页面增加列表 */
     document.getElementById("skillInfoTable").innerHTML += row;
     /* 判断学习按钮是否隐藏 */
@@ -554,13 +554,21 @@ function itemInfoContent(tab) {
       /* 数量 */
       row += "<td>" + you.carriedItem[key] + "</td>";
       /* 使用按钮 */
-      row += "<td><button id='use" + key + "' class='itemInfoUseButton' onclick='useItem(" + key + ")'>" + (()=>{
-        
-      })() +"</button></td>";
+      row += "<td><button id='use" + key + "' class='itemInfoUseButton' onclick='useItem(" + key + ")'>" + (() => {
+        switch (itemData(key).series) {
+          case "可使用": return "使用";
+          case "武器":
+          case "防具":
+          case "投射物":
+          case "卡片":
+            return "装备";
+          default: return "";
+        }
+      })() + "</button></td>";
       /* 详细按钮 */
-      row += "<td><button id='detail" + jobData(job).skillList[i] + "' class='skillInfoDetailButton' onclick='skillDetail(" + jobData(job).skillList[i] + ")'>详情</button></td></tr>";
+      row += "<td><button id='itemDetail" + key + "' class='itemInfoDetailButton' onclick='itemDetail(" + key + ")'>详情</button></td></tr>";
       /* 页面增加列表 */
-      document.getElementById("skillInfoTable").innerHTML += row;
+      document.getElementById("itemInfoTable").innerHTML += row;
     }
   }
   return;

@@ -544,9 +544,12 @@ function itemInfoContent(tab) {
     }
   })();
   /* 更改选中tab背景色 */
+  document.getElementById("itemInfoHeadTab0").className = "itemInfoHeadTab";
+  document.getElementById("itemInfoHeadTab1").className = "itemInfoHeadTab";
+  document.getElementById("itemInfoHeadTab2").className = "itemInfoHeadTab";
   document.getElementById("itemInfoHeadTab" + tab).className = "itemInfoHeadTabSelected";
   /* 根据选中tab展示道具 */
-  document.getElementById("itemInfoTable").innerHTML = "<tr><td colspan='5'>Weight：" + you.getCarriedWeight + "&nbsp;/&nbsp" + getBoardStats().maxweight + "</td></tr>";
+  document.getElementById("itemInfoTable").innerHTML = "<tr><td colspan='5'>Weight：" + getCarriedWeight() + "&nbsp;/&nbsp" + getBoardStats().maxweight + "</td></tr>";
   for (key in you.carriedItem) {
     let row = "";
     if (series.includes(itemData(key).series)) {

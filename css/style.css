@@ -23,7 +23,6 @@ button:active {
   background-color: #B2EBF2;
 }
 .gameStartButton {
-  position: relative;
   margin: 0 auto;
 }
 .ver {

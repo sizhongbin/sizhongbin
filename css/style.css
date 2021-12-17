@@ -62,7 +62,7 @@ button:active {
   transition: opacity 0.5s;
   opacity: 1;
 }
-.storyBox,.stageInfoBox,.charaInfoBox,.skillInfoBox {
+.storyBox,.stageInfoBox,.charaInfoBox,.skillInfoBox,.itemInfoBox {
   height: 100%;
   width: 100%;
   position: relative;
@@ -109,7 +109,7 @@ button:active {
   bottom: 2vh;
   right: 4vw;
 }
-.storyBox > h2,.charaInfo > h2,.skillInfo > h2 {
+.storyBox > h2,.charaInfo > h2,.skillInfo > h2, itemInfo > h2 {
   position: relative;
   font-size: 1.3rem;
   line-height: 3rem;
@@ -200,7 +200,7 @@ button:active {
   width: 100%;
   overflow: auto;
 }
-.skillInfo {
+.skillInfo,.itemInfo {
   height: calc(100% - 9vh);
   width: 100%;
 }
@@ -230,6 +230,7 @@ button:active {
   display: none;
   border: 0.1rem solid #00BCD4;
   box-sizing: border-box;
+  overflow: auto;
 }
 .popContent {
   position: absolute;

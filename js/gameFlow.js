@@ -398,7 +398,7 @@ function initSave() {
     /* 根据调用场景隐藏窗口 */
     if (scene === "stageInfo") {
       document.getElementById("stageInfoBox").style.display = "none";
-      document.getElementById("skillInfoBox").style.opacity = "0";
+      document.getElementById("stageInfoBox").style.opacity = "0";
       document.getElementById("skillInfoBox").style.display = "block";
     }
     /* 根据现有职业展示head */
@@ -514,5 +514,21 @@ function initSave() {
   /* 关闭弹框 */
   function closePop(id) {
     document.getElementById(id).style.display = "none";
+    return;
+  }
+  /* 展示道具和仓库 */
+  function itemInfo(scene) {
+    /* 根据调用场景隐藏窗口 */
+    if (scene === "stageInfo") {
+      document.getElementById("stageInfoBox").style.display = "none";
+      document.getElementById("stageInfoBox").style.opacity = "0";
+      document.getElementById("itemInfoBox").style.display = "block";
+    }
+    
+    /* 淡入 */
+    function a() {
+      document.getElementById("itemInfoBox").style.opacity = 1;
+    }
+    setTimeout(a, 100);
     return;
   }

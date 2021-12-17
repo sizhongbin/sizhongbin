@@ -16,7 +16,11 @@
     <div id="gameContent" class="gameContent">
       <div id="gameStart" class="gameStart">
         <a id="ver" class="ver">Loading……</a>
-        <button id="updateLog" class="button6" onclick="updateLog()" style="visibility:hidden">更新日志</button>
+        <button id="updateLogButton" class="button6" onclick="updateLog()" style="visibility:hidden">更新日志</button>
+        <div id="updateLogBox" class="popLarge">
+          <div id="updateLog" class="popContent"></div>
+          <button class="button6" onclick="closePop('updateLogBox')">关闭</button>
+        </div>
       </div>
       <div id="chapter0" class="storyBox">
         <h1>
@@ -208,8 +212,8 @@
           </div>
           <div id="skillInfoContent" class="skillInfoContent">
             <table id="skillInfoTable" class="skillInfoTable"></table>
-            <div id="skillInfoDetailBox" class="skillInfoDetailBox">
-              <div id="skillInfoDetail" class="skillInfoDetail"></div>
+            <div id="skillInfoDetailBox" class="popLarge">
+              <div id="skillInfoDetail" class="popContent"></div>
               <button class="button6" onclick="closePop('skillInfoDetailBox')">关闭</button>
             </div>
           </div>

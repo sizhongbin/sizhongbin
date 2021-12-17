@@ -27,7 +27,8 @@ button:active {
 }
 .ver {
   position: absolute;
-  bottom: 0;
+  bottom: 0.5rem;
+  left: 0.5rem;
 }
 .gameBox {
   position: absolute;
@@ -219,7 +220,7 @@ button:active {
   border: 0.1rem solid #00BCD4;
   box-sizing: border-box;
 }
-.skillInfoDetailBox {
+.popLarge {
   position: absolute;
   height: 90%;
   width: 90%;
@@ -230,13 +231,12 @@ button:active {
   border: 0.1rem solid #00BCD4;
   box-sizing: border-box;
 }
-.skillInfoDetail {
+.popContent {
   position: absolute;
   height: 90%;
   width: 90%;
   left: 5%;
   top: 5%;
-  background-color: #1E1E1E;
 }
 .skillInfoHeadTab,.skillInfoHeadTabSelected {
   width: 100%;

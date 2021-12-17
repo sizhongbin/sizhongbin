@@ -244,7 +244,7 @@ function initSave() {
   function gameStart() {
     /* 显示版本号 */
     document.getElementById("ver").innerHTML = "Dev.20211216";
-    document.getElementById("updateLog").style.visibility = "visible";
+    document.getElementById("updateLogButton").style.visibility = "visible";
     /* 判断存档是否存在 */
     var saveData = Cookies.get("s");
     if (!saveData) {
@@ -260,6 +260,11 @@ function initSave() {
       button.className = "gameStartButton";
       document.getElementById("gameStart").appendChild(button);
     }
+    return;
+  }
+  /* 更新日志 */
+  function updateLog() {
+    document.getElementById("updateLog") = "开发中";
     return;
   }
   /* 读档，传1新开档 */

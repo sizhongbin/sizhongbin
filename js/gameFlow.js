@@ -536,13 +536,16 @@ function itemInfo(scene) {
 /* 展示携带道具列表 */
 function itemInfoContent(tab) {
   /* 定义每个tab展示的道具series */
+  console.log(tab);
   let series = ((tab) => {
+    console.log(tab);
     switch (tab) {
       case 0: return ["可使用"];
       case 1: return ["武器", "防具"];
       case 2: return ["投射物", "卡片", "材料"]
     }
   })();
+  console.log(series);
   /* 更改选中tab背景色 */
   document.getElementById("itemInfoHeadTab" + tab).className = "itemInfoHeadTab";
   /* 根据选中tab展示道具 */

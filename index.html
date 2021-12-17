@@ -16,6 +16,7 @@
     <div id="gameContent" class="gameContent">
       <div id="gameStart" class="gameStart">
         <a id="ver" class="ver">Loading……</a>
+        <button id="updateLog" class="button6" onclick="updateLog()" style="visibility:hidden">更新日志</button>
       </div>
       <div id="chapter0" class="storyBox">
         <h1>
@@ -94,7 +95,7 @@
           <button class="button1" onclick="charaInfo('stageInfo')">角色/加点</button>
           <button class="button2" onclick="skillInfo('stageInfo')">技能/学习</button>
           <button class="button3">出发</button>
-          <button class="button4">道具/仓库</button>
+          <button class="button4" onclick="itemInfo('stageInfo')">道具/仓库</button>
           <button class="button5">装备/支援</button>
         </div>
       </div>
@@ -216,6 +217,7 @@
         <button class="button5" onclick="resetSkill();closePop('skillInfoDetailBox')">重置</button>
         <button class="button6" onclick="stageInfo('skillInfoBox');closePop('skillInfoDetailBox')">返回</button>
       </div>
+      <div id="itemInfoBox" class="itemInfoBox"></div>
     </div>
     <!--加载脚本文件-->
     <script src="./js/js.cookie.js"></script>

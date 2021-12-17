@@ -430,9 +430,9 @@ function skillInfoContent(tab = -1) {
   /* tab为0时必定为初心者 */
   if (tab == "job0") job = 1;
   /* tab为1时判断一转职业 */
-  else if (tab == "job1") job = you.currentJob % 10 + 10;
+  else if (tab == "job1") job = Number(you.currentJob) % 100;
   /* tab为2时判断二转职业 */
-  else if (tab == "job2") job = you.currentJob % 100 + 100;
+  else if (tab == "job2") job = Number(you.currentJob) % 1000;
   /* tab为3时判断三转职业 */
   else job = you.currentJob;
   /* 【职业名】 */

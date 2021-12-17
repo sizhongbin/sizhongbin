@@ -211,6 +211,9 @@ button:active {
   height: calc(100% - 9vh - 3rem);
   box-sizing: border-box;
 }
+.itemInfoHead {
+  display: flex;
+}
 .skillInfoContent,.itemInfoContent {
   position: absolute;
   left: calc(2rem + 2%);

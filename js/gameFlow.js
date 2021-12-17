@@ -244,6 +244,7 @@ function initSave() {
   function gameStart() {
     /* 显示版本号 */
     document.getElementById("ver").innerHTML = "Dev.20211216";
+    document.getElementById("updateLog").style.visibility = "visible";
     /* 判断存档是否存在 */
     var saveData = Cookies.get("s");
     if (!saveData) {

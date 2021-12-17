@@ -251,11 +251,13 @@ function initSave() {
       let button = document.createElement("button");
       button.innerHTML = "开始游戏";
       button.setAttribute("onclick", "gameLoad(1)");
+      button.className = "gameStartButton";
       document.getElementById("gameStart").appendChild(button);
     } else {
       let button = document.createElement("button");
       button.innerHTML = "继续游戏";
       button.setAttribute("onclick", "gameLoad(0)");
+      button.className = "gameStartButton";
       document.getElementById("gameStart").appendChild(button);
     }
     return;

@@ -264,7 +264,8 @@ function initSave() {
   }
   /* 更新日志 */
   function updateLog() {
-    document.getElementById("updateLog") = "开发中";
+    document.getElementById("updateLog").innerHTML = "开发中";
+    document.getElementById("updateLogBox").style.display="block";
     return;
   }
   /* 读档，传1新开档 */

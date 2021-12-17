@@ -537,7 +537,7 @@ function itemInfo(scene) {
 function itemInfoContent(tab) {
   /* 定义每个tab展示的道具series */
   console.log(tab);
-  let series = ((tab) => {
+  let series = (() => {
     console.log(tab);
     switch (tab) {
       case 0: return ["可使用"];

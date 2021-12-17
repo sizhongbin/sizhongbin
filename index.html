@@ -224,7 +224,25 @@
       <div id="itemInfoBox" class="itemInfoBox">
         <div class="itemInfo">
           <h2>Item</h2>
-          
+          <div class="itemInfoHead">
+            <div id="itemInfoHeadTab0" class="itemInfoHeadTab" onclick="itemInfoContent(0)">
+              可使用
+            </div>
+            <div id="itemInfoHeadTab1" class="itemInfoHeadTab" onclick="itemInfoContent(1)">
+              装备
+            </div>
+            <div id="itemInfoHeadTab2" class="itemInfoHeadTab" onclick="itemInfoContent(2)">
+              其他
+            </div>
+            </div>
+          </div>
+          <div id="itemInfoContent" class="skillInfoContent">
+            <table id="skillInfoTable" class="skillInfoTable"></table>
+            <div id="skillInfoDetailBox" class="popLarge">
+              <div id="skillInfoDetail" class="popContent"></div>
+              <button class="button6" onclick="closePop('skillInfoDetailBox')">关闭</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

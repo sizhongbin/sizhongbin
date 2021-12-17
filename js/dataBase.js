@@ -200,7 +200,7 @@ function equipData(key) {
     2000: {
       name: "空",
       series: "防具",
-      type: "其它",
+      type: "无",
       wdef: 0,
       wt: 0,
       attribute: "无",
@@ -211,14 +211,14 @@ function equipData(key) {
     1000: {
       name: "空手",
       series: "武器",
-      type: "拳套",
+      type: "无",
       watk: 0,
       wt: 0,
       attribute: "无",
       range: 1,
       requireJob: [],
       slot: 0,
-      intro: "赤手空拳",
+      intro: "无",
       script: []},
     1001: {
       name: "短剑",
@@ -291,8 +291,8 @@ function itemData(key) {
       cd: 1,
       requireJob: "无",
       intro: "回复5点HP",
-      series: "回复",
-      type: "道具",
+      series: "可使用",
+      type: "回复",
       range: 0,
       target: ["自己"],
       script: [{

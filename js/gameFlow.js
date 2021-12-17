@@ -560,24 +560,23 @@ function itemInfoContent(tab, store = 0) {
         row += "<td><button id='use" + key + "' class='itemInfoUseButton' onclick='useItem(" + key + ")'>" + (() => {
           switch (itemData(key).series) {
             case "可使用": return "用";
-              case "武器":
-              case "防具":
-              case "投射物":
-              case "卡片":
-                return "装";
-          }})() + "</button></td>";
-                /* 详细按钮 */
-                row += "<td><button id='itemDetail" + key + "' class='itemInfoDetailButton' onclick='itemDetail(" + key + ")'>详</button></td></tr>";
-                /* 页面增加列表 */
-                document.getElementById("itemInfoTable").innerHTML += row;
-            }
+              case "武器": return "装";
+                case "防具":
+                  case "投射物":
+                    case "卡片":
+                      return "装";
+                  }})() + "</button></td>";
+            /* 详细按钮 */
+            row += "<td><button id='itemDetail" + key + "' class='itemInfoDetailButton' onclick='itemDetail(" + key + ")'>详</button></td></tr>";
+            /* 页面增加列表 */
+            document.getElementById("itemInfoTable").innerHTML += row;
           }
-          return;
       }
-        /* 切换展示携带和仓库 */
-        function itemInfoSwitch(scene) {
-          document.getElementById("itemInfoHeadTab0").onclick = Function("itemInfoContent("+(0+scene*3)+");");
-          document.getElementById("itemInfoHeadTab0").onclick = Function("itemInfoContent(3);");
-          document.getElementById("itemInfoHeadTab0").onclick = Function("itemInfoContent(3);");
+        return;
       }
-    }
+      /* 切换展示携带和仓库 */
+      function itemInfoSwitch(scene) {
+        document.getElementById("itemInfoHeadTab0").onclick = Function("itemInfoContent("+(1+scene*3)+");");
+        document.getElementById("itemInfoHeadTab1").onclick = Function("itemInfoContent("+(0+scene*3)+");");
+        if (document.getElementById("itemInfoHeadTab0
+      }

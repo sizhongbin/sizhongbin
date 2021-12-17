@@ -533,7 +533,7 @@ function itemInfo(scene) {
   return;
 }
 /* 展示携带道具列表 */
-function itemInfoContent(tab) {
+function itemInfoContent(tab,store=0) {
   /* 定义每个tab展示的道具series */
   let series = (() => {
     switch (tab) {

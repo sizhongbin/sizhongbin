@@ -204,7 +204,7 @@ button:active {
   height: calc(100% - 9vh);
   width: 100%;
 }
-.skillInfoHead {
+.skillInfoHead,.itemInfoHead {
   position: absolute;
   left: 2%;
   width: 2rem;

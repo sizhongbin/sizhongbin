@@ -551,11 +551,12 @@ function itemInfoContent(tab) {
     if (series.includes(itemData(key).series)) {
       /* 道具名 */
       row += "<tr><td>" + itemData(key).name + "</td>";
-      /* 等级 */
-      let learnedLv = you.learnedSkill[jobData(job).skillList[i]];
-      row += "<td>" + (learnedLv ? learnedLv : 0) + "&nbsp;/&nbsp;" + youSkillData(jobData(job).skillList[i]).maxlv + "</td>";
-      /* 学习按钮 */
-      row += "<td><button id='learn" + jobData(job).skillList[i] + "' class='skillInfoLearnButton' onclick='learnSkill(" + jobData(job).skillList[i] + ")'>+</button></td>";
+      /* 数量 */
+      row += "<td>" + you.carriedItem[key] + "</td>";
+      /* 使用按钮 */
+      row += "<td><button id='use" + key + "' class='itemInfoUseButton' onclick='useItem(" + key + ")'>" + (()=>{
+        
+      })() +"</button></td>";
       /* 详细按钮 */
       row += "<td><button id='detail" + jobData(job).skillList[i] + "' class='skillInfoDetailButton' onclick='skillDetail(" + jobData(job).skillList[i] + ")'>详情</button></td></tr>";
       /* 页面增加列表 */

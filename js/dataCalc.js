@@ -47,24 +47,24 @@ function getEquipBonusStats() {
     range: 0,
     attribute: 0
   };
-  if (equipData(you.equip["主手"].id).type === ("弓" || "乐器" || "鞭")) totalBonusStats.atk += you.stats.dex;
+  if (itemData(you.equip["主手"].id).type === ("弓" || "乐器" || "鞭")) totalBonusStats.atk += you.stats.dex;
   else totalBonusStats.atk += you.stats.str;
   for (key in you.equip) {
-    if (equipData(you.equip[key].id).series === "防具") totalBonusStats.wdef += equipData(you.equip[key].id).wdef;
-    else if (equipData(you.equip[key].id).series === "武器"){
-      totalBonusStats.watk += equipData(you.equip[key].id).watk;
-      totalBonusStats.range += equipData(you.equip[key].id).range
+    if (itemData(you.equip[key].id).series === "防具") totalBonusStats.wdef += itemData(you.equip[key].id).wdef;
+    else if (itemData(you.equip[key].id).series === "武器"){
+      totalBonusStats.watk += itemData(you.equip[key].id).watk;
+      totalBonusStats.range += itemData(you.equip[key].id).range
     };
-    for (let i = 0; i < equipData(you.equip[key].id).script.length; i++) {
-      if (equipData(you.equip[key].id).script[i].type == "statsBonus")
-      totalBonusStats[equipData(you.equip[key].id).script[i].effect().stats] += equipData(you.equip[key].id).script[i].effect().value;
-      if (equipData(you.equip[key].id).script[i].type == "attributeChange")
-      totalBonusStats.attribute = equipData(you.equip[key].id).script[i].effect();
+    for (let i = 0; i < itemData(you.equip[key].id).script.length; i++) {
+      if (itemData(you.equip[key].id).script[i].type == "statsBonus")
+      totalBonusStats[itemData(you.equip[key].id).script[i].effect().stats] += itemData(you.equip[key].id).script[i].effect().value;
+      if (itemData(you.equip[key].id).script[i].type == "attributeChange")
+      totalBonusStats.attribute = itemData(you.equip[key].id).script[i].effect();
     }
     for (let i = 0; i < you.equip[key].card.length; i++) {
-      for (let j = 0; j < equipData(you.equip[key].card[i]).script.length; j++) {
-        if (equipData(you.equip[key].card[i]).script[j].type == "statsBonus") totalBonusStats[equipData(you.equip[key].card[i]).script[j].effect().stats] += equipData(you.equip[key].card[i]).script[j].effect().value; 
-        if (equipData(you.equip[key].card[i]).script[j].type == "attributeChange") totalBonusStats.attribute = equipData(you.equip[key].card[i]).script[j].effect().attribute;
+      for (let j = 0; j < itemData(you.equip[key].card[i]).script.length; j++) {
+        if (itemData(you.equip[key].card[i]).script[j].type == "statsBonus") totalBonusStats[itemData(you.equip[key].card[i]).script[j].effect().stats] += itemData(you.equip[key].card[i]).script[j].effect().value; 
+        if (itemData(you.equip[key].card[i]).script[j].type == "attributeChange") totalBonusStats.attribute = itemData(you.equip[key].card[i]).script[j].effect().attribute;
       }
     }
   };
@@ -125,7 +125,7 @@ function getBonusStats() {
 /* 根据武器类型计算atk的属性满3加成 */
 function getYouExtraAtk(modifierStr = 0, modifierDex = 0) {
   var bonusStats = getBonusStats();
-  if (equipData(you.equip["主手"].id).type != ("弓" || "乐器" || "鞭"))
+  if (itemData(you.equip["主手"].id).type != ("弓" || "乐器" || "鞭"))
     return bonusStats.str + modifierStr + parseInt((you.stats.str + bonusStats.str + modifierStr) / 3) * 2 + parseInt((you.stats.dex + bonusStats.dex + modifierDex) / 3);
   else
     return bonusStats.dex + parseInt((you.stats.dex + bonusStats.dex + modifierDex) / 3) * 2 + parseInt((you.stats.str + bonusStats.str + modifierStr) / 3);
@@ -174,9 +174,9 @@ function getCarriedWeight() {
   for (let i = 0; i < Object.keys(you.carriedItem).length; i++)
     total += itemData(Object.keys(you.carriedItem)[i]).wt * you.carriedItem[Object.keys(you.carriedItem)[i]];
   for (let i = 0; i < Object.keys(you.equip).length; i++) {
-    total += equipData(you.equip[Object.keys(you.equip)[i]].id).wt;
+    total += itemData(you.equip[Object.keys(you.equip)[i]].id).wt;
     for (let j = 0; j < you.equip[Object.keys(you.equip)[i]].card.length; j++)
-      total += equipData(you.equip[Object.keys(you.equip)[i]].card[j]).wt;
+      total += itemData(you.equip[Object.keys(you.equip)[i]].card[j]).wt;
   }
   return total;
 }

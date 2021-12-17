@@ -157,11 +157,11 @@ button:active {
   table-layout: fixed;
   line-height: 1.5rem;
 }
-.baseInfoTable,.subInfoTable,.skillInfoTable {
+.baseInfoTable,.subInfoTable,.skillInfoTable,.itemInfoTable {
   width: 100%;
   line-height: 1.5rem;
 }
-.skillInfoTable {
+.skillInfoTable,.itemInfoTable {
   position: relative;
   left: 5%;
   top: 5%;
@@ -211,7 +211,7 @@ button:active {
   height: calc(100% - 9vh - 3rem);
   box-sizing: border-box;
 }
-.skillInfoContent {
+.skillInfoContent,.itemInfoContent {
   position: absolute;
   left: calc(2rem + 2%);
   height: calc(100% - 9vh - 3rem);

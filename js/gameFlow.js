@@ -436,9 +436,8 @@ function skillInfoContent(tab = -1) {
   /* tab为3时判断三转职业 */
   else job = you.currentJob;
   /* 【职业名】 */
-  title += "<tr><th colspan='2'>";
-  title += "【" + jobData(job).name + "】";
-  title += "</th><th colspan='2'>";
+  title += "<tr><td colspan='4'>";
+  title += "【" + jobData(job).name + "】&nbsp;";
   /* 剩余技能点 */
   let point;
   title += "剩余点数：";

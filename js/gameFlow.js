@@ -555,7 +555,7 @@ function itemInfoContent(tab) {
       /* 道具名 */
       row += "<tr><td>" + itemData(key).name + "</td>";
       /* 数量 */
-      row += "<td>" + you.carriedItem[key] + "</td>";
+      row += "<td>x" + you.carriedItem[key] + "</td>";
       /* 使用按钮 */
       row += "<td><button id='use" + key + "' class='itemInfoUseButton' onclick='useItem(" + key + ")'>" + (() => {
         switch (itemData(key).series) {

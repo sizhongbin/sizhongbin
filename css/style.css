@@ -183,7 +183,7 @@ button:active {
   height: 5vh;
   width: 20vw;
 }
-.skillInfoDetailButton {
+.skillInfoDetailButton,.itemInfoUseButton,.itemInfoDetailButton {
   height: 1.5rem;
   width: 3rem;
 }

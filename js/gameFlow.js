@@ -402,10 +402,10 @@ function skillInfo(scene) {
     document.getElementById("skillInfoBox").style.display = "block";
   }
   /* 根据现有职业展示head */
-  if (you.currentJob > 0) document.getElementById("job0").style.display = "flex";
-  if (you.currentJob > 10) document.getElementById("job1").style.display = "flex";
-  if (you.currentJob > 100) document.getElementById("job2").style.display = "flex";
-  if (you.currentJob > 1000) document.getElementById("job3").style.display = "flex";
+  if (you.currentJob > 0) document.getElementById("job0").style.display = "block";
+  if (you.currentJob > 10) document.getElementById("job1").style.display = "block";
+  if (you.currentJob > 100) document.getElementById("job2").style.display = "block";
+  if (you.currentJob > 1000) document.getElementById("job3").style.display = "block";
   /* 根据调用场景写入技能列表 */
   if (scene === "stageInfo") skillInfoContent(0);
   else if (scene === "battle") skillInfoContent();
@@ -536,19 +536,17 @@ function itemInfo(scene) {
 /* 展示携带道具列表 */
 function itemInfoContent(tab) {
   /* 定义每个tab展示的道具series */
-  console.log(tab);
   let series = (() => {
-    console.log(tab);
     switch (tab) {
       case 0: return ["可使用"];
       case 1: return ["武器", "防具"];
       case 2: return ["投射物", "卡片", "材料"]
     }
   })();
-  console.log(series);
   /* 更改选中tab背景色 */
-  document.getElementById("itemInfoHeadTab" + tab).className = "itemInfoHeadTab";
+  document.getElementById("itemInfoHeadTab" + tab).className = "itemInfoHeadTabSelected";
   /* 根据选中tab展示道具 */
+  document.getElementById("itemInfoTable").innerHTML = "<tr><td colspan='5'>Weight：" + you.getCarriedWeight + "&nbsp;/&nbsp" + getBoardStats(maxweight) + "</td></tr>";
   for (key in you.carriedItem) {
     let row = "";
     if (series.includes(itemData(key).series)) {

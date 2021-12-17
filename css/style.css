@@ -212,7 +212,7 @@ button:active {
   box-sizing: border-box;
 }
 .itemInfoHead {
-  display: flex;
+  display: block;
 }
 .skillInfoContent,.itemInfoContent {
   position: absolute;

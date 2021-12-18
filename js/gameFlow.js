@@ -505,7 +505,7 @@ function itemInfo(scene) {
     document.getElementById("itemInfoBox").style.display = "block";
   }
   /* 写入道具列表，默认选中可使用 */
-  itemInfoContent(0);
+  itemInfoContent(0, scene);
   /* 淡入 */
   function a() {
     document.getElementById("itemInfoBox").style.opacity = 1;
@@ -514,7 +514,7 @@ function itemInfo(scene) {
   return;
 }
 /* 展示携带道具列表 */
-function itemInfoContent(tab, store = 0) {
+function itemInfoContent(tab==-1, scene) {
   /* 定义每个tab展示的道具series */
   let series = (() => {
     switch (tab) {
@@ -533,10 +533,11 @@ function itemInfoContent(tab, store = 0) {
   document.getElementById("itemInfoHeadTab0").className = "itemInfoHeadTab";
   document.getElementById("itemInfoHeadTab1").className = "itemInfoHeadTab";
   document.getElementById("itemInfoHeadTab2").className = "itemInfoHeadTab";
+  console.log(tab > 2 ? tab - 3 : tab);
   document.getElementById("itemInfoHeadTab" + (tab > 2 ? tab - 3 : tab)).className = "itemInfoHeadTabSelected";
   /* 根据选中tab展示道具 */
   document.getElementById("itemInfoTable").innerHTML = "<tr><td colspan='5'>Weight：" + getCarriedWeight() + "&nbsp;/&nbsp" + getBoardStats().maxweight + "</td></tr>";
-  let list = (tab > 2 ? you.carriedItem : you.storeItem);
+  let list = (tab < 3 ? you.carriedItem : you.storeItem);
   for (key in list) {
     let row = "";
     if (series.includes(itemData(key).series)) {
@@ -545,44 +546,56 @@ function itemInfoContent(tab, store = 0) {
       /* 数量 */
       row += "<td>x" + list[key] + "</td>";
       /* 使用按钮 */
-      row += "<td><button id='use" + key + "' class='itemInfoUseButton' onclick='useItem(" + key + ")'>" + (() => {
-        switch (itemData(key).series) {
-          case "可使用":
-            return "用";
-          case "武器":
-            return "装";
-          case "防具":
-          case "投射物":
-          case "卡片":
-            return "装";
-        }
-      })() + "</button></td>";
+      if (scene == "battle" && itemData(key).series == "可使用")
+        row += "<td><button id='use" + key + "' class='itemInfoUseButton' onclick='useItem(" + key + ")'>用</button></td>";
+      if (itemData(key).series == ("武器" || "防具" || "投射物" || "卡片"))
+        row += "<td><button id='use" + key + "' class='itemInfoUseButton' onclick='useItem(" + key + ")'>装</button></td>";
       /* 详细按钮 */
-      row += "<td><button id='itemDetail" + key + "' class='itemInfoDetailButton' onclick='itemDetail(" + key + ")'>详</button></td></tr>";
-      /* 页面增加列表 */
-      document.getElementById("itemInfoTable").innerHTML += row;
-      document.getElementById("itemInfoHeadTab1").onclick = Function("itemInfoContent(" + (0 + scene * 3) + ");");
-
+      row += "<td><button id='itemDetail" + key + "' class='itemInfoDetailButton' onclick='itemDetail(" + key + ")'>详</button></td>";
+      /* 存取按钮 */
+      if (tab < 3)
+        row += "<td><button id='itemStore" + key + "' class='itemInfoDetailButton' onclick='itemStore(" + key + ")'>存</button></td></tr>";
+      else
+        row += "<td><button id='itemStore" + key + "' class='itemInfoDetailButton' onclick='itemTake(" + key + ")'>取</button></td></tr>";
     }
+    /* 页面增加列表 */
+    document.getElementById("itemInfoTable").innerHTML += row;
   }
   return;
 }
 /* 切换展示携带和仓库 */
-function itemInfoSwitch(scene) {
-  if
-    document.getElementById("itemInfoHeadTab0").onclick = Function("itemInfoContent(" + (0 + scene * 3) + ");");
-    document.getElementById("itemInfoHeadTab1").onclick = Function("itemInfoContent(" + (1 + scene * 3) + ");");
-    document.getElementById("itemInfoHeadTab1").onclick = Function("itemInfoContent(" + (2 + scene * 3) + ");");
+function itemInfoSwitch(store) {
+  if (store) {
+    document.getElementById("itemInfoHeadTab0").onclick = Function("itemInfoContent(3);");
+    document.getElementById("itemInfoHeadTab1").onclick = Function("itemInfoContent(4);");
+    document.getElementById("itemInfoHeadTab2").onclick = Function("itemInfoContent(5);");
     document.getElementById("switchStore").innerHTML = "携带";
     document.getElementById("switchStore").onclick = Function("itemInfoSwitch(0);");
+    itemInfoContent(3);
   }
   else {
     document.getElementById("itemInfoHeadTab0").onclick = Function("itemInfoContent(0);");
     document.getElementById("itemInfoHeadTab1").onclick = Function("itemInfoContent(1);");
-    document.getElementById("itemInfoHeadTab1").onclick = Function("itemInfoContent(2);");
+    document.getElementById("itemInfoHeadTab2").onclick = Function("itemInfoContent(2);");
     document.getElementById("switchStore").innerHTML = "仓库";
     document.getElementById("switchStore").onclick = Function("itemInfoSwitch(1);");
-
+    itemInfoContent(0);
   }
+  return;
+}
+/* 取出道具 */
+function itemTake(key) {
+  you.storeItem[key] -= 1;
+  (you.carriedItem[key] ? you.carriedItem[key] += 1 : you.carriedItem[key] = 1);
+  if (you.storeItem[key] == 0)
+    delete you.storeItem[key];
+  return;
+}
+/* 存入道具 */
+function itemStore(key) {
+  you.carriedItem[key] -= 1;
+    (you.storeItem[key] ? you.storeItem[key] += 1 : you.storeItem[key] = 1);
+  if (you.carriedItem[key] == 0)
+    delete you.carriedItem[key];
   return;
 }

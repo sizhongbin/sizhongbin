@@ -569,7 +569,7 @@ function itemInfoContent(tab, store = 0) {
 }
 /* 切换展示携带和仓库 */
 function itemInfoSwitch(scene) {
-  if (scene) {
+  if
     document.getElementById("itemInfoHeadTab0").onclick = Function("itemInfoContent(" + (0 + scene * 3) + ");");
     document.getElementById("itemInfoHeadTab1").onclick = Function("itemInfoContent(" + (1 + scene * 3) + ");");
     document.getElementById("itemInfoHeadTab1").onclick = Function("itemInfoContent(" + (2 + scene * 3) + ");");

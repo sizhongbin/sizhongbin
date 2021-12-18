@@ -240,28 +240,6 @@ function save() {
 function findKey(obj, value, compare = (a, b) => a === b) {
   return Object.keys(obj).find(k => compare(obj[k], value))
 }
-/* 游戏开始 */
-function gameStart() {
-  /* 显示版本号 */
-  document.getElementById("ver").innerHTML = "Dev.20211216";
-  document.getElementById("updateLogButton").style.visibility = "visible";
-  /* 判断存档是否存在 */
-  var saveData = Cookies.get("s");
-  if (!saveData) {
-    let button = document.createElement("button");
-    button.innerHTML = "开始游戏";
-    button.setAttribute("onclick", "gameLoad(1)");
-    button.className = "gameStartButton";
-    document.getElementById("gameStart").appendChild(button);
-  } else {
-    let button = document.createElement("button");
-    button.innerHTML = "继续游戏";
-    button.setAttribute("onclick", "gameLoad(0)");
-    button.className = "gameStartButton";
-    document.getElementById("gameStart").appendChild(button);
-  }
-  return;
-}
 /* 更新日志 */
 function updateLog() {
   document.getElementById("updateLog").innerHTML = "开发中";

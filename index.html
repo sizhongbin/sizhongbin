@@ -6,9 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>天禁仙境</title>
   <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <script>
+    /* 游戏开始 */
+    function gameStart() {
+      /* 显示版本号 */
+      document.getElementById("ver").innerHTML = "Dev.20211216";
+      document.getElementById("updateLogButton").style.visibility = "visible";
+      /* 判断存档是否存在 */
+      var saveData = Cookies.get("s");
+      if (!saveData) {
+        let button = document.createElement("button");
+        button.innerHTML = "开始游戏";
+        button.setAttribute("onclick", "gameLoad(1)");
+        button.className = "gameStartButton";
+        document.getElementById("gameStart").appendChild(button);
+      } else {
+        let button = document.createElement("button");
+        button.innerHTML = "继续游戏";
+        button.setAttribute("onclick", "gameLoad(0)");
+        button.className = "gameStartButton";
+        document.getElementById("gameStart").appendChild(button);
+      }
+      return;
+    }
+    window.onload = gameStart;
+  </script>
 </head>
 
-<body onload="gameStart()">
+<body>
   <div class="gameBox">
     <div class="gameTitle">
       &nbsp;天禁仙境

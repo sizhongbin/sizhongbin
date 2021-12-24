@@ -502,8 +502,8 @@ function itemInfo(scene) {
   if (scene === "stageInfo") {
     document.getElementById("stageInfoBox").style.display = "none";
     document.getElementById("stageInfoBox").style.opacity = "0";
-    document.getElementById("itemInfoBox").style.display = "block";
   }
+  document.getElementById("itemInfoBox").style.display = "block";
   /* 写入道具列表，默认选中可使用 */
   itemInfoContent(0, scene);
   /* 淡入 */
@@ -514,7 +514,7 @@ function itemInfo(scene) {
   return;
 }
 /* 展示携带道具列表 */
-function itemInfoContent(tab==-1, scene) {
+function itemInfoContent(tab = -1, scene = 0) {
   /* 定义每个tab展示的道具series */
   let series = (() => {
     switch (tab) {
@@ -530,11 +530,16 @@ function itemInfoContent(tab==-1, scene) {
     }
   })();
   /* 更改选中tab背景色 */
-  document.getElementById("itemInfoHeadTab0").className = "itemInfoHeadTab";
-  document.getElementById("itemInfoHeadTab1").className = "itemInfoHeadTab";
-  document.getElementById("itemInfoHeadTab2").className = "itemInfoHeadTab";
-  console.log(tab > 2 ? tab - 3 : tab);
-  document.getElementById("itemInfoHeadTab" + (tab > 2 ? tab - 3 : tab)).className = "itemInfoHeadTabSelected";
+  if (tab >= 0) {
+    document.getElementById("itemInfoHeadTab0").className = "itemInfoHeadTab";
+    document.getElementById("itemInfoHeadTab1").className = "itemInfoHeadTab";
+    document.getElementById("itemInfoHeadTab2").className = "itemInfoHeadTab";
+    document.getElementById("itemInfoHeadTab" + (tab > 2 ? tab - 3 : tab)).className = "itemInfoHeadTabSelected";
+  }
+  else {
+    tab = document.getElementsByClassName("itemInfoHeadTabSelected")[0].getAttribute("id");
+    tab = tab.charAt(tab.length - 1);
+  }
   /* 根据选中tab展示道具 */
   document.getElementById("itemInfoTable").innerHTML = "<tr><td colspan='5'>Weight：" + getCarriedWeight() + "&nbsp;/&nbsp" + getBoardStats().maxweight + "</td></tr>";
   let list = (tab < 3 ? you.carriedItem : you.storeItem);
@@ -589,13 +594,15 @@ function itemTake(key) {
   (you.carriedItem[key] ? you.carriedItem[key] += 1 : you.carriedItem[key] = 1);
   if (you.storeItem[key] == 0)
     delete you.storeItem[key];
+  itemInfoContent();
   return;
 }
 /* 存入道具 */
 function itemStore(key) {
   you.carriedItem[key] -= 1;
-    (you.storeItem[key] ? you.storeItem[key] += 1 : you.storeItem[key] = 1);
+  (you.storeItem[key] ? you.storeItem[key] += 1 : you.storeItem[key] = 1);
   if (you.carriedItem[key] == 0)
     delete you.carriedItem[key];
+  itemInfoContent();
   return;
 }

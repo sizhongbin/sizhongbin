@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>天禁仙境</title>
   <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <script src="./js/js.cookie.js"></script>
   <script>
     /* 游戏开始 */
     function gameStart() {
@@ -37,244 +38,242 @@
   <div class="gameBox">
     <div class="gameTitle">
       &nbsp;天禁仙境
+    </div <div id="gameContent" class="gameContent">
+    <div id="gameStart" class="gameStart">
+      <a id="ver" class="ver">Loading……</a>
+      <button id="updateLogButton" class="button6" onclick="updateLog()" style="visibility:hidden">更新日志</button>
+      <div id="updateLogBox" class="popLarge">
+        <div id="updateLog" class="popContent"></div>
+        <button class="button6" onclick="closePop('updateLogBox')">关闭</button>
+      </div>
     </div>
-    <div id="gameContent" class="gameContent">
-      <div id="gameStart" class="gameStart">
-        <a id="ver" class="ver">Loading……</a>
-        <button id="updateLogButton" class="button6" onclick="updateLog()" style="visibility:hidden">更新日志</button>
-        <div id="updateLogBox" class="popLarge">
-          <div id="updateLog" class="popContent"></div>
-          <button class="button6" onclick="closePop('updateLogBox')">关闭</button>
+    <div id="chapter0" class="storyBox">
+      <h1>
+        序
+      </h1>
+      <button class="button6" onclick="storyContinue('chapter0','story0_1')">继续</button>
+    </div>
+    <div id="story0_1" class="storyBox">
+      <h2>Story</h2>
+      <div id="storyContent0_1" class="storyContent">
+        <p>
+          诸神的战争，虚伪的和平，怪物的侵袭，还有让无数冒险者踏上旅途的依美乐之心......
+        </p>
+        <p>
+          这是一个混乱的时代。但这些都不是重点。
+        </p>
+        <p>
+          在这普通的一天，搬砖的你偶然听到了一个冒险者的谈话。
+        </p>
+        <p>
+          他在普隆德拉南门的绿棉虫身上得到了绿宝石，并成功向宝石商人卖出了3,720z。
+        </p>
+        <p>
+          约摸是你搬砖两个月的收入。
+        </p>
+        <p>
+          一瞬间，你的眼里有了光。那是对<del>提前退休</del>冒险生活的渴望。
+        </p>
+        <p>
+          你当即扔下手中的砖，紧了紧身上的祖传棉衬衫，启程前往初心者修炼场。
+        </p>
+        <p>
+          现在，你正站在考场中。在教官面前击倒眼前的怪物，你就能通过试验，成为冒险者。
+        </p>
+        <p>
+          以上才是重点，是你的故事的开端。
+        </p>
+        <br>
+        <p style="color:yellow">
+          你穿戴了考试专用装备：
+        </p>
+        <p>
+          短剑[0]
+        </p>
+        <p>
+          冒险衣[0]
+        </p>
+        <p style="color:yellow">
+          你得到了考试专用道具：
+        </p>
+        <p>
+          初学者专用药水专用 x1
+        </p>
+      </div>
+      <button class="button6" onclick="stageInfo('story0_1')">关卡信息</button>
+    </div>
+    <div id="stageInfoBox" class="stageInfoBox">
+      <div class="stageInfoTitle">
+        <h2 id="stageNumber"></h2>
+        <h1 id="stageName"></h1>
+      </div>
+      <div class="stageInfoEnemy">
+        <h2 id="stageEnemyTitle"></h2>
+        <table>
+          <tr>
+            <th>场次</th>
+            <th>怪物</th>
+            <th>情报</th>
+          </tr>
+        </table>
+        <div id="stageEnemyListBox" class="stageEnemyListBox">
+          <table id="stageEnemyList"></table>
         </div>
       </div>
-      <div id="chapter0" class="storyBox">
-        <h1>
-          序
-        </h1>
-        <button class="button6" onclick="storyContinue('chapter0','story0_1')">继续</button>
+      <div class="stageInfoButtons">
+        <button class="button1" onclick="charaInfo('stageInfo')">角色/加点</button>
+        <button class="button2" onclick="skillInfo('stageInfo')">技能/学习</button>
+        <button class="button3">出发</button>
+        <button class="button4" onclick="itemInfo('stageInfo')">道具/仓库</button>
+        <button class="button5">装备/支援</button>
       </div>
-      <div id="story0_1" class="storyBox">
-        <h2>Story</h2>
-        <div id="storyContent0_1" class="storyContent">
-          <p>
-            诸神的战争，虚伪的和平，怪物的侵袭，还有让无数冒险者踏上旅途的依美乐之心......
-          </p>
-          <p>
-            这是一个混乱的时代。但这些都不是重点。
-          </p>
-          <p>
-            在这普通的一天，搬砖的你偶然听到了一个冒险者的谈话。
-          </p>
-          <p>
-            他在普隆德拉南门的绿棉虫身上得到了绿宝石，并成功向宝石商人卖出了3,720z。
-          </p>
-          <p>
-            约摸是你搬砖两个月的收入。
-          </p>
-          <p>
-            一瞬间，你的眼里有了光。那是对<del>提前退休</del>冒险生活的渴望。
-          </p>
-          <p>
-            你当即扔下手中的砖，紧了紧身上的祖传棉衬衫，启程前往初心者修炼场。
-          </p>
-          <p>
-            现在，你正站在考场中。在教官面前击倒眼前的怪物，你就能通过试验，成为冒险者。
-          </p>
-          <p>
-            以上才是重点，是你的故事的开端。
-          </p>
-          <br>
-          <p style="color:yellow">
-            你穿戴了考试专用装备：
-          </p>
-          <p>
-            短剑[0]
-          </p>
-          <p>
-            冒险衣[0]
-          </p>
-          <p style="color:yellow">
-            你得到了考试专用道具：
-          </p>
-          <p>
-            初学者专用药水专用 x1
-          </p>
-        </div>
-        <button class="button6" onclick="stageInfo('story0_1')">关卡信息</button>
-      </div>
-      <div id="stageInfoBox" class="stageInfoBox">
-        <div class="stageInfoTitle">
-          <h2 id="stageNumber"></h2>
-          <h1 id="stageName"></h1>
-        </div>
-        <div class="stageInfoEnemy">
-          <h2 id="stageEnemyTitle"></h2>
-          <table>
+    </div>
+    <div id="charaInfoBox" class="charaInfoBox">
+      <div class="charaInfo">
+        <h2>Basic</h2>
+        <div id="baseInfo" class="baseInfo">
+          <table class="baseInfoTable">
             <tr>
-              <th>场次</th>
-              <th>怪物</th>
-              <th>情报</th>
+              <th>你</th>
+              <td id="baseLv"></td>
+              <th>STR</th>
+              <td id="str"></td>
+              <td id="addStr"><button class="addStats" onclick="addStats('str')">+</button></td>
+            </tr>
+            <tr>
+              <th id="currentJob"></th>
+              <td id="jobLv"></td>
+              <th>AGI</th>
+              <td id="agi"></td>
+              <td id="addAgi"><button class="addStats" onclick="addStats('agi')">+</button></td>
+            </tr>
+            <tr>
+              <th>HP</th>
+              <td id="hp"></td>
+              <th>VIT</th>
+              <td id="vit"></td>
+              <td id="addVit"><button class="addStats" onclick="addStats('vit')">+</button></td>
+            </tr>
+            <tr>
+              <th>SP</th>
+              <td id="sp"></td>
+              <th>INT</th>
+              <td id="int"></td>
+              <td id="addInt"><button class="addStats" onclick="addStats('int')">+</button></td>
+            </tr>
+            <tr>
+              <th>Weight</th>
+              <td id="weight"></td>
+              <th>DEX</th>
+              <td id="dex"></td>
+              <td id="addDex"><button class="addStats" onclick="addStats('dex')">+</button></td>
+            </tr>
+            <tr>
+              <th>Zeny</th>
+              <td id="zeny"></td>
+              <th>LUK</th>
+              <td id="luk"></td>
+              <td id="addLuk"><button class="addStats" onclick="addStats('luk')">+</button></td>
             </tr>
           </table>
-          <div id="stageEnemyListBox" class="stageEnemyListBox">
-            <table id="stageEnemyList"></table>
-          </div>
         </div>
-        <div class="stageInfoButtons">
-          <button class="button1" onclick="charaInfo('stageInfo')">角色/加点</button>
-          <button class="button2" onclick="skillInfo('stageInfo')">技能/学习</button>
-          <button class="button3">出发</button>
-          <button class="button4" onclick="itemInfo('stageInfo')">道具/仓库</button>
-          <button class="button5">装备/支援</button>
+        <h2>Status</h2>
+        <div id="subInfo" class="subInfo">
+          <table class="subInfoTable">
+            <tr>
+              <th>Atk</th>
+              <td id="atk"></td>
+              <th>Matk</th>
+              <td id="matk"></td>
+            </tr>
+            <tr>
+              <th>Def</th>
+              <td id="def"></td>
+              <th>Mdef</th>
+              <td id="mdef"></td>
+            </tr>
+            <tr>
+              <th>Hit</th>
+              <td id="hit"></td>
+              <th>Flee</th>
+              <td id="flee"></td>
+            </tr>
+            <tr>
+              <th>Cri</th>
+              <td id="cri"></td>
+              <th>AP</th>
+              <td id="ap"></td>
+            </tr>
+            <tr>
+              <th colspan="2">Status Point</th>
+              <td id="statusPoint" colspan="2"></td>
+            </tr>
+            <tr>
+              <th colspan="2">Guild</th>
+              <td id="guild" colspan="2"></td>
+            </tr>
+          </table>
         </div>
       </div>
-      <div id="charaInfoBox" class="charaInfoBox">
-        <div class="charaInfo">
-          <h2>Basic</h2>
-          <div id="baseInfo" class="baseInfo">
-            <table class="baseInfoTable">
-              <tr>
-                <th>你</th>
-                <td id="baseLv"></td>
-                <th>STR</th>
-                <td id="str"></td>
-                <td id="addStr"><button class="addStats" onclick="addStats('str')">+</button></td>
-              </tr>
-              <tr>
-                <th id="currentJob"></th>
-                <td id="jobLv"></td>
-                <th>AGI</th>
-                <td id="agi"></td>
-                <td id="addAgi"><button class="addStats" onclick="addStats('agi')">+</button></td>
-              </tr>
-              <tr>
-                <th>HP</th>
-                <td id="hp"></td>
-                <th>VIT</th>
-                <td id="vit"></td>
-                <td id="addVit"><button class="addStats" onclick="addStats('vit')">+</button></td>
-              </tr>
-              <tr>
-                <th>SP</th>
-                <td id="sp"></td>
-                <th>INT</th>
-                <td id="int"></td>
-                <td id="addInt"><button class="addStats" onclick="addStats('int')">+</button></td>
-              </tr>
-              <tr>
-                <th>Weight</th>
-                <td id="weight"></td>
-                <th>DEX</th>
-                <td id="dex"></td>
-                <td id="addDex"><button class="addStats" onclick="addStats('dex')">+</button></td>
-              </tr>
-              <tr>
-                <th>Zeny</th>
-                <td id="zeny"></td>
-                <th>LUK</th>
-                <td id="luk"></td>
-                <td id="addLuk"><button class="addStats" onclick="addStats('luk')">+</button></td>
-              </tr>
-            </table>
+      <button class="button5" onclick="resetStats()">重置</button>
+      <button class="button6" onclick="stageInfo('charaInfoBox')">返回</button>
+    </div>
+    <div id="skillInfoBox" class="skillInfoBox">
+      <div class="skillInfo">
+        <h2>Skill</h2>
+        <div class="skillInfoHead">
+          <div id="job0" class="skillInfoHeadTab" onclick="skillInfoContent(0)">
+            初心者
           </div>
-          <h2>Status</h2>
-          <div id="subInfo" class="subInfo">
-            <table class="subInfoTable">
-              <tr>
-                <th>Atk</th>
-                <td id="atk"></td>
-                <th>Matk</th>
-                <td id="matk"></td>
-              </tr>
-              <tr>
-                <th>Def</th>
-                <td id="def"></td>
-                <th>Mdef</th>
-                <td id="mdef"></td>
-              </tr>
-              <tr>
-                <th>Hit</th>
-                <td id="hit"></td>
-                <th>Flee</th>
-                <td id="flee"></td>
-              </tr>
-              <tr>
-                <th>Cri</th>
-                <td id="cri"></td>
-                <th>AP</th>
-                <td id="ap"></td>
-              </tr>
-              <tr>
-                <th colspan="2">Status Point</th>
-                <td id="statusPoint" colspan="2"></td>
-              </tr>
-              <tr>
-                <th colspan="2">Guild</th>
-                <td id="guild" colspan="2"></td>
-              </tr>
-            </table>
+          <div id="job1" class="skillInfoHeadTab" onclick="skillInfoContent(1)">
+            一转
+          </div>
+          <div id="job2" class="skillInfoHeadTab" onclick="skillInfoContent(2)">
+            二转
+          </div>
+          <div id="job3" class="skillInfoHeadTab" onclick="skillInfoContent(3)">
+            三转
           </div>
         </div>
-        <button class="button5" onclick="resetStats()">重置</button>
-        <button class="button6" onclick="stageInfo('charaInfoBox')">返回</button>
-      </div>
-      <div id="skillInfoBox" class="skillInfoBox">
-        <div class="skillInfo">
-          <h2>Skill</h2>
-          <div class="skillInfoHead">
-            <div id="job0" class="skillInfoHeadTab" onclick="skillInfoContent(0)">
-              初心者
-            </div>
-            <div id="job1" class="skillInfoHeadTab" onclick="skillInfoContent(1)">
-              一转
-            </div>
-            <div id="job2" class="skillInfoHeadTab" onclick="skillInfoContent(2)">
-              二转
-            </div>
-            <div id="job3" class="skillInfoHeadTab" onclick="skillInfoContent(3)">
-              三转
-            </div>
-          </div>
-          <div id="skillInfoContent" class="skillInfoContent">
-            <table id="skillInfoTable" class="skillInfoTable"></table>
-            <div id="skillInfoDetailBox" class="popLarge">
-              <div id="skillInfoDetail" class="popContent"></div>
-              <button class="button6" onclick="closePop('skillInfoDetailBox')">关闭</button>
-            </div>
+        <div id="skillInfoContent" class="skillInfoContent">
+          <table id="skillInfoTable" class="skillInfoTable"></table>
+          <div id="skillInfoDetailBox" class="popLarge">
+            <div id="skillInfoDetail" class="popContent"></div>
+            <button class="button6" onclick="closePop('skillInfoDetailBox')">关闭</button>
           </div>
         </div>
-        <button class="button5" onclick="resetSkill();closePop('skillInfoDetailBox')">重置</button>
-        <button class="button6" onclick="stageInfo('skillInfoBox');closePop('skillInfoDetailBox')">返回</button>
       </div>
-      <div id="itemInfoBox" class="itemInfoBox">
-        <div class="itemInfo">
-          <h2>Item</h2>
-          <div class="itemInfoHead">
-            <div id="itemInfoHeadTab0" class="itemInfoHeadTab" onclick="itemInfoContent(0)">
-              可使用
-            </div>
-            <div id="itemInfoHeadTab1" class="itemInfoHeadTab" onclick="itemInfoContent(1)">
-              装备
-            </div>
-            <div id="itemInfoHeadTab2" class="itemInfoHeadTab" onclick="itemInfoContent(2)">
-              其他
-            </div>
+      <button class="button5" onclick="resetSkill();closePop('skillInfoDetailBox')">重置</button>
+      <button class="button6" onclick="stageInfo('skillInfoBox');closePop('skillInfoDetailBox')">返回</button>
+    </div>
+    <div id="itemInfoBox" class="itemInfoBox">
+      <div class="itemInfo">
+        <h2>Item</h2>
+        <div class="itemInfoHead">
+          <div id="itemInfoHeadTab0" class="itemInfoHeadTab" onclick="itemInfoContent(0)">
+            可使用
           </div>
-          <div id="itemInfoContent" class="itemInfoContent">
-            <table id="itemInfoTable" class="itemInfoTable"></table>
-            <div id="itemInfoDetailBox" class="popLarge">
-              <div id="itemInfoDetail" class="popContent"></div>
-              <button class="button6" onclick="closePop('itemInfoDetailBox')">关闭</button>
-            </div>
+          <div id="itemInfoHeadTab1" class="itemInfoHeadTab" onclick="itemInfoContent(1)">
+            装备
+          </div>
+          <div id="itemInfoHeadTab2" class="itemInfoHeadTab" onclick="itemInfoContent(2)">
+            其他
           </div>
         </div>
-        <button id="switchStore" class="button5" onclick="itemInfoSwitch(1)">仓库</button>
-        <button class="button6" onclick="stageInfo('itemInfoBox');closePop('itemInfoDetailBox')">返回</button>
+        <div id="itemInfoContent" class="itemInfoContent">
+          <table id="itemInfoTable" class="itemInfoTable"></table>
+          <div id="itemInfoDetailBox" class="popLarge">
+            <div id="itemInfoDetail" class="popContent"></div>
+            <button class="button6" onclick="closePop('itemInfoDetailBox')">关闭</button>
+          </div>
+        </div>
       </div>
+      <button id="switchStore" class="button5" onclick="itemInfoSwitch(1)">仓库</button>
+      <button class="button6" onclick="stageInfo('itemInfoBox');closePop('itemInfoDetailBox')">返回</button>
     </div>
   </div>
+  </div>
   <!--加载脚本文件-->
-  <script src="./js/js.cookie.js"></script>
   <script src="./js/globalVar.js"></script>
   <script src="./js/dataBase.js"></script>
   <script src="./js/dataCalc.js"></script>

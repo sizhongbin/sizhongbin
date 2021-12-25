@@ -558,9 +558,9 @@ function itemInfoContent(tab = -1, scene = 0) {
       /* 详细按钮 */
       row += "<td><button id='itemDetail" + key + "' class='itemInfoDetailButton' onclick='itemDetail(" + key + ")'>详</button></td>";
       /* 存取按钮 */
-      if (tab < 3)
+      if (scene != "battle" && tab < 3)
         row += "<td><button id='itemStore" + key + "' class='itemInfoDetailButton' onclick='itemStore(" + key + ")'>存</button></td></tr>";
-      else
+      else if (scene != "battle" && tab > 2)
         row += "<td><button id='itemStore" + key + "' class='itemInfoDetailButton' onclick='itemTake(" + key + ")'>取</button></td></tr>";
     }
     /* 页面增加列表 */

@@ -559,9 +559,10 @@ function itemInfoContent(tab = -1, scene = 0) {
       row += "<td><button id='itemDetail" + key + "' class='itemInfoDetailButton' onclick='itemDetail(" + key + ")'>详</button></td>";
       /* 存取按钮 */
       if (scene != "battle" && tab < 3)
-        row += "<td><button id='itemStore" + key + "' class='itemInfoDetailButton' onclick='itemStore(" + key + ")'>存</button></td></tr>";
+        row += "<td><button id='itemStore" + key + "' class='itemInfoDetailButton' onclick='itemStore(" + key + ")'>存</button></td>";
       else if (scene != "battle" && tab > 2)
-        row += "<td><button id='itemStore" + key + "' class='itemInfoDetailButton' onclick='itemTake(" + key + ")'>取</button></td></tr>";
+        row += "<td><button id='itemStore" + key + "' class='itemInfoDetailButton' onclick='itemTake(" + key + ")'>取</button></td>";
+      row += "</tr>";
     }
     /* 页面增加列表 */
     document.getElementById("itemInfoTable").innerHTML += row;

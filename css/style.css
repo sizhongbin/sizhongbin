@@ -22,15 +22,15 @@ button {
 button:active {
   background-color: #B2EBF2;
 }
-.gameStartButton {
+#gameStartButton {
   margin: 0 auto;
 }
-.ver {
+#ver {
   position: absolute;
   bottom: 0.5rem;
   left: 0.5rem;
 }
-.gameBox {
+#gameBox {
   position: absolute;
   border: 0.1rem solid #00BCD4;
   border-radius: 0.2rem;
@@ -38,7 +38,7 @@ button:active {
   height: 100%;
   box-sizing: border-box;
 }
-.gameTitle {
+#gameTitle {
   position: relative;
   height: 5vh;
   width: 100%;
@@ -48,13 +48,13 @@ button:active {
   align-items: center;
   box-sizing: border-box;
 }
-.gameContent {
+#gameContent {
   height: calc(100% - 5vh);
   width: 100%;
   box-sizing: border-box;
 }
 
-.gameStart {
+#gameStart {
   height: 100%;
   width: 100%;
   display: flex;
